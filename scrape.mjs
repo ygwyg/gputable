@@ -39,8 +39,7 @@
 // DigitalOcean (covered); TensorWave has no public pricing page (404,
 // contact-sales only); Fluidstack dropped public pricing when it pivoted to
 // gigawatt-scale enterprise deals; Linode's GPU fleet has no cards this
-// table tracks; Hot Aisle's prices live in marketing prose too loose to
-// parse reliably.
+// table tracks.
 
 const UA_API = "gpu-prices/0.3 (personal price tracker)";
 const UA_BROWSER = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " +
@@ -651,6 +650,26 @@ async function seeweb() {
   return rows;
 }
 
+// Hot Aisle sells one thing (MI300X) via structured spec cards: "VM Small 1x
+// MI300x $2.99/GPU/hr", "Bare metal Large 8x MI300x $3.39/GPU/hr". Anchoring
+// on the "Nx MI300x $P/GPU/hr" card shape skips the marketing prose around
+// it (new-customer rates, grandfathering notes). Bare-metal cards are
+// one-month-minimum, so they land as reserved.
+async function hotaisle() {
+  const t = pageText(await fetchRetry("https://hotaisle.xyz/pricing/", { ua: UA_BROWSER }));
+  const rows = [...t.matchAll(/(\d)x(?:\s*&\s*\d+x)?\s+MI300x\s+\$([\d.]+)\s*\/GPU\/hr/gi)]
+    .map(m => {
+      const bareMetal = /bare ?metal/i.test(t.slice(Math.max(0, m.index - 60), m.index));
+      return row("MI300X", "Hot Aisle", m[2], {
+        count: +m[1], vram: 192, avail: true,
+        ptype: bareMetal ? "reserved" : "on_demand",
+        commit: bareMetal ? 1 : null,
+        url: "https://hotaisle.xyz/pricing/" });
+    });
+  if (!rows.some(Boolean)) throw new Error("parsed zero rows (layout changed?)");
+  return rows;
+}
+
 // Voltage Park's headline rate lives in the pricing-page FAQ: "You can rent
 // one H100 GPU for 1 hour starting at $X.XX". One row, but a notable one.
 async function voltagepark() {
@@ -901,6 +920,7 @@ export const PROVIDERS = {
   jarvis:    { names: ["Jarvis Labs"], fn: jarvis },
   cudo:      { names: ["Cudo Compute"], fn: cudo },
   voltagepark: { names: ["Voltage Park"], fn: voltagepark },
+  hotaisle:  { names: ["Hot Aisle"], fn: hotaisle },
   hyperstack: { names: ["Hyperstack"], fn: hyperstack },
   fal:       { names: ["fal"], fn: fal },
   koyeb:     { names: ["Koyeb"], fn: koyeb },

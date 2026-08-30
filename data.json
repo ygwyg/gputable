@@ -1,188 +1,202 @@
 {
- "generated_at": "2026-08-30T01:39:39+00:00",
+ "generated_at": "2026-08-30T02:37:31+00:00",
+ "source": "https://gputable.dev",
+ "terms": "Free to use with attribution: link https://gputable.dev and keep source_url intact, including its ref parameters — that is how this project is funded.",
  "providers": {
-  "runpod": {
-   "ok": true,
-   "rows": 56,
-   "fetched_at": "2026-08-30T01:39:39+00:00"
-  },
   "vast": {
    "ok": true,
-   "rows": 606,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "rows": 618,
+   "fetched_at": "2026-08-30T02:37:31+00:00"
+  },
+  "runpod": {
+   "ok": true,
+   "rows": 54,
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "lambda": {
    "ok": true,
    "rows": 15,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "coreweave": {
    "ok": true,
    "rows": 16,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "nebius": {
    "ok": true,
    "rows": 10,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "crusoe": {
    "ok": true,
    "rows": 6,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "salad": {
    "ok": true,
    "rows": 2,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "verda": {
    "ok": true,
    "rows": 106,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "azure": {
    "ok": true,
    "rows": 40,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "aws": {
    "ok": true,
    "rows": 21,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "oracle": {
    "ok": true,
    "rows": 7,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "digitalocean": {
    "ok": true,
    "rows": 15,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "together": {
    "ok": true,
    "rows": 8,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "modal": {
    "ok": true,
    "rows": 7,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "jarvis": {
    "ok": true,
    "rows": 3,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "cudo": {
    "ok": true,
    "rows": 3,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "voltagepark": {
    "ok": true,
    "rows": 1,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "hyperstack": {
    "ok": true,
    "rows": 12,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "fal": {
    "ok": true,
    "rows": 10,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "koyeb": {
    "ok": true,
    "rows": 3,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "baseten": {
    "ok": true,
    "rows": 8,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "civo": {
    "ok": true,
    "rows": 12,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "denvr": {
    "ok": true,
    "rows": 4,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "scaleway": {
    "ok": true,
    "rows": 16,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "ovh": {
    "ok": true,
    "rows": 10,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "leadergpu": {
    "ok": true,
    "rows": 5,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "seeweb": {
    "ok": true,
    "rows": 8,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "lium": {
    "ok": true,
    "rows": 24,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "thunder": {
    "ok": true,
    "rows": 4,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "spheron": {
    "ok": true,
    "rows": 10,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "beam": {
    "ok": true,
    "rows": 9,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "massed": {
    "ok": true,
    "rows": 116,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "gpuai": {
    "ok": true,
    "rows": 6,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "latitude": {
    "ok": true,
    "rows": 1,
-   "fetched_at": "2026-08-29T21:35:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "replicate": {
    "ok": true,
    "rows": 32,
-   "fetched_at": "2026-08-29T19:12:35+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   },
   "novita": {
    "ok": true,
    "rows": 7,
-   "fetched_at": "2026-08-29T19:08:50+00:00"
+   "fetched_at": "2026-08-30T02:37:31+00:00"
   }
  },
  "data": [
+  {
+   "gpu": "A100 PCIe",
+   "vram_gb": 80,
+   "architecture": "Ampere",
+   "provider": "Vast.ai",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.1333,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
   {
    "gpu": "A100 PCIe",
    "vram_gb": 80,
@@ -193,19 +207,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "A100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Ampere",
-   "provider": "Vast.ai",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.14,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -213,11 +215,11 @@
    "architecture": "Ampere",
    "provider": "Vast.ai",
    "gpu_count": 4,
-   "price_per_hour_usd": 0.14,
+   "price_per_hour_usd": 0.1333,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -229,7 +231,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -241,7 +243,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -253,19 +255,19 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
    "vram_gb": 80,
    "architecture": "Ampere",
    "provider": "Vast.ai",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.8733,
+   "gpu_count": 4,
+   "price_per_hour_usd": 0.9339,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -277,19 +279,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
    "vram_gb": 80,
    "architecture": "Ampere",
    "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 1.0006,
+   "gpu_count": 1,
+   "price_per_hour_usd": 1.0022,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -301,7 +303,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -313,7 +315,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -325,7 +327,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -337,7 +339,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -349,7 +351,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -361,7 +363,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.cudocompute.com/pricing"
+   "source_url": "https://www.cudocompute.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -373,7 +375,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://crusoe.ai/cloud/pricing"
+   "source_url": "https://crusoe.ai/cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -385,7 +387,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -397,7 +399,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -409,7 +411,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -421,7 +423,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -433,7 +435,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -445,7 +447,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -457,7 +459,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -469,7 +471,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -481,7 +483,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -493,7 +495,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -505,7 +507,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -517,7 +519,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -529,7 +531,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -541,7 +543,7 @@
    "pricing_type": "reserved",
    "commitment_months": 1,
    "available": null,
-   "source_url": "https://www.leadergpu.com/"
+   "source_url": "https://www.leadergpu.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -553,7 +555,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -565,7 +567,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.thundercompute.com/pricing"
+   "source_url": "https://www.thundercompute.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -577,7 +579,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://gpu.ai/"
+   "source_url": "https://gpu.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -589,7 +591,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu"
+   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -601,7 +603,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -613,7 +615,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -625,7 +627,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -637,7 +639,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -649,7 +651,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -661,7 +663,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -673,7 +675,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -685,7 +687,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -697,7 +699,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.denvrdata.com/pricing"
+   "source_url": "https://www.denvrdata.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -709,7 +711,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://jarvislabs.ai/pricing"
+   "source_url": "https://jarvislabs.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -721,7 +723,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -733,7 +735,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -745,7 +747,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.koyeb.com/pricing"
+   "source_url": "https://www.koyeb.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -757,7 +759,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -769,7 +771,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -781,7 +783,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -793,7 +795,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -805,7 +807,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -817,7 +819,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -829,7 +831,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -841,7 +843,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -849,11 +851,11 @@
    "architecture": "Ampere",
    "provider": "AWS",
    "gpu_count": 8,
-   "price_per_hour_usd": 2.1474,
+   "price_per_hour_usd": 2.1542,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -865,7 +867,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.beam.cloud/pricing"
+   "source_url": "https://www.beam.cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -877,7 +879,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://crusoe.ai/cloud/pricing"
+   "source_url": "https://crusoe.ai/cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -889,7 +891,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -901,7 +903,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -913,7 +915,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -925,7 +927,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -937,7 +939,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.baseten.co/pricing/"
+   "source_url": "https://www.baseten.co/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -949,7 +951,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -961,7 +963,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -973,7 +975,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -985,7 +987,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -997,7 +999,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A40",
@@ -1009,7 +1011,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A40",
@@ -1021,7 +1023,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A40",
@@ -1033,7 +1035,7 @@
    "pricing_type": "reserved",
    "commitment_months": 1,
    "available": null,
-   "source_url": "https://www.leadergpu.com/"
+   "source_url": "https://www.leadergpu.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A40",
@@ -1045,7 +1047,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A40",
@@ -1057,7 +1059,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A40",
@@ -1069,7 +1071,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.denvrdata.com/pricing"
+   "source_url": "https://www.denvrdata.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1081,7 +1083,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1093,7 +1095,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1105,7 +1107,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1117,7 +1119,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1129,7 +1131,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1141,7 +1143,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1153,7 +1155,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://gpu.ai/"
+   "source_url": "https://gpu.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1165,7 +1167,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1177,7 +1179,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1189,7 +1191,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1201,7 +1203,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1213,7 +1215,19 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "B200",
+   "vram_gb": 192,
+   "architecture": "Blackwell",
+   "provider": "Vast.ai",
+   "gpu_count": 2,
+   "price_per_hour_usd": 5.3135,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1225,7 +1239,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1237,7 +1251,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1249,7 +1263,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.beam.cloud/pricing"
+   "source_url": "https://www.beam.cloud/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "B200",
+   "vram_gb": 192,
+   "architecture": "Blackwell",
+   "provider": "Vast.ai",
+   "gpu_count": 4,
+   "price_per_hour_usd": 5.6276,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1261,7 +1287,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1273,31 +1299,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "B200",
-   "vram_gb": 192,
-   "architecture": "Blackwell",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 6.0026,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "B200",
-   "vram_gb": 192,
-   "architecture": "Blackwell",
-   "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 6.0052,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1309,7 +1311,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1321,7 +1323,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1333,7 +1335,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1345,7 +1347,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1357,7 +1359,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1369,7 +1371,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1381,7 +1383,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1393,7 +1395,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1405,7 +1407,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1417,7 +1419,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1429,7 +1431,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1441,7 +1443,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1453,7 +1455,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1465,7 +1467,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1477,7 +1479,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1489,7 +1491,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1501,7 +1503,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1513,7 +1515,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.baseten.co/pricing/"
+   "source_url": "https://www.baseten.co/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1525,7 +1527,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.oracle.com/cloud/compute/pricing/"
+   "source_url": "https://www.oracle.com/cloud/compute/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1537,7 +1539,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1545,11 +1547,11 @@
    "architecture": "Blackwell",
    "provider": "AWS",
    "gpu_count": 8,
-   "price_per_hour_usd": 3.6689,
+   "price_per_hour_usd": 3.6914,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1561,7 +1563,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1573,7 +1575,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1585,7 +1587,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1597,7 +1599,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1609,7 +1611,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1621,7 +1623,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1633,7 +1635,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1645,7 +1647,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1657,7 +1659,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1669,7 +1671,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1681,7 +1683,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1693,7 +1695,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1705,7 +1707,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1717,7 +1719,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1729,7 +1731,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1741,7 +1743,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1753,7 +1755,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1765,19 +1767,7 @@
    "pricing_type": "reserved",
    "commitment_months": 12,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
-  },
-  {
-   "gpu": "B300",
-   "vram_gb": 288,
-   "architecture": "Blackwell",
-   "provider": "Lium.io",
-   "gpu_count": 8,
-   "price_per_hour_usd": 7.97,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1789,7 +1779,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1801,7 +1791,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1813,7 +1803,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1825,7 +1815,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1837,7 +1827,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1849,7 +1839,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1861,7 +1851,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB200",
@@ -1873,7 +1863,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB200",
@@ -1885,7 +1875,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB200",
@@ -1897,7 +1887,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.oracle.com/cloud/compute/pricing/"
+   "source_url": "https://www.oracle.com/cloud/compute/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB200",
@@ -1909,7 +1899,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -1921,7 +1911,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -1933,7 +1923,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -1945,7 +1935,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -1957,7 +1947,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -1969,7 +1959,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -1981,7 +1971,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -1993,7 +1983,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.oracle.com/cloud/compute/pricing/"
+   "source_url": "https://www.oracle.com/cloud/compute/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GH200",
@@ -2005,7 +1995,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GH200",
@@ -2017,7 +2007,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GH200",
@@ -2029,7 +2019,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.denvrdata.com/pricing"
+   "source_url": "https://www.denvrdata.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GH200",
@@ -2041,7 +2031,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2053,7 +2043,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2065,7 +2055,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2077,7 +2067,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2089,7 +2079,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2101,7 +2091,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2109,11 +2099,11 @@
    "architecture": "Hopper",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 2.6422,
+   "price_per_hour_usd": 2.6689,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2125,7 +2115,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2137,7 +2127,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2149,7 +2139,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2161,7 +2151,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2173,7 +2163,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2185,7 +2175,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2197,7 +2187,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 NVL",
@@ -2209,31 +2199,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
-  },
-  {
-   "gpu": "H100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 0.364,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "H100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Lium.io",
-   "gpu_count": 2,
-   "price_per_hour_usd": 1.15,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2245,7 +2211,19 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 PCIe",
+   "vram_gb": 80,
+   "architecture": "Hopper",
+   "provider": "Vast.ai",
+   "gpu_count": 2,
+   "price_per_hour_usd": 1.2,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2257,67 +2235,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "H100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 1.2,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "H100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 7,
-   "price_per_hour_usd": 1.2,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "H100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 8,
-   "price_per_hour_usd": 1.3333,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "H100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 7,
-   "price_per_hour_usd": 1.3335,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "H100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 1.3337,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2329,7 +2247,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2341,7 +2259,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2353,7 +2271,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2365,7 +2283,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 PCIe",
+   "vram_gb": 80,
+   "architecture": "Hopper",
+   "provider": "Vast.ai",
+   "gpu_count": 4,
+   "price_per_hour_usd": 1.6,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2377,43 +2307,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
    "vram_gb": 80,
    "architecture": "Hopper",
    "provider": "Vast.ai",
-   "gpu_count": 8,
-   "price_per_hour_usd": 2.8003,
+   "gpu_count": 4,
+   "price_per_hour_usd": 3.0672,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "H100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Runpod",
-   "gpu_count": 1,
-   "price_per_hour_usd": 2.89,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://runpod.io/pricing"
-  },
-  {
-   "gpu": "H100 PCIe",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Runpod",
-   "gpu_count": 1,
-   "price_per_hour_usd": 2.89,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2425,7 +2331,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.thundercompute.com/pricing"
+   "source_url": "https://www.thundercompute.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2437,7 +2343,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2449,7 +2355,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2461,7 +2367,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2473,7 +2379,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.beam.cloud/pricing"
+   "source_url": "https://www.beam.cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -2485,7 +2391,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2497,7 +2403,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2509,7 +2415,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2521,7 +2427,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2529,11 +2435,11 @@
    "architecture": "Hopper",
    "provider": "Vast.ai",
    "gpu_count": 4,
-   "price_per_hour_usd": 1.5343,
+   "price_per_hour_usd": 1.5956,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2545,7 +2451,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2557,7 +2463,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2569,7 +2475,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2581,7 +2487,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2593,31 +2499,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://novita.ai/gpus"
-  },
-  {
-   "gpu": "H100 SXM",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 1.7339,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "H100 SXM",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 1.7344,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://novita.ai/gpus?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2629,19 +2511,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.cudocompute.com/pricing"
-  },
-  {
-   "gpu": "H100 SXM",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Lium.io",
-   "gpu_count": 2,
-   "price_per_hour_usd": 1.8,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://www.cudocompute.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2653,7 +2523,31 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://gpu.ai/"
+   "source_url": "https://gpu.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 SXM",
+   "vram_gb": 80,
+   "architecture": "Hopper",
+   "provider": "Vast.ai",
+   "gpu_count": 4,
+   "price_per_hour_usd": 1.8783,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 SXM",
+   "vram_gb": 80,
+   "architecture": "Hopper",
+   "provider": "Vast.ai",
+   "gpu_count": 2,
+   "price_per_hour_usd": 1.8794,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2665,7 +2559,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2673,11 +2567,11 @@
    "architecture": "Hopper",
    "provider": "AWS",
    "gpu_count": 8,
-   "price_per_hour_usd": 1.9349,
+   "price_per_hour_usd": 1.9212,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2689,7 +2583,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.voltagepark.com/pricing"
+   "source_url": "https://www.voltagepark.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2701,7 +2595,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2713,7 +2607,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2725,7 +2619,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu"
+   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2737,7 +2631,7 @@
    "pricing_type": "reserved",
    "commitment_months": 1,
    "available": null,
-   "source_url": "https://www.leadergpu.com/"
+   "source_url": "https://www.leadergpu.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2749,7 +2643,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.denvrdata.com/pricing"
+   "source_url": "https://www.denvrdata.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2761,7 +2655,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2773,7 +2667,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 SXM",
+   "vram_gb": 80,
+   "architecture": "Hopper",
+   "provider": "Spheron",
+   "gpu_count": 1,
+   "price_per_hour_usd": 2.64,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2785,7 +2691,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://jarvislabs.ai/pricing"
+   "source_url": "https://jarvislabs.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2797,7 +2703,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2809,7 +2715,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2821,7 +2727,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2833,7 +2739,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2845,19 +2751,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
-  },
-  {
-   "gpu": "H100 SXM",
-   "vram_gb": 80,
-   "architecture": "Hopper",
-   "provider": "Spheron",
-   "gpu_count": 1,
-   "price_per_hour_usd": 2.98,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2869,7 +2763,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2881,7 +2775,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2893,7 +2787,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2905,7 +2799,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2917,7 +2811,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2929,7 +2823,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2941,7 +2835,7 @@
    "pricing_type": "reserved",
    "commitment_months": 12,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2953,7 +2847,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2965,7 +2859,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2977,7 +2871,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://novita.ai/gpus"
+   "source_url": "https://novita.ai/gpus?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2989,7 +2883,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3001,7 +2895,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3013,7 +2907,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3025,7 +2919,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3037,7 +2931,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3049,7 +2943,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://crusoe.ai/cloud/pricing"
+   "source_url": "https://crusoe.ai/cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3061,7 +2955,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3073,7 +2967,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3085,7 +2979,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3097,7 +2991,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3109,7 +3003,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3121,7 +3015,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3133,7 +3027,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3145,7 +3039,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3157,7 +3051,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3169,7 +3063,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3181,7 +3075,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3193,7 +3087,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3205,7 +3099,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3217,7 +3111,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.baseten.co/pricing/"
+   "source_url": "https://www.baseten.co/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3229,7 +3123,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3241,7 +3135,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3253,7 +3147,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.oracle.com/cloud/compute/pricing/"
+   "source_url": "https://www.oracle.com/cloud/compute/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3265,7 +3159,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3277,7 +3171,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.latitude.sh/pricing"
+   "source_url": "https://www.latitude.sh/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3289,7 +3183,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3297,11 +3191,11 @@
    "architecture": "Hopper",
    "provider": "Vast.ai",
    "gpu_count": 2,
-   "price_per_hour_usd": 1.3158,
+   "price_per_hour_usd": 1.32,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3309,11 +3203,23 @@
    "architecture": "Hopper",
    "provider": "AWS",
    "gpu_count": 8,
-   "price_per_hour_usd": 1.846,
+   "price_per_hour_usd": 1.8485,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H200",
+   "vram_gb": 141,
+   "architecture": "Hopper",
+   "provider": "Vast.ai",
+   "gpu_count": 4,
+   "price_per_hour_usd": 2,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3325,7 +3231,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3337,7 +3243,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3349,7 +3255,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3361,7 +3267,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3373,7 +3279,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3385,19 +3291,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
-  },
-  {
-   "gpu": "H200",
-   "vram_gb": 141,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 2.5776,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3405,11 +3299,11 @@
    "architecture": "Hopper",
    "provider": "Vast.ai",
    "gpu_count": 8,
-   "price_per_hour_usd": 2.5776,
+   "price_per_hour_usd": 2.6,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3421,7 +3315,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3433,19 +3327,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu"
+   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
    "vram_gb": 141,
    "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 3.3272,
+   "provider": "Lium.io",
+   "gpu_count": 8,
+   "price_per_hour_usd": 3.2,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3457,7 +3351,7 @@
    "pricing_type": "reserved",
    "commitment_months": 12,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3469,7 +3363,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3481,7 +3375,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3493,7 +3387,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://gpu.ai/"
+   "source_url": "https://gpu.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H200",
+   "vram_gb": 141,
+   "architecture": "Hopper",
+   "provider": "Vast.ai",
+   "gpu_count": 2,
+   "price_per_hour_usd": 3.6011,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3505,7 +3411,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3517,7 +3423,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3529,7 +3435,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3541,7 +3447,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3549,11 +3455,23 @@
    "architecture": "Hopper",
    "provider": "Vast.ai",
    "gpu_count": 4,
-   "price_per_hour_usd": 3.8701,
+   "price_per_hour_usd": 3.6848,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H200",
+   "vram_gb": 141,
+   "architecture": "Hopper",
+   "provider": "Vast.ai",
+   "gpu_count": 8,
+   "price_per_hour_usd": 3.9476,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3565,7 +3483,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3577,7 +3495,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3589,7 +3507,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3601,7 +3519,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3613,7 +3531,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3625,7 +3543,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.beam.cloud/pricing"
+   "source_url": "https://www.beam.cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3637,19 +3555,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://crusoe.ai/cloud/pricing"
-  },
-  {
-   "gpu": "H200",
-   "vram_gb": 141,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 8,
-   "price_per_hour_usd": 4.4093,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://crusoe.ai/cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3661,7 +3567,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3673,7 +3579,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3685,7 +3591,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3697,7 +3603,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3709,7 +3615,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3721,7 +3627,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3733,7 +3639,7 @@
    "pricing_type": "reserved",
    "commitment_months": 1,
    "available": null,
-   "source_url": "https://www.leadergpu.com/"
+   "source_url": "https://www.leadergpu.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3745,7 +3651,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3757,7 +3663,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3769,7 +3675,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3781,7 +3687,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3793,7 +3699,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3805,7 +3711,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3817,7 +3723,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3829,7 +3735,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3841,7 +3747,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3853,7 +3759,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3865,7 +3771,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.oracle.com/cloud/compute/pricing/"
+   "source_url": "https://www.oracle.com/cloud/compute/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3877,7 +3783,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3889,7 +3795,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -3897,11 +3803,11 @@
    "architecture": "Ada",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.2,
+   "price_per_hour_usd": 0.08,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -3913,7 +3819,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -3921,11 +3827,11 @@
    "architecture": "Ada",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.3089,
+   "price_per_hour_usd": 0.2022,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -3937,31 +3843,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "L4",
-   "vram_gb": 24,
-   "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 0.32,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "L4",
-   "vram_gb": 24,
-   "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 0.3339,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -3973,7 +3855,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://jarvislabs.ai/pricing"
+   "source_url": "https://jarvislabs.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -3985,7 +3867,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu"
+   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -3997,7 +3879,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -4009,7 +3891,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -4021,7 +3903,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -4033,7 +3915,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.baseten.co/pricing/"
+   "source_url": "https://www.baseten.co/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -4045,7 +3927,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -4057,7 +3939,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -4069,7 +3951,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -4081,7 +3963,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -4093,7 +3975,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4105,7 +3987,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4117,7 +3999,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4129,7 +4011,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4141,7 +4023,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4153,7 +4035,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4165,7 +4047,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4177,7 +4059,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4189,7 +4071,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4201,7 +4083,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.thundercompute.com/pricing"
+   "source_url": "https://www.thundercompute.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4213,7 +4095,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4225,7 +4107,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4237,7 +4119,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4249,7 +4131,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40",
@@ -4261,7 +4143,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "L40S",
+   "vram_gb": 48,
+   "architecture": "Ada",
+   "provider": "Vast.ai",
+   "gpu_count": 4,
+   "price_per_hour_usd": 0.2,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4273,19 +4167,19 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
    "vram_gb": 48,
    "architecture": "Ada",
    "provider": "Vast.ai",
-   "gpu_count": 4,
+   "gpu_count": 1,
    "price_per_hour_usd": 0.3333,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4297,19 +4191,31 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
    "vram_gb": 48,
    "architecture": "Ada",
    "provider": "Lium.io",
-   "gpu_count": 4,
+   "gpu_count": 1,
    "price_per_hour_usd": 0.38,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "L40S",
+   "vram_gb": 48,
+   "architecture": "Ada",
+   "provider": "Vast.ai",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.4007,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4321,7 +4227,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4333,7 +4239,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4345,7 +4251,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4357,7 +4263,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4369,19 +4275,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "L40S",
-   "vram_gb": 48,
-   "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.5333,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4393,7 +4287,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4405,7 +4299,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://novita.ai/gpus"
+   "source_url": "https://novita.ai/gpus?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4413,11 +4307,11 @@
    "architecture": "Ada",
    "provider": "AWS",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.5527,
+   "price_per_hour_usd": 0.5502,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4429,7 +4323,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://gpu.ai/"
+   "source_url": "https://gpu.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4441,19 +4335,7 @@
    "pricing_type": "reserved",
    "commitment_months": 1,
    "available": null,
-   "source_url": "https://www.leadergpu.com/"
-  },
-  {
-   "gpu": "L40S",
-   "vram_gb": 48,
-   "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.6696,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://www.leadergpu.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4465,7 +4347,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4477,7 +4359,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4489,7 +4371,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4501,7 +4383,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4513,7 +4395,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4525,7 +4407,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4537,7 +4419,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.cudocompute.com/pricing"
+   "source_url": "https://www.cudocompute.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4549,7 +4431,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4561,7 +4443,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4573,7 +4455,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4585,7 +4467,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4597,7 +4479,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4609,7 +4491,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu"
+   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4621,7 +4503,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4633,7 +4515,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4645,7 +4527,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.koyeb.com/pricing"
+   "source_url": "https://www.koyeb.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4657,7 +4539,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4669,7 +4551,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4681,7 +4563,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4693,7 +4575,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.civo.com/pricing"
+   "source_url": "https://www.civo.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4705,7 +4587,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4717,7 +4599,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4729,7 +4611,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4741,7 +4623,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4753,7 +4635,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://crusoe.ai/cloud/pricing"
+   "source_url": "https://crusoe.ai/cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4765,7 +4647,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4777,7 +4659,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4789,7 +4671,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4801,7 +4683,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4813,7 +4695,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4825,7 +4707,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.beam.cloud/pricing"
+   "source_url": "https://www.beam.cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4837,7 +4719,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4849,7 +4731,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4861,7 +4743,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4873,7 +4755,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4885,7 +4767,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4897,7 +4779,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.oracle.com/cloud/compute/pricing/"
+   "source_url": "https://www.oracle.com/cloud/compute/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4909,7 +4791,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4921,7 +4803,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4933,7 +4815,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4945,7 +4827,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4957,7 +4839,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   "source_url": "https://aws.amazon.com/ec2/pricing/on-demand/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI300X",
@@ -4969,7 +4851,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI300X",
@@ -4981,7 +4863,7 @@
    "pricing_type": "reserved",
    "commitment_months": 12,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI300X",
@@ -4993,7 +4875,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI300X",
@@ -5005,7 +4887,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu"
+   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI300X",
@@ -5017,7 +4899,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://crusoe.ai/cloud/pricing"
+   "source_url": "https://crusoe.ai/cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI300X",
@@ -5029,7 +4911,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/"
+   "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI300X",
@@ -5041,7 +4923,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.oracle.com/cloud/compute/pricing/"
+   "source_url": "https://www.oracle.com/cloud/compute/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI325X",
@@ -5053,7 +4935,7 @@
    "pricing_type": "reserved",
    "commitment_months": 12,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI325X",
@@ -5065,7 +4947,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI350X",
@@ -5077,7 +4959,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI350X",
@@ -5089,7 +4971,7 @@
    "pricing_type": "reserved",
    "commitment_months": 12,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "MI355X",
@@ -5101,7 +4983,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5113,7 +4995,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5121,23 +5003,11 @@
    "architecture": "Ada",
    "provider": "Vast.ai",
    "gpu_count": 2,
-   "price_per_hour_usd": 0.123,
+   "price_per_hour_usd": 0.12,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "RTX 4090",
-   "vram_gb": 24,
-   "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 0.1333,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5149,7 +5019,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://salad.com/pricing"
+   "source_url": "https://salad.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5161,19 +5031,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
    "vram_gb": 24,
    "architecture": "Ada",
    "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 0.2611,
-   "pricing_type": "on_demand",
+   "gpu_count": 4,
+   "price_per_hour_usd": 0.24,
+   "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5185,7 +5055,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 4090",
+   "vram_gb": 24,
+   "architecture": "Ada",
+   "provider": "Vast.ai",
+   "gpu_count": 2,
+   "price_per_hour_usd": 0.2678,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5197,7 +5079,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5209,7 +5091,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5221,7 +5103,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://gpu.ai/"
+   "source_url": "https://gpu.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5233,7 +5115,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://novita.ai/gpus"
+   "source_url": "https://novita.ai/gpus?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5245,7 +5127,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5257,7 +5139,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://novita.ai/gpus"
+   "source_url": "https://novita.ai/gpus?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5269,7 +5151,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.beam.cloud/pricing"
+   "source_url": "https://www.beam.cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5281,7 +5163,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 4090",
@@ -5293,7 +5175,19 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 5090",
+   "vram_gb": 32,
+   "architecture": "Blackwell",
+   "provider": "Vast.ai",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.2,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5305,19 +5199,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://salad.com/pricing"
-  },
-  {
-   "gpu": "RTX 5090",
-   "vram_gb": 32,
-   "architecture": "Blackwell",
-   "provider": "Vast.ai",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.2645,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://salad.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5329,7 +5211,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5341,7 +5223,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5353,7 +5235,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5365,7 +5247,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://novita.ai/gpus"
+   "source_url": "https://novita.ai/gpus?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5377,7 +5259,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5389,7 +5271,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5401,7 +5283,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://novita.ai/gpus"
+   "source_url": "https://novita.ai/gpus?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5413,7 +5295,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5425,7 +5307,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5437,7 +5319,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5449,7 +5331,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.beam.cloud/pricing"
+   "source_url": "https://www.beam.cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5461,7 +5343,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5473,7 +5355,19 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 6000 Ada",
+   "vram_gb": 48,
+   "architecture": "Ada",
+   "provider": "Vast.ai",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.3889,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5485,7 +5379,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5497,7 +5391,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5509,7 +5403,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5521,7 +5415,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5533,7 +5427,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5545,7 +5439,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5553,23 +5447,11 @@
    "architecture": "Ada",
    "provider": "Vast.ai",
    "gpu_count": 2,
-   "price_per_hour_usd": 0.5341,
+   "price_per_hour_usd": 0.537,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "RTX 6000 Ada",
-   "vram_gb": 48,
-   "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.5345,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5581,7 +5463,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5593,7 +5475,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5605,7 +5487,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5617,7 +5499,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5629,7 +5511,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5641,7 +5523,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5653,31 +5535,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
-  },
-  {
-   "gpu": "RTX 6000 Ada",
-   "vram_gb": 48,
-   "architecture": "Ada",
-   "provider": "Runpod",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.84,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://runpod.io/pricing"
-  },
-  {
-   "gpu": "RTX 6000 Ada",
-   "vram_gb": 48,
-   "architecture": "Ada",
-   "provider": "Runpod",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.84,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5689,7 +5547,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5701,7 +5559,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5713,7 +5571,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5725,7 +5583,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5737,7 +5595,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5749,7 +5607,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5761,7 +5619,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5769,11 +5627,11 @@
    "architecture": "Ampere",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.0533,
+   "price_per_hour_usd": 0.072,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5781,11 +5639,23 @@
    "architecture": "Ampere",
    "provider": "Vast.ai",
    "gpu_count": 2,
-   "price_per_hour_usd": 0.2,
+   "price_per_hour_usd": 0.072,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX A6000",
+   "vram_gb": 48,
+   "architecture": "Ampere",
+   "provider": "Vast.ai",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.2815,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5797,7 +5667,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5809,7 +5679,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5821,7 +5691,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5833,7 +5703,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5845,19 +5715,31 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
    "vram_gb": 48,
    "architecture": "Ampere",
-   "provider": "Vast.ai",
+   "provider": "Runpod Community",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.3119,
+   "price_per_hour_usd": 0.33,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX A6000",
+   "vram_gb": 48,
+   "architecture": "Ampere",
+   "provider": "Runpod Community",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.33,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5869,7 +5751,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.thundercompute.com/pricing"
+   "source_url": "https://www.thundercompute.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5881,7 +5763,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5893,7 +5775,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5905,7 +5787,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5917,7 +5799,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5929,7 +5811,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5941,7 +5823,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5953,7 +5835,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5965,7 +5847,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5977,7 +5859,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5989,7 +5871,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6001,7 +5883,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6013,7 +5895,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6025,7 +5907,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6037,7 +5919,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6049,7 +5931,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6061,7 +5943,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6073,7 +5955,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.koyeb.com/pricing"
+   "source_url": "https://www.koyeb.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6085,7 +5967,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.beam.cloud/pricing"
+   "source_url": "https://www.beam.cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6097,7 +5979,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu"
+   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6109,7 +5991,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6121,7 +6003,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6133,7 +6015,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6141,11 +6023,11 @@
    "architecture": "Blackwell",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.3733,
+   "price_per_hour_usd": 0.343,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6157,19 +6039,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Vast.ai",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.7356,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6181,7 +6051,19 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
+   "provider": "Vast.ai",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.8689,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6193,7 +6075,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6205,7 +6087,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6217,7 +6099,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6229,7 +6111,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6241,7 +6123,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6253,7 +6135,7 @@
    "pricing_type": "reserved",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6265,19 +6147,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://lium.io/"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Lium.io",
-   "gpu_count": 1,
-   "price_per_hour_usd": 1.29,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://lium.io/"
+   "source_url": "https://lium.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6289,7 +6159,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu"
+   "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6301,7 +6171,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6313,7 +6183,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6325,7 +6195,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://nebius.com/prices"
+   "source_url": "https://nebius.com/prices?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6337,19 +6207,55 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
    "vram_gb": 96,
    "architecture": "Blackwell",
-   "provider": "Runpod",
+   "provider": "Verda",
    "gpu_count": 1,
    "price_per_hour_usd": 1.89,
    "pricing_type": "on_demand",
    "commitment_months": null,
-   "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "available": null,
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
+   "provider": "Verda",
+   "gpu_count": 2,
+   "price_per_hour_usd": 1.89,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
+   "provider": "Verda",
+   "gpu_count": 4,
+   "price_per_hour_usd": 1.89,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
+   "provider": "Verda",
+   "gpu_count": 8,
+   "price_per_hour_usd": 1.89,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6357,59 +6263,23 @@
    "architecture": "Blackwell",
    "provider": "Runpod",
    "gpu_count": 1,
-   "price_per_hour_usd": 1.89,
+   "price_per_hour_usd": 2.09,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
+   "provider": "Runpod",
+   "gpu_count": 1,
+   "price_per_hour_usd": 2.09,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Verda",
-   "gpu_count": 1,
-   "price_per_hour_usd": 1.89,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": null,
-   "source_url": "https://datacrunch.io/"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Verda",
-   "gpu_count": 2,
-   "price_per_hour_usd": 1.89,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": null,
-   "source_url": "https://datacrunch.io/"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Verda",
-   "gpu_count": 4,
-   "price_per_hour_usd": 1.89,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": null,
-   "source_url": "https://datacrunch.io/"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Verda",
-   "gpu_count": 8,
-   "price_per_hour_usd": 1.89,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6421,7 +6291,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6433,7 +6303,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6445,7 +6315,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6457,7 +6327,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://massedcompute.com/pricing/"
+   "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6465,11 +6335,11 @@
    "architecture": "Blackwell",
    "provider": "Spheron",
    "gpu_count": 1,
-   "price_per_hour_usd": 2.31,
+   "price_per_hour_usd": 2.29,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://www.spheron.network/pricing"
+   "source_url": "https://www.spheron.network/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6481,7 +6351,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://www.beam.cloud/pricing"
+   "source_url": "https://www.beam.cloud/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6493,7 +6363,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6505,7 +6375,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6513,11 +6383,11 @@
    "architecture": "Volta",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.0667,
+   "price_per_hour_usd": 0.02,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6525,11 +6395,11 @@
    "architecture": "Volta",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.0689,
+   "price_per_hour_usd": 0.0222,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6541,7 +6411,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6553,7 +6423,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6565,7 +6435,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6577,7 +6447,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6589,7 +6459,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6601,7 +6471,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6613,7 +6483,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6625,7 +6495,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://cloud.vast.ai/"
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6637,7 +6507,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6649,7 +6519,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6661,7 +6531,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6673,7 +6543,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/"
+   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6685,7 +6555,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6697,7 +6567,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
-   "source_url": "https://runpod.io/pricing"
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6709,7 +6579,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
   }
  ]
 }

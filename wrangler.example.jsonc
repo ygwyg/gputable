@@ -1,0 +1,34 @@
+// Copy to wrangler.toml or wrangler.jsonc and fill in your own IDs.
+{
+  "name": "gputable",
+  "main": "scrape.mjs",
+  "account_id": "YOUR_CLOUDFLARE_ACCOUNT_ID",
+  "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Long-TTL edge cache for /data.json + /history.json; the cron purges the
+  // "gputable-data" tag after every scrape.
+  "cache": { "enabled": true },
+
+  // Quarter-hour ticks run the full sweep; the ticks in between refresh only
+  // the live marketplaces (Vast, RunPod, Lium).
+  "triggers": { "crons": ["*/5 * * * *"] },
+
+  "kv_namespaces": [
+    { "binding": "PRICES", "id": "YOUR_KV_NAMESPACE_ID" } // wrangler kv namespace create PRICES
+  ],
+
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/", "/data.json", "/history.json"]
+  }
+
+  // Custom domains (optional):
+  //   "routes": [{ "pattern": "example.com", "custom_domain": true }]
+  // Secrets (wrangler secret put ...):
+  //   CF_ACCOUNT_ID + CF_API_TOKEN — Browser Rendering, for the two
+  //     client-rendered providers (Replicate, Novita); skipped if unset.
+  //   ALERT_WEBHOOK — optional Slack/Discord/ntfy URL, pinged when a
+  //     provider's parser has been failing for 24h+.
+}

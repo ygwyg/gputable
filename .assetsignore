@@ -1,0 +1,11 @@
+scrape.py
+scrape.mjs
+wrangler.toml
+.assetsignore
+node_modules
+.wrangler
+__pycache__
+README.md
+.gitignore
+.git
+wrangler.example.jsonc

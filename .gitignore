@@ -1,0 +1,5 @@
+node_modules/
+.wrangler/
+__pycache__/
+.DS_Store
+wrangler.toml

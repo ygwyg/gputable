@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPUTable — Live Cloud GPU Prices</title>
+<meta name="description" content="Live cloud GPU rental prices — H100, H200, B200, B300, A100, MI300X and more, compared across 35+ providers (AWS, Azure, Oracle, CoreWeave, Lambda, Nebius, Vast.ai, RunPod, Modal…). Per-GPU hourly rates, on-demand vs spot vs reserved, $/PFLOP, refreshed every 5 minutes.">
+<link rel="canonical" href="https://gputable.dev/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="GPUTable — Live Cloud GPU Prices">
+<meta property="og:description" content="Live per-GPU hourly rental prices across 35+ cloud providers, refreshed every 5 minutes. On-demand, spot, and reserved.">
+<meta property="og:url" content="https://gputable.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GPUTable">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GPUTable — Live Cloud GPU Prices">
+<meta name="twitter:description" content="Live per-GPU hourly rental prices across 35+ cloud providers, refreshed every 5 minutes.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Dataset",
+ "name":"GPUTable — cloud GPU rental prices",
+ "description":"Live per-GPU hourly rental prices for datacenter GPUs (H100, H200, B200, B300, A100, MI300X, RTX 4090 and more) across 35+ cloud providers, refreshed every 5 minutes. Includes on-demand, spot, and reserved pricing plus a daily price-history index.",
+ "url":"https://gputable.dev/",
+ "isAccessibleForFree":true,
+ "temporalCoverage":"2026-08-29/..",
+ "variableMeasured":"Price per GPU per hour, USD",
+ "distribution":[
+  {"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://gputable.dev/data.json","name":"Current prices"},
+  {"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://gputable.dev/history.json","name":"Daily price history"}]}
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 8px;
+    font: 13px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #000; background: #fff;
+  }
+  h1 { font-size: 15px; font-weight: 700; margin: 0; display: inline; }
+  a { color: #00c; } a:visited { color: #551a8b; }
+  #src { color: #555; margin-left: 8px; font-size: 11px; }
+  #src.seed { color: #a60; font-weight: 700; }
+
+  #controls { margin: 6px 0; }
+  #controls > * { margin-right: 10px; vertical-align: middle; }
+  label { white-space: nowrap; }
+  input[type=text], input[type=number], select {
+    font: inherit; padding: 1px 3px; border: 1px solid #999; border-radius: 0; background: #fff;
+  }
+  input[type=text] { width: 180px; }
+  input[type=number] { width: 58px; }
+  button { font: inherit; padding: 1px 8px; border: 1px solid #999; border-radius: 0; background: #f0f0f0; cursor: pointer; }
+  button:hover { background: #e4e4e4; }
+  #count { color: #555; }
+
+  table { border-collapse: collapse; width: 100%; }
+  th, td { padding: 2px 6px; border: 1px solid #ddd; text-align: left; white-space: nowrap; }
+  th { position: sticky; top: 0; z-index: 1; background: #eee; cursor: pointer; user-select: none; font-weight: 700; }
+  th:hover { background: #e0e0e0; }
+  th.sorted { background: #d8d8d8; }
+  th .arrow { color: #666; font-size: 10px; }
+  tbody tr:nth-child(even) { background: #fafafa; }
+  tbody tr:hover { background: #ffc; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .yes { color: #060; } .no { color: #b00; } .dim { color: #888; }
+  footer { margin-top: 10px; color: #555; font-size: 11px; }
+  :focus-visible { outline: 2px solid #00c; outline-offset: 1px; }
+</style>
+</head>
+<body>
+
+<h1>GPUTable · cloud GPU prices</h1><span id="src"></span>
+<noscript><p>Live table of cloud GPU rental prices across 35+ providers. Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.json</a></p></noscript>
+
+<div id="controls">
+  <input type="text" id="q" placeholder="filter">
+  <select id="gpu"><option value="">all GPUs</option></select>
+  <select id="provider"><option value="">all providers</option></select>
+  <select id="type"><option value="">all pricing</option></select>
+  <label>min VRAM <input type="number" id="vram" min="0" step="8" placeholder="GB"></label>
+  <label><input type="checkbox" id="stock"> in stock</label>
+  <label><input type="checkbox" id="single"> single GPU</label>
+  <button id="reset">Reset</button>
+  <span id="count"></span>
+</div>
+
+<table>
+  <thead><tr id="head"></tr></thead>
+  <tbody id="body"></tbody>
+</table>
+
+<footer>
+  Per-GPU hourly rates. Excludes CPU, storage, egress, region, and minimum commitments.
+  Spot rates can be reclaimed at any time; community/marketplace tiers (Vast, Salad) are not
+  comparable to dedicated capacity. Confirm on the provider's page before renting.
+  Δ7d compares today's cheapest rate for a GPU + pricing type against ~7 days ago.
+  Marketplace prices refresh every 5 minutes; every source at least every 15.
+  Free JSON feed, no key required — use it from any script or app:
+  <a href="/data.json">data.json</a> (current prices) ·
+  <a href="/history.json">history.json</a> (daily lows) ·
+  <a href="/llms.txt">llms.txt</a> (field docs).
+</footer>
+
+<script>
+"use strict";
+
+// Dense FP16/BF16 datasheet peaks in TFLOPs, no sparsity. Blackwell numbers are
+// approximate — verify before trusting the $/PFLOP column on those rows.
+const TFLOPS = {
+  "H100 SXM": 495, "H100 PCIe": 378, "H200": 495, "GH200": 495, "B200": 2250,
+  "GB200": 2250, "B300": 2500, "GB300": 2500, "MI300X": 1300, "MI325X": 1300,
+  "A100 SXM": 156, "A100 PCIe": 156, "L40S": 183, "RTX 6000 Ada": 182,
+  "L4": 121, "RTX 4090": 165, "RTX 5090": 210,
+  "RTX A6000": 77, "RTX PRO 6000": 250, "V100": 125,
+};
+
+// Seed rows: rates observed across provider and aggregator pages on 2026-08-29.
+// Placeholder only — drop a data.json beside this file (see scrape.mjs) and it
+// replaces all of this on load.
+const SEED_KEYS = ["gpu","vram_gb","architecture","provider","gpu_count",
+                   "price_per_hour_usd","pricing_type","commitment_months","available"];
+const SEED = [
+  ["H100 SXM",80,"Hopper","Lium.io",1,1.15,"on_demand",null,true],
+  ["H100 SXM",80,"Hopper","Thunder Compute",1,1.38,"on_demand",null,true],
+  ["H100 SXM",80,"Hopper","Vast.ai",1,1.49,"on_demand",null,true],
+  ["H100 SXM",80,"Hopper","Latitude.sh",1,1.68,"on_demand",null,true],
+  ["H100 SXM",80,"Hopper","GPU.ai",1,1.73,"on_demand",null,true],
+  ["H100 SXM",80,"Hopper","Spheron",1,2.01,"on_demand",null,true],
+  ["H100 SXM",80,"Hopper","Lambda Labs",8,2.49,"on_demand",null,true],
+  ["H100 SXM",80,"Hopper","Google Cloud",8,3.00,"on_demand",null,null],
+  ["H100 SXM",80,"Hopper","AWS",8,4.72,"reserved",1,null],
+  ["H100 SXM",80,"Hopper","AWS",8,5.19,"reserved",1,null],
+  ["H100 SXM",80,"Hopper","Azure",8,6.98,"on_demand",null,null],
+  ["H100 SXM",80,"Hopper","Vast.ai",1,0.67,"spot",null,true],
+  ["H100 SXM",80,"Hopper","Runpod",1,1.53,"reserved",1,true],
+
+  ["H200",141,"Hopper","GPU Outlet",1,1.40,"on_demand",null,true],
+  ["H200",141,"Hopper","Fluidstack",8,2.30,"on_demand",null,null],
+  ["H200",141,"Hopper","Nebius",8,3.50,"on_demand",null,true],
+  ["H200",141,"Hopper","CoreWeave",8,4.47,"on_demand",null,null],
+  ["H200",141,"Hopper","Azure",8,13.78,"on_demand",null,null],
+
+  ["B200",192,"Blackwell","Runpod",1,2.80,"on_demand",null,true],
+  ["B200",192,"Blackwell","Hyperstack",8,3.99,"on_demand",null,null],
+  ["B200",192,"Blackwell","Nebius",8,4.99,"on_demand",null,true],
+  ["B200",192,"Blackwell","Spheron",1,5.34,"spot",null,true],
+  ["B200",192,"Blackwell","Crusoe",8,5.50,"on_demand",null,null],
+  ["B200",192,"Blackwell","AWS",8,9.36,"reserved",1,null],
+  ["B200",192,"Blackwell","Packet AI",8,3.75,"on_demand",null,null],
+  ["B200",192,"Blackwell","CoreWeave",8,8.60,"on_demand",null,null],
+  ["B200",192,"Blackwell","Google Cloud",8,16.11,"on_demand",null,null],
+
+  // B300 is the widest spread in the table. Sources disagree by 3x on the same
+  // card and the same week — see the note in the README about Massed Compute.
+  ["B300",288,"Blackwell","Prime Intellect",1,4.99,"on_demand",null,true],
+  ["B300",288,"Blackwell","Verda",1,6.99,"on_demand",null,true],
+  ["B300",288,"Blackwell","Modal",1,7.10,"on_demand",null,null],
+  ["B300",288,"Blackwell","Runpod",1,7.39,"on_demand",null,true],
+  ["B300",288,"Blackwell","Nebius",8,7.85,"on_demand",null,null],
+  ["B300",288,"Blackwell","Spheron",1,9.16,"on_demand",null,true],
+  ["B300",288,"Blackwell","Scaleway",1,10.89,"on_demand",null,false],
+  ["B300",288,"Blackwell","Oracle Cloud",8,15.00,"on_demand",null,null],
+  ["B300",288,"Blackwell","AWS",8,17.80,"on_demand",null,null],
+  ["B300",288,"Blackwell","Hyperstack",8,5.16,"reserved",24,null],
+
+  ["MI300X",192,"CDNA3","Runpod",1,2.39,"on_demand",null,true],
+  ["MI300X",192,"CDNA3","TensorWave",8,3.00,"on_demand",null,null],
+  ["MI300X",192,"CDNA3","Azure",8,7.86,"on_demand",null,null],
+
+  ["A100 SXM",80,"Ampere","GPU Outlet",1,0.54,"on_demand",null,true],
+  ["A100 SXM",80,"Ampere","Runpod",1,1.19,"on_demand",null,true],
+  ["A100 SXM",80,"Ampere","Lambda Labs",8,1.29,"on_demand",null,true],
+  ["A100 SXM",80,"Ampere","Hyperstack",8,1.86,"on_demand",null,null],
+  ["A100 PCIe",80,"Ampere","Cudo Compute",1,0.65,"on_demand",null,true],
+  ["A100 PCIe",80,"Ampere","Replicate",1,5.04,"on_demand",null,null],
+
+  ["L40S",48,"Ada","Lium.io",1,0.38,"on_demand",null,true],
+  ["L40S",48,"Ada","Runpod",1,0.86,"on_demand",null,true],
+  ["L40S",48,"Ada","Vultr",1,1.54,"on_demand",null,null],
+  ["L40S",48,"Ada","AWS",8,7.58,"on_demand",null,null],
+
+  ["RTX PRO 6000",96,"Blackwell","Vast.ai",1,0.28,"on_demand",null,true],
+  ["RTX PRO 6000",96,"Blackwell","Runpod",1,0.59,"on_demand",null,true],
+  ["RTX A6000",48,"Ampere","Vast.ai",1,0.28,"on_demand",null,true],
+  ["RTX A6000",48,"Ampere","Jarvis Labs",1,0.79,"on_demand",null,true],
+
+  ["RTX 4090",24,"Ada","Salad Cloud",1,0.18,"on_demand",null,true],
+  ["RTX 4090",24,"Ada","Vast.ai",1,0.35,"on_demand",null,true],
+  ["RTX 4090",24,"Ada","Runpod",1,0.43,"on_demand",null,true],
+  ["RTX 4090",24,"Ada","Beam",1,1.61,"on_demand",null,null],
+];
+
+const COLS = [
+  { key: "gpu",                label: "GPU" },
+  { key: "vram_gb",            label: "VRAM", num: 1, fmt: v => v == null ? "" : v + "G" },
+  { key: "architecture",       label: "Arch" },
+  { key: "provider",           label: "Provider", raw: 1, fmt: (v, r) => r.stale
+      ? '<span class="dim" title="carried from a previous run; last fetch failed">' + esc(v) + " *</span>"
+      : esc(v) },
+  { key: "gpu_count",          label: "N", num: 1 },
+  { key: "price_per_hour_usd", label: "$/GPU-hr", num: 1, fmt: v => v == null ? "" : "$" + (+v).toFixed(2) },
+  { key: "per_pflop",          label: "$/PFLOP-hr", num: 1, fmt: v => v == null ? "" : v.toFixed(2) },
+  { key: "delta7",             label: "Δ7d", num: 1, fmt: v => v == null
+      ? '<span class="dim">—</span>'
+      : '<span class="' + (v < -0.5 ? "yes" : v > 0.5 ? "no" : "dim") + '">' +
+        (v > 0 ? "+" : "") + v.toFixed(0) + "%</span>" },
+  { key: "pricing_type",       label: "Type" },
+  { key: "commitment_months",  label: "Commit", num: 1, fmt: v => v == null ? "\u2014" : v + "mo" },
+  { key: "available",          label: "Stock", raw: 1, fmt: v =>
+      v === true  ? '<span class="yes">yes</span>' :
+      v === false ? '<span class="no">no</span>'   : '<span class="dim">\u2014</span>' },
+  { key: "source_url",         label: "", raw: 1, fmt: u => u ? '<a href="'+esc(u)+'" target="_blank" rel="noopener">rent</a>' : "" },
+];
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const $ = id => document.getElementById(id);
+const state = { rows: [], sortKey: "price_per_hour_usd", sortAsc: true };
+
+// Δ7d: today's cheapest rate per (GPU, pricing type) vs ~7 days ago, from
+// history.json. Null until at least two days of history exist.
+let HIST = null;
+function histDeltas(h) {
+  const days = Object.keys(h).sort();
+  if (days.length < 2) return null;
+  const latest = days[days.length - 1];
+  const cutoff = new Date(Date.parse(latest) - 7 * 864e5).toISOString().slice(0, 10);
+  let base = days[0];
+  for (const d of days) if (d <= cutoff) base = d;
+  if (base === latest) base = days[0];
+  const out = {};
+  for (const gpu in h[latest])
+    for (const pt in h[latest][gpu]) {
+      const b = h[base] && h[base][gpu] && h[base][gpu][pt];
+      if (b) (out[gpu] = out[gpu] || {})[pt] = (h[latest][gpu][pt] - b) / b * 100;
+    }
+  return out;
+}
+
+function setRows(rows, label, isSeed) {
+  state.rows = rows.map(r => {
+    const t = TFLOPS[r.gpu];
+    return Object.assign({}, r, {
+      per_pflop: (t && r.price_per_hour_usd) ? r.price_per_hour_usd / (t / 1000) : null,
+      delta7: (HIST && HIST[r.gpu] && HIST[r.gpu][r.pricing_type]) ?? null,
+    });
+  });
+  const s = $("src");
+  s.textContent = label;
+  s.className = isSeed ? "seed" : "";
+  for (const [id, key] of [["gpu","gpu"],["provider","provider"],["type","pricing_type"]]) {
+    const sel = $(id);
+    const want = sel.value || sel.dataset.want || ""; // survive rebuilds and apply URL filters
+    sel.length = 1;
+    [...new Set(state.rows.map(r => r[key]).filter(Boolean))].sort()
+      .forEach(v => sel.add(new Option(v, v)));
+    if (want && [...sel.options].some(o => o.value === want)) {
+      sel.value = want;
+      delete sel.dataset.want;
+    }
+  }
+  render();
+}
+
+function render() {
+  const q = $("q").value.toLowerCase().trim();
+  const gpu = $("gpu").value, prov = $("provider").value, type = $("type").value;
+  const vram = +$("vram").value || 0;
+  const stockOnly = $("stock").checked, singleOnly = $("single").checked;
+
+  const rows = state.rows.filter(r =>
+    (!gpu  || r.gpu === gpu) &&
+    (!prov || r.provider === prov) &&
+    (!type || r.pricing_type === type) &&
+    (!vram || r.vram_gb >= vram) &&
+    (!stockOnly  || r.available === true) &&
+    (!singleOnly || r.gpu_count === 1) &&
+    (!q || (r.gpu + " " + r.provider + " " + (r.architecture || "")).toLowerCase().includes(q))
+  );
+
+  const col = COLS.find(c => c.key === state.sortKey);
+  rows.sort((a, b) => {
+    let x = a[state.sortKey], y = b[state.sortKey];
+    if (x == null && y == null) return 0;
+    if (x == null) return 1;              // nulls sink in either direction
+    if (y == null) return -1;
+    if (!col.num) { x = ("" + x).toLowerCase(); y = ("" + y).toLowerCase(); }
+    const d = x < y ? -1 : x > y ? 1 : 0;
+    return state.sortAsc ? d : -d;
+  });
+
+  $("head").innerHTML = COLS.map(c => {
+    const on = c.key === state.sortKey;
+    return '<th data-k="' + c.key + '"' + (on ? ' class="sorted"' : "") + ">" + esc(c.label) +
+           (on ? ' <span class="arrow">' + (state.sortAsc ? "\u25b2" : "\u25bc") + "</span>" : "") + "</th>";
+  }).join("");
+
+  $("body").innerHTML = rows.map(r => "<tr>" + COLS.map(c => {
+    const v = r[c.key];
+    return '<td class="' + (c.num ? "num" : "") + '">' +
+           (c.fmt ? c.fmt(v, r) : v == null ? "" : c.raw ? v : esc(v)) + "</td>";
+  }).join("") + "</tr>").join("");
+
+  $("count").textContent = rows.length + " / " + state.rows.length + " rows";
+  syncURL();
+}
+
+// Filters, sort, and search live in the URL — links are shareable, and state
+// survives both reloads and the 5-minute data refresh.
+function readURL() {
+  const p = new URLSearchParams(location.search);
+  for (const id of ["q", "vram"]) if (p.has(id)) $(id).value = p.get(id);
+  for (const id of ["gpu", "provider", "type"]) if (p.has(id)) $(id).dataset.want = p.get(id);
+  $("stock").checked = p.get("stock") === "1";
+  $("single").checked = p.get("single") === "1";
+  if (p.has("sort")) { state.sortKey = p.get("sort"); state.sortAsc = p.get("dir") !== "desc"; }
+}
+function syncURL() {
+  const p = new URLSearchParams();
+  for (const id of ["q", "gpu", "provider", "type", "vram"]) if ($(id).value) p.set(id, $(id).value);
+  if ($("stock").checked) p.set("stock", "1");
+  if ($("single").checked) p.set("single", "1");
+  if (state.sortKey !== "price_per_hour_usd") p.set("sort", state.sortKey);
+  if (!state.sortAsc) p.set("dir", "desc");
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+}
+
+$("head").addEventListener("click", e => {
+  const th = e.target.closest("th");
+  if (!th) return;
+  const k = th.dataset.k;
+  if (k === state.sortKey) state.sortAsc = !state.sortAsc;
+  else { state.sortKey = k; state.sortAsc = true; }
+  render();
+});
+["q","gpu","provider","type","vram","stock","single"]
+  .forEach(id => $(id).addEventListener("input", render));
+$("reset").addEventListener("click", () => {
+  ["q","vram","gpu","provider","type"].forEach(id => $(id).value = "");
+  ["gpu","provider","type"].forEach(id => delete $(id).dataset.want);
+  $("stock").checked = $("single").checked = false;
+  render();
+});
+
+function show(j, h, tag) {
+  if (h) HIST = histDeltas(h);
+  const rows = j && (j.data || j);
+  if (!Array.isArray(rows) || !rows.length) return false;
+  const when = (j.generated_at || "").slice(0, 16).replace("T", " ");
+  const stale = [...new Set(rows.filter(r => r.stale).map(r => r.provider))];
+  setRows(rows, tag + " \u00b7 " + rows.length + " rows \u00b7 " + when +
+          (stale.length ? " \u00b7 * stale: " + stale.join(", ") : ""), false);
+  return true;
+}
+
+// Warm start: paint the last fetch from localStorage instantly (seed data only
+// on a first-ever visit), then swap in fresh data when the network answers.
+readURL();
+let cached = null;
+try { cached = JSON.parse(localStorage.getItem("gputable-cache")); } catch (e) {}
+if (!(cached && show(cached.j, cached.h, "cached")))
+  setRows(SEED.map(a => Object.fromEntries(a.map((v, i) => [SEED_KEYS[i], v]))),
+          "seed data \u00b7 2026-08-29 \u00b7 run scrape.mjs for live prices", true);
+
+// Refresh on the fast-cron cadence. Hidden tabs skip fetches and catch up the
+// moment they become visible again; filters, sort, and scroll are untouched
+// because only the row data is swapped.
+let lastLoad = 0;
+function loadLive() {
+  lastLoad = Date.now();
+  return Promise.all([
+    fetch("./data.json").then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch("./history.json").then(r => r.ok ? r.json() : null).catch(() => null),
+  ]).then(([j, h]) => {
+    if (show(j, h, "live"))
+      try { localStorage.setItem("gputable-cache", JSON.stringify({ j: j, h: h })); } catch (e) {}
+  }).catch(() => {});
+}
+loadLive();
+setInterval(() => { if (!document.hidden) loadLive(); }, 300000);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && Date.now() - lastLoad > 300000) loadLive();
+});
+</script>
+</body>
+</html>

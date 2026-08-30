@@ -14,6 +14,16 @@ node scrape.mjs                    # writes data.json + history.json
 node scrape.mjs --dry --only vast  # debug one provider
 ```
 
+## Test
+
+```sh
+node test.mjs            # replay recorded fixtures offline; fails on parser regressions
+node test.mjs --record   # refresh fixtures from the live endpoints (needs the API-key env vars)
+```
+
+Every provider's real response is committed as a gzipped fixture, so CI catches
+a broken parser without touching the network.
+
 ## Deploy
 
 Copy `wrangler.example.jsonc` to `wrangler.jsonc`, fill in your Cloudflare IDs, then:

@@ -883,7 +883,7 @@ export const renderParsers = {
 const replicate = async () => renderParsers.replicate(await renderPage("https://replicate.com/pricing"));
 const novita = async () => renderParsers.novita(await renderPage("https://novita.ai/gpus"));
 
-const PROVIDERS = {
+export const PROVIDERS = {
   vast:      { names: ["Vast.ai"], fn: vast },
   runpod:    { names: ["Runpod", "Runpod Community"], fn: runpod },
   lambda:    { names: ["Lambda Labs"], fn: lambdaLabs },

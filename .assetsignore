@@ -9,3 +9,5 @@ README.md
 .gitignore
 .git
 wrangler.example.jsonc
+test
+.github

@@ -746,6 +746,49 @@ async function latitude() {
   return rows;
 }
 
+// Google Cloud via the Cloud Billing Catalog API (needs the GCP_API_KEY
+// secret — the pricing pages themselves render in uncrawlable iframes).
+// Compute Engine's catalog is ~35k SKUs over ~7 pages; GPU SKUs carry per-GPU
+// hourly rates per region, and we keep the cheapest region per model and
+// usage type. List prices change rarely, so this source shares the rendered
+// providers' 6-hour TTL instead of re-pulling 8MB every sweep.
+let GCP_KEY = null; // set by scrape() from env
+async function gcp() {
+  if (!GCP_KEY) throw new Error("set GCP_API_KEY (Cloud Billing Catalog key)");
+  const best = new Map();
+  let token = "";
+  for (let page = 0; page < 12; page++) {
+    const d = await getJSON("https://cloudbilling.googleapis.com/v1/services/6F81-5844-456A/skus" +
+      `?pageSize=5000&key=${GCP_KEY}` + (token ? `&pageToken=${token}` : ""));
+    for (const s of d.skus ?? []) {
+      if (s.category?.resourceGroup !== "GPU") continue;
+      const desc = s.description ?? "";
+      // "(1 gpu slice)" is GCP's per-GPU rate for A4/B200-class nodes — keep it.
+      if (/Commitment|DWS|Sole Tenancy|vGPU|Reserved/i.test(desc)) continue;
+      const type = { OnDemand: "on_demand", Preemptible: "spot" }[s.category.usageType];
+      if (!type) continue;
+      const expr = s.pricingInfo?.[0]?.pricingExpression;
+      const unit = expr?.tieredRates?.at(-1)?.unitPrice;
+      if (expr?.usageUnit !== "h" || !unit) continue;
+      const price = Number(unit.units ?? 0) + (unit.nanos ?? 0) / 1e9;
+      if (!(price > 0)) continue;
+      const model = desc.split(" running in ")[0];
+      const k = model + "|" + type;
+      if (!best.has(k) || price < best.get(k).price) best.set(k, { model, type, price });
+    }
+    token = d.nextPageToken;
+    if (!token) break;
+  }
+  const rows = [...best.values()].map(({ model, type, price }) => row(model, "Google Cloud", price, {
+    ptype: type,
+    // "Nvidia Tesla A100" with no size in the name is the 40GB part — hint it
+    // so the VRAM guard drops it rather than passing it off as the 80GB card.
+    vram: +(model.match(/(\d+)\s*GB/)?.[1] ?? 0) || (/\bA100\b/.test(model) ? 40 : null),
+    url: "https://cloud.google.com/compute/gpus-pricing" }));
+  if (!rows.some(Boolean)) throw new Error("no GPU SKUs parsed (catalog changed?)");
+  return rows;
+}
+
 // --------------------------------------------------------------------------
 // Browser-rendered providers, via Cloudflare Browser Rendering (REST).
 // --------------------------------------------------------------------------
@@ -832,6 +875,9 @@ const PROVIDERS = {
   latitude:  { names: ["Latitude.sh"], fn: latitude },
   replicate: { names: ["Replicate"], fn: replicate, render: true },
   novita:    { names: ["Novita"], fn: novita, render: true },
+  // render:true here borrows the 6h refresh TTL, not the browser — the
+  // catalog is an 8MB pull whose list prices move rarely.
+  gcp:       { names: ["Google Cloud"], fn: gcp, render: true },
 };
 
 const RENDER_TTL_MS = 6 * 3600e3; // rendered pages are re-fetched at most this often
@@ -846,6 +892,7 @@ export async function scrape(prev = {}, only = null, env = {}) {
   const accountId = env.CF_ACCOUNT_ID ?? env.CLOUDFLARE_ACCOUNT_ID;
   const token = env.CF_API_TOKEN ?? env.CLOUDFLARE_API_TOKEN;
   RENDER_CREDS = accountId && token ? { accountId, token } : null;
+  GCP_KEY = env.GCP_API_KEY ?? null;
   const keys = only ?? Object.keys(PROVIDERS);
   const now = new Date().toISOString().replace(/\.\d+Z$/, "+00:00");
   const prevRows = {};

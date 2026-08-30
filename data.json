@@ -1,8 +1,13 @@
 {
- "generated_at": "2026-08-30T02:37:31+00:00",
+ "generated_at": "2026-08-30T03:20:46+00:00",
  "source": "https://gputable.dev",
  "terms": "Free to use with attribution: link https://gputable.dev and keep source_url intact, including its ref parameters — that is how this project is funded.",
  "providers": {
+  "gcp": {
+   "ok": true,
+   "rows": 17,
+   "fetched_at": "2026-08-30T03:20:46+00:00"
+  },
   "vast": {
    "ok": true,
    "rows": 618,
@@ -448,6 +453,18 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "A100 SXM",
+   "vram_gb": 80,
+   "architecture": "Ampere",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.4104,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -933,6 +950,18 @@
    "gpu": "A100 SXM",
    "vram_gb": 80,
    "architecture": "Ampere",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 3.9281,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "A100 SXM",
+   "vram_gb": 80,
+   "architecture": "Ampere",
    "provider": "Baseten",
    "gpu_count": 1,
    "price_per_hour_usd": 4.0002,
@@ -1077,6 +1106,18 @@
    "gpu": "B200",
    "vram_gb": 192,
    "architecture": "Blackwell",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 1.8118,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "B200",
+   "vram_gb": 192,
+   "architecture": "Blackwell",
    "provider": "Verda",
    "gpu_count": 1,
    "price_per_hour_usd": 3.055,
@@ -1156,6 +1197,18 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://gpu.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "B200",
+   "vram_gb": 192,
+   "architecture": "Blackwell",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 4.9542,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -2421,6 +2474,18 @@
    "gpu": "H100 SXM",
    "vram_gb": 80,
    "architecture": "Hopper",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.9699,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 SXM",
+   "vram_gb": 80,
+   "architecture": "Hopper",
    "provider": "Vast.ai",
    "gpu_count": 1,
    "price_per_hour_usd": 1.3356,
@@ -3141,6 +3206,18 @@
    "gpu": "H100 SXM",
    "vram_gb": 80,
    "architecture": "Hopper",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 9.7966,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 SXM",
+   "vram_gb": 80,
+   "architecture": "Hopper",
    "provider": "Oracle Cloud",
    "gpu_count": 8,
    "price_per_hour_usd": 10.75,
@@ -3669,6 +3746,18 @@
    "gpu": "H200",
    "vram_gb": 141,
    "architecture": "Hopper",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 5.3076,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H200",
+   "vram_gb": 141,
+   "architecture": "Hopper",
    "provider": "Replicate",
    "gpu_count": 1,
    "price_per_hour_usd": 5.49,
@@ -3765,6 +3854,18 @@
    "gpu": "H200",
    "vram_gb": 141,
    "architecture": "Hopper",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 9.3117,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H200",
+   "vram_gb": 141,
+   "architecture": "Hopper",
    "provider": "Oracle Cloud",
    "gpu_count": 8,
    "price_per_hour_usd": 10,
@@ -3796,6 +3897,18 @@
    "commitment_months": null,
    "available": null,
    "source_url": "https://azure.microsoft.com/pricing/details/virtual-machines/linux/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "L4",
+   "vram_gb": 24,
+   "architecture": "Ada",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.0555,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -3892,6 +4005,18 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "L4",
+   "vram_gb": 24,
+   "architecture": "Ada",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.5582,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L4",
@@ -6573,6 +6698,18 @@
    "gpu": "V100",
    "vram_gb": 16,
    "architecture": "Volta",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.2232,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "V100",
+   "vram_gb": 16,
+   "architecture": "Volta",
    "provider": "Lambda Labs",
    "gpu_count": 8,
    "price_per_hour_usd": 0.79,
@@ -6580,6 +6717,18 @@
    "commitment_months": null,
    "available": null,
    "source_url": "https://lambda.ai/instances?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "V100",
+   "vram_gb": 16,
+   "architecture": "Volta",
+   "provider": "Google Cloud",
+   "gpu_count": 1,
+   "price_per_hour_usd": 2.48,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://cloud.google.com/compute/gpus-pricing?ref=gputable&utm_source=gputable"
   }
  ]
 }

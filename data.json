@@ -1,8 +1,13 @@
 {
- "generated_at": "2026-08-30T17:25:15+00:00",
+ "generated_at": "2026-08-30T19:36:21+00:00",
  "source": "https://gputable.dev",
  "terms": "Free to use with attribution: link https://gputable.dev and keep source_url intact, including its ref parameters — that is how this project is funded.",
  "providers": {
+  "verda": {
+   "ok": true,
+   "rows": 106,
+   "fetched_at": "2026-08-30T19:36:21+00:00"
+  },
   "vast": {
    "ok": true,
    "rows": 626,
@@ -36,11 +41,6 @@
   "salad": {
    "ok": true,
    "rows": 2,
-   "fetched_at": "2026-08-30T17:25:15+00:00"
-  },
-  "verda": {
-   "ok": true,
-   "rows": 106,
    "fetched_at": "2026-08-30T17:25:15+00:00"
   },
   "azure": {
@@ -528,7 +528,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -540,7 +540,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -552,7 +552,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -564,7 +564,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -817,7 +817,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -829,7 +829,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -841,7 +841,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -853,7 +853,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -1171,7 +1171,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1183,7 +1183,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1195,7 +1195,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1207,7 +1207,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1412,7 +1412,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1424,7 +1424,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1436,7 +1436,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1448,7 +1448,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B200",
@@ -1652,7 +1652,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1664,7 +1664,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1676,7 +1676,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1688,7 +1688,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1784,7 +1784,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1796,7 +1796,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1808,7 +1808,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -1820,7 +1820,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "B300",
@@ -2000,7 +2000,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -2012,7 +2012,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -2024,7 +2024,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -2036,7 +2036,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -2048,7 +2048,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -2060,7 +2060,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "GB300",
@@ -2639,7 +2639,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2651,7 +2651,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2663,7 +2663,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -2675,7 +2675,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3012,7 +3012,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3024,7 +3024,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3036,7 +3036,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3048,7 +3048,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 SXM",
@@ -3511,7 +3511,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3523,7 +3523,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3535,7 +3535,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3547,7 +3547,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3847,7 +3847,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3859,7 +3859,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3871,7 +3871,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3883,7 +3883,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -4758,7 +4758,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4770,7 +4770,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4782,7 +4782,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -4794,7 +4794,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -5011,7 +5011,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -5023,7 +5023,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -5035,7 +5035,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -5047,7 +5047,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -5859,7 +5859,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5871,7 +5871,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5883,7 +5883,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5895,7 +5895,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -6052,7 +6052,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -6064,7 +6064,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -6076,7 +6076,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -6088,7 +6088,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -6136,7 +6136,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6148,7 +6148,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6160,7 +6160,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6172,7 +6172,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6365,7 +6365,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6377,7 +6377,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6389,7 +6389,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6401,7 +6401,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6533,7 +6533,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6545,7 +6545,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6557,7 +6557,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6569,7 +6569,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6696,6 +6696,54 @@
    "gpu": "RTX PRO 6000",
    "vram_gb": 96,
    "architecture": "Blackwell",
+   "provider": "Verda",
+   "gpu_count": 1,
+   "price_per_hour_usd": 1.89,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
+   "provider": "Verda",
+   "gpu_count": 2,
+   "price_per_hour_usd": 1.89,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
+   "provider": "Verda",
+   "gpu_count": 4,
+   "price_per_hour_usd": 1.89,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
+   "provider": "Verda",
+   "gpu_count": 8,
+   "price_per_hour_usd": 1.89,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": null,
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
    "provider": "Runpod",
    "gpu_count": 1,
    "price_per_hour_usd": 1.89,
@@ -6715,54 +6763,6 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Verda",
-   "gpu_count": 1,
-   "price_per_hour_usd": 1.89,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Verda",
-   "gpu_count": 2,
-   "price_per_hour_usd": 1.89,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Verda",
-   "gpu_count": 4,
-   "price_per_hour_usd": 1.89,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Verda",
-   "gpu_count": 8,
-   "price_per_hour_usd": 1.89,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6918,7 +6918,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6930,7 +6930,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6942,7 +6942,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6954,7 +6954,7 @@
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6966,7 +6966,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6978,7 +6978,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -6990,7 +6990,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",
@@ -7002,7 +7002,7 @@
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": null,
-   "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
+   "source_url": "https://verda.com/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "V100",

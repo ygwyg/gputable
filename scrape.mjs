@@ -312,7 +312,7 @@ async function verda() {
     const n = it.gpu?.number_of_gpus || 1;
     const desc = it.gpu?.description ?? "";
     const vram = (desc.match(/(\d+)GB/) || [])[1];
-    const opts = { count: n, vram: vram && +vram, url: "https://datacrunch.io/" };
+    const opts = { count: n, vram: vram && +vram, url: "https://verda.com/" }; // DataCrunch rebranded
     return [
       it.price_per_hour ? row(desc, "Verda", it.price_per_hour / n, opts) : null,
       it.spot_price ? row(desc, "Verda", it.spot_price / n, { ...opts, ptype: "spot" }) : null,

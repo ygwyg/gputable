@@ -1605,8 +1605,10 @@ export default {
         const hist = updateHistory(
           await env.PRICES.get("history", "json").catch(() => null) ?? {}, payload);
         await env.PRICES.put("history", JSON.stringify(hist));
-        // Evict the edge-cached JSON so readers see this scrape immediately.
-        await ctx.cache?.purge({ tags: ["gputable-data"] }).catch(() => {});
+        // Purge the edge cache only when prices actually moved — a no-change
+        // tick that evicts every warm entry buys nothing and costs hit rate.
+        if (JSON.stringify(payload.data) !== JSON.stringify(prev.data ?? null))
+          await ctx.cache?.purge({ tags: ["gputable-data"] }).catch(() => {});
         await alertOnRot(env, payload);
       }
     })());
@@ -1625,7 +1627,7 @@ export default {
     // after each write refreshes them together.
     const page = html => new Response(html, { headers: {
       "content-type": "text/html; charset=utf-8",
-      "cache-control": "public, max-age=900, stale-while-revalidate=3600",
+      "cache-control": "public, max-age=120, s-maxage=900, stale-while-revalidate=3600",
       "cache-tag": "gputable-data" } });
 
     if (url.pathname === "/robots.txt")
@@ -1727,11 +1729,13 @@ at https://github.com/ygwyg/gputable.
     if (url.pathname === "/data.json" || url.pathname === "/history.json") {
       const body = await env.PRICES?.get(url.pathname === "/data.json" ? "data_public" : "history")
         ?? await env.PRICES?.get("data"); // pre-migration fallback
-      // Long TTL is safe: the cron purges the cache tag on every fresh write.
+      // Browser TTL short (max-age) so pages and polls pick up fresh prices
+      // without hard refreshes; edge TTL long (s-maxage) because the cron
+      // purges the tag whenever prices actually change.
       if (body) return new Response(body, { headers: {
         "content-type": "application/json",
         "access-control-allow-origin": "*",
-        "cache-control": "public, max-age=600, stale-while-revalidate=300",
+        "cache-control": "public, max-age=60, s-maxage=600, stale-while-revalidate=300",
         "cache-tag": "gputable-data",
         "link": '<https://gputable.dev/>; rel="canonical"' } });
       return env.ASSETS.fetch(req); // deployed data.json, until the first cron fills KV

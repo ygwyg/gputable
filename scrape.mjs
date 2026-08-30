@@ -813,6 +813,27 @@ async function primeintellect() {
   return rows;
 }
 
+// TensorDock v2 (needs the TENSORDOCK_API_KEY secret). Written against their
+// documented GET /api/v2/locations schema, but NOT registered in PROVIDERS
+// yet: as of 2026-08-30 the endpoint returns zero locations even for a
+// logged-in dashboard session — the account likely needs a prepaid deposit
+// before marketplace stock is visible. Once `/api/v2/locations` returns data
+// for the key, add `tensordock: { names: ["TensorDock"], fn: tensordock }`.
+let TD_KEY = null; // set by scrape() from env
+// eslint-disable-next-line no-unused-vars
+async function tensordock() {
+  if (!TD_KEY) throw new Error("set TENSORDOCK_API_KEY");
+  const d = await getJSON("https://dashboard.tensordock.com/api/v2/locations",
+    { headers: { Authorization: `Bearer ${TD_KEY}` } });
+  const rows = (d.data?.locations ?? []).flatMap(loc =>
+    (loc.gpus ?? []).map(g => row(g.displayName ?? g.v0Name, "TensorDock", g.price_per_hr, {
+      count: 1, vram: +((g.displayName ?? "").match(/(\d+)GB/)?.[1] ?? 0) || null,
+      avail: (g.max_count ?? 0) > 0,
+      url: "https://dashboard.tensordock.com/deploy" })));
+  if (!rows.some(Boolean)) throw new Error("no locations visible (deposit required?)");
+  return rows;
+}
+
 // --------------------------------------------------------------------------
 // Browser-rendered providers, via Cloudflare Browser Rendering (REST).
 // --------------------------------------------------------------------------
@@ -919,6 +940,7 @@ export async function scrape(prev = {}, only = null, env = {}) {
   RENDER_CREDS = accountId && token ? { accountId, token } : null;
   GCP_KEY = env.GCP_API_KEY ?? null;
   PI_KEY = env.PRIME_API_KEY ?? env.PRIME_INTELLECT_API_KEY ?? null;
+  TD_KEY = env.TENSORDOCK_API_KEY ?? null;
   const keys = only ?? Object.keys(PROVIDERS);
   const now = new Date().toISOString().replace(/\.\d+Z$/, "+00:00");
   const prevRows = {};

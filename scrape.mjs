@@ -789,6 +789,30 @@ async function gcp() {
   return rows;
 }
 
+// Prime Intellect (needs the PRIME_API_KEY secret; read-only). A marketplace
+// that resells capacity from Lambda, Nebius, Massed Compute and even Vultr —
+// prices are what you'd actually pay booking through PI, quoted per GPU-hour.
+// The socket field (SXM5/PCIe) disambiguates H100/A100 variants for canon().
+let PI_KEY = null; // set by scrape() from env
+async function primeintellect() {
+  if (!PI_KEY) throw new Error("set PRIME_API_KEY (Prime Intellect, read-only)");
+  const d = await getJSON("https://api.primeintellect.ai/api/v1/availability/",
+    { headers: { Authorization: `Bearer ${PI_KEY}` } });
+  const rows = [];
+  for (const offers of Object.values(d ?? {}))
+    for (const o of offers ?? []) {
+      const price = o.prices?.onDemand;
+      if (!price) continue;
+      rows.push(row(`${(o.gpuType ?? "").replace(/_/g, " ")} ${o.socket ?? ""}`,
+        "Prime Intellect", price, {
+          count: o.gpuCount ?? 1, vram: o.gpuMemory ?? null,
+          avail: o.stockStatus ? !/unavailable|out/i.test(o.stockStatus) : null,
+          url: "https://app.primeintellect.ai/dashboard/create-cluster" }));
+    }
+  if (!rows.some(Boolean)) throw new Error("no offers parsed (API changed?)");
+  return rows;
+}
+
 // --------------------------------------------------------------------------
 // Browser-rendered providers, via Cloudflare Browser Rendering (REST).
 // --------------------------------------------------------------------------
@@ -878,6 +902,7 @@ const PROVIDERS = {
   // render:true here borrows the 6h refresh TTL, not the browser — the
   // catalog is an 8MB pull whose list prices move rarely.
   gcp:       { names: ["Google Cloud"], fn: gcp, render: true },
+  primeintellect: { names: ["Prime Intellect"], fn: primeintellect },
 };
 
 const RENDER_TTL_MS = 6 * 3600e3; // rendered pages are re-fetched at most this often
@@ -893,6 +918,7 @@ export async function scrape(prev = {}, only = null, env = {}) {
   const token = env.CF_API_TOKEN ?? env.CLOUDFLARE_API_TOKEN;
   RENDER_CREDS = accountId && token ? { accountId, token } : null;
   GCP_KEY = env.GCP_API_KEY ?? null;
+  PI_KEY = env.PRIME_API_KEY ?? env.PRIME_INTELLECT_API_KEY ?? null;
   const keys = only ?? Object.keys(PROVIDERS);
   const now = new Date().toISOString().replace(/\.\d+Z$/, "+00:00");
   const prevRows = {};

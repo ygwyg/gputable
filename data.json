@@ -1,182 +1,177 @@
 {
- "generated_at": "2026-08-30T03:20:46+00:00",
+ "generated_at": "2026-08-30T03:23:25+00:00",
  "source": "https://gputable.dev",
  "terms": "Free to use with attribution: link https://gputable.dev and keep source_url intact, including its ref parameters — that is how this project is funded.",
  "providers": {
-  "gcp": {
-   "ok": true,
-   "rows": 17,
-   "fetched_at": "2026-08-30T03:20:46+00:00"
-  },
   "vast": {
    "ok": true,
-   "rows": 618,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "rows": 626,
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "runpod": {
    "ok": true,
-   "rows": 54,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "rows": 58,
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "lambda": {
    "ok": true,
    "rows": 15,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "coreweave": {
    "ok": true,
    "rows": 16,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "nebius": {
    "ok": true,
    "rows": 10,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "crusoe": {
    "ok": true,
    "rows": 6,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "salad": {
    "ok": true,
    "rows": 2,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "verda": {
    "ok": true,
    "rows": 106,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "azure": {
    "ok": true,
    "rows": 40,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "aws": {
    "ok": true,
    "rows": 21,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "oracle": {
    "ok": true,
    "rows": 7,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "digitalocean": {
    "ok": true,
    "rows": 15,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "together": {
    "ok": true,
    "rows": 8,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "modal": {
    "ok": true,
    "rows": 7,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "jarvis": {
    "ok": true,
    "rows": 3,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "cudo": {
    "ok": true,
    "rows": 3,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "voltagepark": {
    "ok": true,
    "rows": 1,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "hyperstack": {
    "ok": true,
    "rows": 12,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "fal": {
    "ok": true,
    "rows": 10,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "koyeb": {
    "ok": true,
    "rows": 3,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "baseten": {
    "ok": true,
    "rows": 8,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "civo": {
    "ok": true,
    "rows": 12,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "denvr": {
    "ok": true,
    "rows": 4,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "scaleway": {
    "ok": true,
    "rows": 16,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "ovh": {
    "ok": true,
    "rows": 10,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "leadergpu": {
    "ok": true,
    "rows": 5,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "seeweb": {
    "ok": true,
    "rows": 8,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "lium": {
    "ok": true,
-   "rows": 24,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "rows": 23,
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "thunder": {
    "ok": true,
    "rows": 4,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "spheron": {
    "ok": true,
    "rows": 10,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "beam": {
    "ok": true,
    "rows": 9,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "massed": {
    "ok": true,
    "rows": 116,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "gpuai": {
    "ok": true,
    "rows": 6,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "latitude": {
    "ok": true,
    "rows": 1,
-   "fetched_at": "2026-08-30T02:37:31+00:00"
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   },
   "replicate": {
    "ok": true,
@@ -187,6 +182,16 @@
    "ok": true,
    "rows": 7,
    "fetched_at": "2026-08-30T02:37:31+00:00"
+  },
+  "gcp": {
+   "ok": true,
+   "rows": 17,
+   "fetched_at": "2026-08-30T03:20:46+00:00"
+  },
+  "primeintellect": {
+   "ok": true,
+   "rows": 15,
+   "fetched_at": "2026-08-30T03:23:25+00:00"
   }
  },
  "data": [
@@ -267,8 +272,8 @@
    "vram_gb": 80,
    "architecture": "Ampere",
    "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 0.9339,
+   "gpu_count": 2,
+   "price_per_hour_usd": 0.87,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
@@ -279,8 +284,8 @@
    "vram_gb": 80,
    "architecture": "Ampere",
    "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 0.9344,
+   "gpu_count": 4,
+   "price_per_hour_usd": 0.9339,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
@@ -321,6 +326,18 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "A100 PCIe",
+   "vram_gb": 80,
+   "architecture": "Ampere",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 1.2,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 PCIe",
@@ -471,8 +488,8 @@
    "vram_gb": 80,
    "architecture": "Ampere",
    "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 0.6672,
+   "gpu_count": 2,
+   "price_per_hour_usd": 0.6678,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
@@ -483,8 +500,8 @@
    "vram_gb": 80,
    "architecture": "Ampere",
    "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 0.6678,
+   "gpu_count": 4,
+   "price_per_hour_usd": 0.8337,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
@@ -609,6 +626,18 @@
    "commitment_months": null,
    "available": null,
    "source_url": "https://www.seeweb.it/en/products/cloud-server-gpu?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "A100 SXM",
+   "vram_gb": 80,
+   "architecture": "Ampere",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 1.23,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "A100 SXM",
@@ -1322,18 +1351,6 @@
    "gpu": "B200",
    "vram_gb": 192,
    "architecture": "Blackwell",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 5.6276,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "B200",
-   "vram_gb": 192,
-   "architecture": "Blackwell",
    "provider": "Hyperstack",
    "gpu_count": 1,
    "price_per_hour_usd": 6,
@@ -1349,6 +1366,18 @@
    "provider": "Vast.ai",
    "gpu_count": 8,
    "price_per_hour_usd": 6.0013,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "B200",
+   "vram_gb": 192,
+   "architecture": "Blackwell",
+   "provider": "Vast.ai",
+   "gpu_count": 4,
+   "price_per_hour_usd": 6.0026,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
@@ -2054,6 +2083,18 @@
    "gpu": "GH200",
    "vram_gb": 96,
    "architecture": "Hopper",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 2.29,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "GH200",
+   "vram_gb": 96,
+   "architecture": "Hopper",
    "provider": "Spheron",
    "gpu_count": 1,
    "price_per_hour_usd": 3.02,
@@ -2354,6 +2395,18 @@
    "gpu": "H100 PCIe",
    "vram_gb": 80,
    "architecture": "Hopper",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 2.35,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 PCIe",
+   "vram_gb": 80,
+   "architecture": "Hopper",
    "provider": "Hyperstack",
    "gpu_count": 1,
    "price_per_hour_usd": 2.6,
@@ -2361,6 +2414,30 @@
    "commitment_months": null,
    "available": null,
    "source_url": "https://www.hyperstack.cloud/gpu-pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 PCIe",
+   "vram_gb": 80,
+   "architecture": "Hopper",
+   "provider": "Runpod",
+   "gpu_count": 1,
+   "price_per_hour_usd": 2.89,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 PCIe",
+   "vram_gb": 80,
+   "architecture": "Hopper",
+   "provider": "Runpod",
+   "gpu_count": 1,
+   "price_per_hour_usd": 2.89,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H100 PCIe",
@@ -3086,6 +3163,18 @@
    "gpu": "H100 SXM",
    "vram_gb": 80,
    "architecture": "Hopper",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 4.29,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H100 SXM",
+   "vram_gb": 80,
+   "architecture": "Hopper",
    "provider": "DigitalOcean",
    "gpu_count": 8,
    "price_per_hour_usd": 4.41,
@@ -3268,7 +3357,7 @@
    "architecture": "Hopper",
    "provider": "Vast.ai",
    "gpu_count": 2,
-   "price_per_hour_usd": 1.32,
+   "price_per_hour_usd": 1.3333,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
@@ -3292,7 +3381,7 @@
    "architecture": "Hopper",
    "provider": "Vast.ai",
    "gpu_count": 4,
-   "price_per_hour_usd": 2,
+   "price_per_hour_usd": 1.9342,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
@@ -3376,7 +3465,7 @@
    "architecture": "Hopper",
    "provider": "Vast.ai",
    "gpu_count": 8,
-   "price_per_hour_usd": 2.6,
+   "price_per_hour_usd": 2.5776,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
@@ -3458,6 +3547,30 @@
    "gpu": "H200",
    "vram_gb": 141,
    "architecture": "Hopper",
+   "provider": "Runpod Community",
+   "gpu_count": 1,
+   "price_per_hour_usd": 3.59,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H200",
+   "vram_gb": 141,
+   "architecture": "Hopper",
+   "provider": "Runpod Community",
+   "gpu_count": 1,
+   "price_per_hour_usd": 3.59,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H200",
+   "vram_gb": 141,
+   "architecture": "Hopper",
    "provider": "GPU.ai",
    "gpu_count": 1,
    "price_per_hour_usd": 3.59,
@@ -3465,18 +3578,6 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://gpu.ai/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "H200",
-   "vram_gb": 141,
-   "architecture": "Hopper",
-   "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 3.6011,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -3533,6 +3634,18 @@
    "provider": "Vast.ai",
    "gpu_count": 4,
    "price_per_hour_usd": 3.6848,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H200",
+   "vram_gb": 141,
+   "architecture": "Hopper",
+   "provider": "Vast.ai",
+   "gpu_count": 2,
+   "price_per_hour_usd": 3.6891,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
@@ -3669,6 +3782,18 @@
    "commitment_months": null,
    "available": null,
    "source_url": "https://fal.ai/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "H200",
+   "vram_gb": 141,
+   "architecture": "Hopper",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 4.5,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "H200",
@@ -4250,6 +4375,18 @@
    "gpu": "L40",
    "vram_gb": 48,
    "architecture": "Ada",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.86,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "L40",
+   "vram_gb": 48,
+   "architecture": "Ada",
    "provider": "Hyperstack",
    "gpu_count": 1,
    "price_per_hour_usd": 1,
@@ -4298,18 +4435,6 @@
    "gpu": "L40S",
    "vram_gb": 48,
    "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.3333,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "L40S",
-   "vram_gb": 48,
-   "architecture": "Ada",
    "provider": "Lium.io",
    "gpu_count": 2,
    "price_per_hour_usd": 0.38,
@@ -4336,6 +4461,18 @@
    "architecture": "Ada",
    "provider": "Vast.ai",
    "gpu_count": 1,
+   "price_per_hour_usd": 0.4,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "L40S",
+   "vram_gb": 48,
+   "architecture": "Ada",
+   "provider": "Vast.ai",
+   "gpu_count": 1,
    "price_per_hour_usd": 0.4007,
    "pricing_type": "on_demand",
    "commitment_months": null,
@@ -4348,7 +4485,7 @@
    "architecture": "Ada",
    "provider": "AWS",
    "gpu_count": 4,
-   "price_per_hour_usd": 0.428,
+   "price_per_hour_usd": 0.4231,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": null,
@@ -4533,6 +4670,18 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "L40S",
+   "vram_gb": 48,
+   "architecture": "Ada",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.82,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "L40S",
@@ -5115,6 +5264,30 @@
    "vram_gb": 24,
    "architecture": "Ada",
    "provider": "Vast.ai",
+   "gpu_count": 2,
+   "price_per_hour_usd": 0.06,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 4090",
+   "vram_gb": 24,
+   "architecture": "Ada",
+   "provider": "Vast.ai",
+   "gpu_count": 4,
+   "price_per_hour_usd": 0.062,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 4090",
+   "vram_gb": 24,
+   "architecture": "Ada",
+   "provider": "Vast.ai",
    "gpu_count": 1,
    "price_per_hour_usd": 0.12,
    "pricing_type": "spot",
@@ -5127,9 +5300,21 @@
    "vram_gb": 24,
    "architecture": "Ada",
    "provider": "Vast.ai",
+   "gpu_count": 4,
+   "price_per_hour_usd": 0.1204,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 4090",
+   "vram_gb": 24,
+   "architecture": "Ada",
+   "provider": "Vast.ai",
    "gpu_count": 2,
-   "price_per_hour_usd": 0.12,
-   "pricing_type": "spot",
+   "price_per_hour_usd": 0.1207,
+   "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
    "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
@@ -5153,42 +5338,6 @@
    "provider": "Vast.ai",
    "gpu_count": 1,
    "price_per_hour_usd": 0.1615,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX 4090",
-   "vram_gb": 24,
-   "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 0.24,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX 4090",
-   "vram_gb": 24,
-   "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 4,
-   "price_per_hour_usd": 0.2672,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX 4090",
-   "vram_gb": 24,
-   "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 0.2678,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
@@ -5308,7 +5457,19 @@
    "architecture": "Blackwell",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.2,
+   "price_per_hour_usd": 0.098,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 5090",
+   "vram_gb": 32,
+   "architecture": "Blackwell",
+   "provider": "Vast.ai",
+   "gpu_count": 2,
+   "price_per_hour_usd": 0.2133,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
@@ -5325,18 +5486,6 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://salad.com/pricing?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX 5090",
-   "vram_gb": 32,
-   "architecture": "Blackwell",
-   "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 0.2667,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 5090",
@@ -5488,7 +5637,7 @@
    "architecture": "Ada",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.3889,
+   "price_per_hour_usd": 0.3881,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
@@ -5502,6 +5651,18 @@
    "gpu_count": 2,
    "price_per_hour_usd": 0.4,
    "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 6000 Ada",
+   "vram_gb": 48,
+   "architecture": "Ada",
+   "provider": "Vast.ai",
+   "gpu_count": 2,
+   "price_per_hour_usd": 0.4958,
+   "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,
    "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
@@ -5570,18 +5731,6 @@
    "gpu": "RTX 6000 Ada",
    "vram_gb": 48,
    "architecture": "Ada",
-   "provider": "Vast.ai",
-   "gpu_count": 2,
-   "price_per_hour_usd": 0.537,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX 6000 Ada",
-   "vram_gb": 48,
-   "architecture": "Ada",
    "provider": "Lium.io",
    "gpu_count": 8,
    "price_per_hour_usd": 0.69,
@@ -5613,6 +5762,18 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 6000 Ada",
+   "vram_gb": 48,
+   "architecture": "Ada",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.75,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5661,6 +5822,30 @@
    "commitment_months": null,
    "available": null,
    "source_url": "https://massedcompute.com/pricing/?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 6000 Ada",
+   "vram_gb": 48,
+   "architecture": "Ada",
+   "provider": "Runpod",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.84,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX 6000 Ada",
+   "vram_gb": 48,
+   "architecture": "Ada",
+   "provider": "Runpod",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.84,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX 6000 Ada",
@@ -5752,7 +5937,7 @@
    "architecture": "Ampere",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.072,
+   "price_per_hour_usd": 0.0533,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
@@ -5764,7 +5949,7 @@
    "architecture": "Ampere",
    "provider": "Vast.ai",
    "gpu_count": 2,
-   "price_per_hour_usd": 0.072,
+   "price_per_hour_usd": 0.0533,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
@@ -5841,30 +6026,6 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://cloud.vast.ai/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX A6000",
-   "vram_gb": 48,
-   "architecture": "Ampere",
-   "provider": "Runpod Community",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.33,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX A6000",
-   "vram_gb": 48,
-   "architecture": "Ampere",
-   "provider": "Runpod Community",
-   "gpu_count": 1,
-   "price_per_hour_usd": 0.33,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -5973,6 +6134,18 @@
    "commitment_months": null,
    "available": true,
    "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX A6000",
+   "vram_gb": 48,
+   "architecture": "Ampere",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 0.54,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX A6000",
@@ -6148,7 +6321,7 @@
    "architecture": "Blackwell",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.343,
+   "price_per_hour_usd": 0.3333,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
@@ -6278,6 +6451,18 @@
    "gpu": "RTX PRO 6000",
    "vram_gb": 96,
    "architecture": "Blackwell",
+   "provider": "Prime Intellect",
+   "gpu_count": 1,
+   "price_per_hour_usd": 1.35,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://app.primeintellect.ai/dashboard/create-cluster?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
    "provider": "Seeweb",
    "gpu_count": 1,
    "price_per_hour_usd": 1.4554,
@@ -6338,6 +6523,30 @@
    "gpu": "RTX PRO 6000",
    "vram_gb": 96,
    "architecture": "Blackwell",
+   "provider": "Runpod",
+   "gpu_count": 1,
+   "price_per_hour_usd": 1.89,
+   "pricing_type": "on_demand",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
+   "provider": "Runpod",
+   "gpu_count": 1,
+   "price_per_hour_usd": 1.89,
+   "pricing_type": "spot",
+   "commitment_months": null,
+   "available": true,
+   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
+  },
+  {
+   "gpu": "RTX PRO 6000",
+   "vram_gb": 96,
+   "architecture": "Blackwell",
    "provider": "Verda",
    "gpu_count": 1,
    "price_per_hour_usd": 1.89,
@@ -6381,30 +6590,6 @@
    "commitment_months": null,
    "available": null,
    "source_url": "https://datacrunch.io/?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Runpod",
-   "gpu_count": 1,
-   "price_per_hour_usd": 2.09,
-   "pricing_type": "on_demand",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
-  },
-  {
-   "gpu": "RTX PRO 6000",
-   "vram_gb": 96,
-   "architecture": "Blackwell",
-   "provider": "Runpod",
-   "gpu_count": 1,
-   "price_per_hour_usd": 2.09,
-   "pricing_type": "spot",
-   "commitment_months": null,
-   "available": true,
-   "source_url": "https://runpod.io/pricing?ref=gputable&utm_source=gputable"
   },
   {
    "gpu": "RTX PRO 6000",
@@ -6508,7 +6693,7 @@
    "architecture": "Volta",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.02,
+   "price_per_hour_usd": 0.0667,
    "pricing_type": "spot",
    "commitment_months": null,
    "available": true,
@@ -6520,7 +6705,7 @@
    "architecture": "Volta",
    "provider": "Vast.ai",
    "gpu_count": 1,
-   "price_per_hour_usd": 0.0222,
+   "price_per_hour_usd": 0.0689,
    "pricing_type": "on_demand",
    "commitment_months": null,
    "available": true,

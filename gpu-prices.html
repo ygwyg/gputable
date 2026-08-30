@@ -55,8 +55,13 @@
   button:hover { background: #e4e4e4; }
   #count { color: #555; }
 
-  table { border-collapse: collapse; width: 100%; }
-  th, td { padding: 2px 6px; border: 1px solid #ddd; text-align: left; white-space: nowrap; }
+  /* border-collapse:separate because collapse breaks position:sticky on
+     table headers in Safari; the border pattern below mimics collapsed 1px. */
+  table { border-collapse: separate; border-spacing: 0; width: 100%; }
+  th, td { padding: 2px 6px; text-align: left; white-space: nowrap;
+    border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; }
+  th { border-top: 1px solid #ddd; }
+  th:first-child, td:first-child { border-left: 1px solid #ddd; }
   th { position: sticky; top: 0; z-index: 1; background: #eee; cursor: pointer; user-select: none; font-weight: 700; }
   th:hover { background: #e0e0e0; }
   th.sorted { background: #d8d8d8; }
@@ -96,13 +101,14 @@ Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.
 <nav id="browse" aria-label="Browse prices by GPU and provider"></nav>
 
 <div id="controls">
-  <input type="text" id="q" placeholder="filter">
+  <input type="text" id="q" placeholder="filter (a100, &lt;$2, &gt;=80g, &gt;=hopper)">
   <select id="gpu"><option value="">all GPUs</option></select>
   <select id="provider"><option value="">all providers</option></select>
   <select id="type"><option value="">all pricing</option></select>
   <label>min VRAM <input type="number" id="vram" min="0" step="8" placeholder="GB"></label>
   <label><input type="checkbox" id="stock"> in stock</label>
   <label><input type="checkbox" id="single"> single GPU</label>
+  <label>est <input type="number" id="calcn" min="1" value="1"> GPU × <input type="number" id="calch" min="1" value="730"> h</label>
   <button id="reset">Reset</button>
   <span id="count"></span>
 </div>
@@ -122,7 +128,8 @@ Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.
   Free JSON feed, no key required — use it from any script or app:
   <a href="/data.json">data.json</a> (current prices) ·
   <a href="/history.json">history.json</a> (daily lows) ·
-  <a href="/llms.txt">llms.txt</a> (field docs).
+  <a href="/llms.txt">llms.txt</a> (field docs) ·
+  MCP server for agents at <a href="/llms.txt">/mcp</a>.
 </footer>
 
 <script>
@@ -137,6 +144,28 @@ const TFLOPS = {
   "L4": 121, "RTX 4090": 165, "RTX 5090": 210,
   "RTX A6000": 77, "RTX PRO 6000": 250, "V100": 125,
 };
+
+// Memory bandwidth, GB/s, from vendor datasheets. Blank = not confident.
+const BW = {
+  "H100 SXM": 3350, "H100 PCIe": 2000, "H100 NVL": 3900, "H200": 4800,
+  "GH200": 4000, "B200": 8000, "B300": 8000, "GB200": 8000, "GB300": 8000,
+  "MI300X": 5300, "MI325X": 6000, "A100 SXM": 2039, "A100 PCIe": 1935,
+  "L40S": 864, "L40": 864, "A40": 696, "RTX 6000 Ada": 960,
+  "RTX 4090": 1008, "RTX 5090": 1792, "RTX A6000": 768, "RTX PRO 6000": 1792,
+  "L4": 300, "V100": 900, "RTX 3090": 936, "RTX 3090 Ti": 1008,
+  "RTX 3080": 760, "RTX 3080 Ti": 912, "RTX 3070": 448, "RTX 3060": 360,
+  "RTX 2080 Ti": 616, "Titan RTX": 672, "A10": 600, "RTX A5000": 768,
+  "RTX A4000": 448,
+};
+
+// Architecture rank for ">=hopper"-style filter expressions. AMD's CDNA3/4
+// are slotted beside their NVIDIA contemporaries (H100/B200 class).
+const ARCH_RANK = { Volta: 1, Turing: 2, Ampere: 3, Ada: 4, Hopper: 5,
+  Blackwell: 6, CDNA3: 5, CDNA4: 6 };
+const CARD_RANK = { v100: 1, "2080": 2, titan: 2, "30": 3, a10: 3, a100: 3,
+  a4000: 3, a5000: 3, a6000: 3, a40: 3, l4: 4, l40: 4, l40s: 4, "4090": 4,
+  h100: 5, h200: 5, gh200: 5, mi300x: 5, b200: 6, b300: 6, gb200: 6,
+  gb300: 6, mi325x: 6, mi355x: 6, "5090": 6 };
 
 // Seed rows: rates observed across provider and aggregator pages on 2026-08-29.
 // Placeholder only — drop a data.json beside this file (see scrape.mjs) and it
@@ -217,6 +246,7 @@ const SEED = [
 const COLS = [
   { key: "gpu",                label: "GPU" },
   { key: "vram_gb",            label: "VRAM", num: 1, fmt: v => v == null ? "" : v + "G" },
+  { key: "bw",                 label: "GB/s", num: 1, fmt: v => v == null ? "" : v },
   { key: "architecture",       label: "Arch" },
   { key: "provider",           label: "Provider", raw: 1, fmt: (v, r) => r.stale
       ? '<span class="dim" title="carried from a previous run; last fetch failed">' + esc(v) + " *</span>"
@@ -228,6 +258,8 @@ const COLS = [
       ? '<span class="dim">—</span>'
       : '<span class="' + (v < -0.5 ? "yes" : v > 0.5 ? "no" : "dim") + '">' +
         (v > 0 ? "+" : "") + v.toFixed(0) + "%</span>" },
+  { key: "est",                label: "Est. $", num: 1, fmt: v => v == null ? ""
+      : "$" + (v >= 100 ? Math.round(v).toLocaleString() : v.toFixed(2)) },
   { key: "pricing_type",       label: "Type" },
   { key: "commitment_months",  label: "Commit", num: 1, fmt: v => v == null ? "\u2014" : v + "mo" },
   { key: "available",          label: "Stock", raw: 1, fmt: v =>
@@ -265,6 +297,7 @@ function setRows(rows, label, isSeed) {
     const t = TFLOPS[r.gpu];
     return Object.assign({}, r, {
       per_pflop: (t && r.price_per_hour_usd) ? r.price_per_hour_usd / (t / 1000) : null,
+      bw: BW[r.gpu] ?? null,
       delta7: (HIST && HIST[r.gpu] && HIST[r.gpu][r.pricing_type]) ?? null,
     });
   });
@@ -285,11 +318,36 @@ function setRows(rows, label, isSeed) {
   render();
 }
 
+// The filter box also understands expressions, space-separated and ANDed:
+//   <$2  >1.5     price per GPU-hour        >=80g  <100gb   VRAM
+//   >=hopper  >=h100  >ampere               architecture generation
+// Anything that doesn't parse as an expression stays a text search term.
+function parseQuery(q) {
+  const preds = [], texts = [];
+  const cmp = (op, a, b) => op === ">" ? a > b : op === "<" ? a < b : op === ">=" ? a >= b : a <= b;
+  for (const t of q.split(/\s+/).filter(Boolean)) {
+    let m;
+    if ((m = t.match(/^(>=|<=|>|<)\$?(\d+(?:\.\d+)?)(g|gb)?$/))) {
+      const op = m[1], n = +m[2], isVram = !!m[3];
+      preds.push(r => cmp(op, isVram ? (r.vram_gb ?? 0) : r.price_per_hour_usd, n));
+    } else if ((m = t.match(/^(>=|<=|>|<)([a-z0-9 ]+)$/))) {
+      const name = m[2].replace(/^rtx ?/, "");
+      const rank = ARCH_RANK[m[2][0].toUpperCase() + m[2].slice(1)] ?? ARCH_RANK[m[2].toUpperCase()] ??
+        CARD_RANK[name] ?? CARD_RANK[name.slice(0, 2)];
+      if (rank) { const op = m[1]; preds.push(r => cmp(op, ARCH_RANK[r.architecture] ?? 0, rank)); }
+      else texts.push(t);
+    } else texts.push(t);
+  }
+  return { preds, texts };
+}
+
 function render() {
   const q = $("q").value.toLowerCase().trim();
+  const { preds, texts } = parseQuery(q);
   const gpu = $("gpu").value, prov = $("provider").value, type = $("type").value;
   const vram = +$("vram").value || 0;
   const stockOnly = $("stock").checked, singleOnly = $("single").checked;
+  const calcN = Math.max(1, +$("calcn").value || 1), calcH = Math.max(1, +$("calch").value || 1);
 
   const rows = state.rows.filter(r =>
     (!gpu  || r.gpu === gpu) &&
@@ -298,8 +356,10 @@ function render() {
     (!vram || r.vram_gb >= vram) &&
     (!stockOnly  || r.available === true) &&
     (!singleOnly || r.gpu_count === 1) &&
-    (!q || (r.gpu + " " + r.provider + " " + (r.architecture || "")).toLowerCase().includes(q))
+    preds.every(p => p(r)) &&
+    texts.every(t => (r.gpu + " " + r.provider + " " + (r.architecture || "")).toLowerCase().includes(t))
   );
+  rows.forEach(r => r.est = r.price_per_hour_usd != null ? r.price_per_hour_usd * calcN * calcH : null);
 
   const col = COLS.find(c => c.key === state.sortKey);
   rows.sort((a, b) => {
@@ -357,12 +417,13 @@ $("head").addEventListener("click", e => {
   else { state.sortKey = k; state.sortAsc = true; }
   render();
 });
-["q","gpu","provider","type","vram","stock","single"]
+["q","gpu","provider","type","vram","stock","single","calcn","calch"]
   .forEach(id => $(id).addEventListener("input", render));
 $("reset").addEventListener("click", () => {
   ["q","vram","gpu","provider","type"].forEach(id => $(id).value = "");
   ["gpu","provider","type"].forEach(id => delete $(id).dataset.want);
   $("stock").checked = $("single").checked = false;
+  $("calcn").value = 1; $("calch").value = 730;
   render();
 });
 

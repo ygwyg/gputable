@@ -25,6 +25,18 @@ npx wrangler deploy
 
 The cron scrapes into KV every 5 minutes (marketplaces) / 15 minutes (everything); the Worker serves the page and the data with tag-purged edge caching.
 
+## Pages
+
+The table itself is client-rendered, so the Worker also serves a plain-HTML layer
+built from the same KV data — one page per GPU ([`/gpu/h100-sxm`](https://gputable.dev/gpu/h100-sxm))
+and per provider ([`/provider/runpod`](https://gputable.dev/provider/runpod)), plus
+[`/gpu/`](https://gputable.dev/gpu/) and [`/provider/`](https://gputable.dev/provider/)
+indexes. They give crawlers and answer engines something to read, and they work
+without JavaScript. Provider comparisons are like-for-like: same GPU, same pricing
+model, and same capacity tier, so a dedicated instance is never scored against a
+peer-marketplace spot listing. All of it is generated from the live rows — nothing
+to update when a GPU or provider comes or goes — and `/sitemap.xml` enumerates it.
+
 ## Data
 
 Free JSON, no key, CORS enabled — attribution required (link gputable.dev,

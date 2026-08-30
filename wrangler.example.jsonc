@@ -21,7 +21,11 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    "run_worker_first": ["/", "/data.json", "/history.json"]
+    "run_worker_first": [
+      "/", "/data.json", "/history.json",
+      "/robots.txt", "/sitemap.xml", "/llms.txt",
+      "/gpu/*", "/provider/*" // server-rendered SEO pages, built from KV
+    ]
   }
 
   // Custom domains (optional):

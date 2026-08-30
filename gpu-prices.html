@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GPUTable — Live Cloud GPU Prices</title>
-<meta name="description" content="Live cloud GPU rental prices — H100, H200, B200, B300, A100, MI300X and more, compared across 35+ providers (AWS, Azure, Oracle, CoreWeave, Lambda, Nebius, Vast.ai, RunPod, Modal…). Per-GPU hourly rates, on-demand vs spot vs reserved, $/PFLOP, refreshed every 5 minutes.">
+<meta name="description" content="Live cloud GPU rental prices: H100, H200, B200, A100, MI300X and more across 35+ providers — AWS, Azure, CoreWeave, Lambda, Vast.ai, RunPod. Refreshed every 5 min.">
 <link rel="canonical" href="https://gputable.dev/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="GPUTable — Live Cloud GPU Prices">
@@ -62,13 +62,21 @@
   td.num { text-align: right; font-variant-numeric: tabular-nums; }
   .yes { color: #060; } .no { color: #b00; } .dim { color: #888; }
   footer { margin-top: 10px; color: #555; font-size: 11px; }
+  #browse:empty { display: none; }
+  #browse { margin-top: 14px; border-top: 1px solid #ddd; padding-top: 4px; }
+  #browse h2 { font-size: 12px; margin: 6px 0 2px; }
+  #browse ul.links { padding: 0; margin: 0; list-style: none; font-size: 11px; }
+  #browse ul.links li { display: inline; margin-right: 9px; white-space: nowrap; }
   :focus-visible { outline: 2px solid #00c; outline-offset: 1px; }
 </style>
 </head>
 <body>
 
 <h1>GPUTable · cloud GPU prices</h1><span id="src"></span>
-<noscript><p>Live table of cloud GPU rental prices across 35+ providers. Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.json</a></p></noscript>
+<noscript><p>Live table of cloud GPU rental prices across 35+ providers. This table needs
+JavaScript, but every GPU and every provider also has a plain HTML page:
+<a href="/gpu/">browse by GPU</a> · <a href="/provider/">browse by provider</a>.
+Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.json</a></p></noscript>
 
 <div id="controls">
   <input type="text" id="q" placeholder="filter">
@@ -86,6 +94,11 @@
   <thead><tr id="head"></tr></thead>
   <tbody id="body"></tbody>
 </table>
+
+<!-- Filled server-side by the Worker (HTMLRewriter) with one link per GPU and
+     per provider — the crawlable paths into the server-rendered pages. Stays
+     empty if the data is unavailable; the table above is unaffected. -->
+<nav id="browse"></nav>
 
 <footer>
   Per-GPU hourly rates. Excludes CPU, storage, egress, region, and minimum commitments.

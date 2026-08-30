@@ -974,6 +974,519 @@ async function alertOnRot(env, payload) {
 // forward untouched, with their real fetched_at timestamps).
 const FAST_TIER = ["vast", "runpod", "lium"];
 
+// ---------------------------------------------------------------------------
+// SEO: server-rendered pages, one per GPU and one per provider.
+//
+// The app is a single JS-rendered table — fine for humans, invisible to
+// crawlers and to the answer engines that increasingly sit in front of search.
+// These routes render the same KV rows as plain HTML, so the long-tail queries
+// ("h100 price per hour", "cheapest a100 cloud gpu", "runpod pricing") have a
+// real page to match, with real numbers in it. Everything below is derived
+// from the live data — nothing here needs editing when a GPU or provider
+// enters or leaves the table.
+// ---------------------------------------------------------------------------
+
+const SITE_URL = "https://gputable.dev";
+
+const slugify = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+const eschtml = s => String(s ?? "").replace(/[&<>"']/g, c =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+// "<" escaped so a value can never break out of a <script type=ld+json> block.
+const ldjson = o => JSON.stringify(o).replace(/</g, "\\u003c");
+const money = n => n == null ? "—" : "$" + (n < 1 ? n.toFixed(3) : n.toFixed(2));
+const pct = n => (n > 0 ? "+" : "") + n.toFixed(0) + "%";
+const TYPE_LABEL = { on_demand: "on-demand", spot: "spot", reserved: "reserved" };
+
+// Peer/marketplace capacity is not comparable to dedicated capacity — the
+// page footer has always said so, so the comparisons on these pages have to
+// honour it. Quoting a provider's dedicated rate against a Vast.ai spot
+// listing produces a true number and a worthless one.
+const MARKETPLACE = new Set(["Vast.ai", "Salad Cloud", "Runpod Community", "Lium.io"]);
+const tierOf = p => MARKETPLACE.has(p) ? "marketplace" : "dedicated";
+const TIER_NOTE = {            // noun phrase: "...is peer/marketplace capacity"
+  marketplace: "peer/marketplace capacity",
+  dedicated: "dedicated capacity",
+};
+const TIER_ADJ = { marketplace: "marketplace", dedicated: "dedicated" }; // "32 dedicated providers"
+// Prices vary in width, so every title/description gets a hard cap at a word
+// boundary — Google truncates around 60 chars of title and 160 of description.
+const clamp = (str, n) => str.length <= n ? str
+  : str.slice(0, str.lastIndexOf(" ", n - 1)).replace(/[\s—·,.:;|-]+$/, "") + "…";
+const VENDOR = { Hopper: "NVIDIA", Ampere: "NVIDIA", Ada: "NVIDIA",
+  Blackwell: "NVIDIA", Volta: "NVIDIA", CDNA3: "AMD", CDNA4: "AMD" };
+// "an 8x spread", "a 3x spread" — read aloud, not spelled.
+const artcl = n => /^(8|11|18)/.test(String(n)) ? "an" : "a";
+// Same idea for GPU names: the article follows how the leading letter sounds,
+// so it is "an H100" (aitch) and "an A100" (ay) but "a B200" (bee).
+const artGpu = g => /^[AEFHILMNORSX]/.test(String(g)) ? "an" : "a";
+
+// A row is only quotable as "the price" if it is a real, current offer.
+const quotable = r => r.price_per_hour_usd > 0 && !r.stale;
+const cheapest = rows => rows.reduce((a, b) =>
+  !a || b.price_per_hour_usd < a.price_per_hour_usd ? b : a, null);
+
+function seoIndex(payload) {
+  const rows = (payload?.data ?? []).filter(r => r.gpu && r.provider && r.price_per_hour_usd > 0);
+  const gpus = new Map(), provs = new Map();
+  for (const r of rows) {
+    if (!gpus.has(r.gpu)) gpus.set(r.gpu, []);
+    gpus.get(r.gpu).push(r);
+    if (!provs.has(r.provider)) provs.set(r.provider, []);
+    provs.get(r.provider).push(r);
+  }
+  const bySlug = m => new Map([...m].map(([k, v]) => [slugify(k), { name: k, rows: v }]));
+  return {
+    rows,
+    gpus: bySlug(gpus),
+    provs: bySlug(provs),
+    generated_at: payload?.generated_at ?? null,
+  };
+}
+
+// Shared chrome. Dense and unstyled-looking on purpose — it matches the app,
+// and a page that loads instantly is a page that ranks.
+function shell({ title, description, canonical, h1, jsonld = [], body, updated }) {
+  const day = (updated ?? new Date().toISOString()).slice(0, 10);
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${eschtml(title)}</title>
+<meta name="description" content="${eschtml(description)}">
+<link rel="canonical" href="${eschtml(canonical)}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="${eschtml(title)}">
+<meta property="og:description" content="${eschtml(description)}">
+<meta property="og:url" content="${eschtml(canonical)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GPUTable">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="${eschtml(title)}">
+<meta name="twitter:description" content="${eschtml(description)}">
+${jsonld.map(o => `<script type="application/ld+json">${ldjson(o)}</script>`).join("\n")}
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 8px; max-width: 1100px;
+    font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #000; background: #fff; }
+  h1 { font-size: 17px; margin: 0 0 2px; }
+  h2 { font-size: 14px; margin: 18px 0 4px; }
+  a { color: #00c; } a:visited { color: #551a8b; }
+  nav.crumb, .meta { color: #555; font-size: 11px; }
+  p { margin: 6px 0; max-width: 78ch; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0; }
+  th, td { padding: 2px 6px; border: 1px solid #ddd; text-align: left; white-space: nowrap; }
+  th { background: #eee; font-weight: 700; }
+  tbody tr:nth-child(even) { background: #fafafa; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .yes { color: #060; } .no { color: #b00; } .dim { color: #888; }
+  ul.links { padding: 0; margin: 4px 0; list-style: none; }
+  ul.links li { display: inline; margin-right: 10px; white-space: nowrap; }
+  footer { margin-top: 18px; color: #555; font-size: 11px; border-top: 1px solid #ddd; padding-top: 6px; }
+  :focus-visible { outline: 2px solid #00c; outline-offset: 1px; }
+</style>
+</head>
+<body>
+<h1>${h1}</h1>
+${body}
+<footer>
+  Prices are per single GPU per hour, scraped from each provider's own pricing page or API and
+  last refreshed ${eschtml(day)}. They exclude CPU, storage, egress, region differences, and
+  minimum commitments. Spot capacity can be reclaimed at any time, and marketplace tiers
+  (Vast.ai, Salad, RunPod Community) are peer hardware, not comparable to dedicated capacity.
+  Confirm on the provider's page before renting.
+  <br>Free JSON feed: <a href="/data.json">data.json</a> ·
+  <a href="/history.json">history.json</a> · <a href="/llms.txt">llms.txt</a> ·
+  <a href="/">full live table</a>
+</footer>
+</body>
+</html>
+`;
+}
+
+const crumb = parts => `<nav class="crumb">` +
+  parts.map((p, i) => (i ? " › " : "") + (p.url ? `<a href="${eschtml(p.url)}">${eschtml(p.name)}</a>` : eschtml(p.name))).join("") +
+  `</nav>`;
+
+const crumbLD = parts => ({
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  itemListElement: parts.map((p, i) => ({
+    "@type": "ListItem", position: i + 1, name: p.name,
+    ...(p.url ? { item: SITE_URL + p.url } : {}),
+  })),
+});
+
+const faqLD = qa => ({
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: qa.map(([q, a]) => ({
+    "@type": "Question", name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+});
+
+const faqHTML = qa => `<h2>Questions</h2>` +
+  qa.map(([q, a]) => `<p><strong>${eschtml(q)}</strong><br>${eschtml(a)}</p>`).join("\n");
+
+const stockCell = v => v === true ? '<span class="yes">yes</span>'
+  : v === false ? '<span class="no">no</span>' : '<span class="dim">—</span>';
+
+// ---- per-GPU page ---------------------------------------------------------
+
+function gpuPage(idx, entry) {
+  const { name, rows } = entry;
+  const sl = slugify(name);
+  const url = `/gpu/${sl}`;
+  const sorted = [...rows].sort((a, b) => a.price_per_hour_usd - b.price_per_hour_usd);
+  const live = sorted.filter(quotable);
+  const best = live[0] ?? sorted[0];
+  const byType = {};
+  for (const t of ["on_demand", "spot", "reserved"]) {
+    const c = cheapest(live.filter(r => r.pricing_type === t));
+    if (c) byType[t] = c;
+  }
+  const providers = new Set(rows.map(r => r.provider));
+  const vram = rows.find(r => r.vram_gb)?.vram_gb ?? null;
+  const arch = rows.find(r => r.architecture)?.architecture ?? null;
+  const onDemand = live.filter(r => r.pricing_type === "on_demand");
+  const hi = onDemand.length ? onDemand[onDemand.length - 1] : null;
+  const spread = (byType.on_demand && hi && byType.on_demand.price_per_hour_usd > 0)
+    ? hi.price_per_hour_usd / byType.on_demand.price_per_hour_usd : null;
+
+  const title = clamp(`${name} GPU Price — from ${money(best?.price_per_hour_usd)}/hr ` +
+    `across ${providers.size} clouds`, 58) + " | GPUTable";
+  const description = clamp(
+    `${name} cloud prices from ${providers.size} providers: cheapest ` +
+    `${money(best?.price_per_hour_usd)}/GPU-hr at ${best?.provider}` +
+    (byType.on_demand ? `, on-demand from ${money(byType.on_demand.price_per_hour_usd)}` : "") +
+    `. Spot, on-demand and reserved rates, updated every 15 min.`, 158);
+
+  const parts = [{ name: "GPUTable", url: "/" }, { name: "GPUs", url: "/gpu/" }, { name }];
+
+  const intro = [
+    `<p>The cheapest <strong>${eschtml(name)}</strong> on the table right now is ` +
+    `<strong>${money(best?.price_per_hour_usd)} per GPU-hour</strong> at ` +
+    `<a href="/provider/${slugify(best?.provider ?? "")}">${eschtml(best?.provider ?? "")}</a>` +
+    (best?.pricing_type && best.pricing_type !== "on_demand"
+      ? ` (${TYPE_LABEL[best.pricing_type]})` : "") +
+    `, out of ${rows.length} offers from ${providers.size} providers.` +
+    (vram ? ` The ${eschtml(name)} carries ${vram} GB of VRAM` : "") +
+    (arch ? ` on ${VENDOR[arch] ? VENDOR[arch] + "'s " : ""}${eschtml(arch)} generation` : "") +
+    (vram || arch ? "." : "") +
+    (best && tierOf(best.provider) === "marketplace"
+      ? ` That is ${TIER_NOTE.marketplace} — rented from other users' machines, and not directly ` +
+        `comparable to a dedicated instance.` : "") + `</p>`,
+    spread && spread >= 1.5
+      ? `<p>On-demand pricing for the same card spans ` +
+        `${money(byType.on_demand.price_per_hour_usd)} to ${money(hi.price_per_hour_usd)} per GPU-hour — ` +
+        `${artcl(spread.toFixed(1))} <strong>${spread.toFixed(1)}×</strong> spread between the cheapest and the most ` +
+        `expensive provider for identical silicon. That gap is the entire reason this table exists.</p>`
+      : "",
+    Object.keys(byType).length > 1
+      ? `<p>Cheapest by pricing model: ` +
+        Object.entries(byType).map(([t, r]) =>
+          `<strong>${TYPE_LABEL[t]}</strong> ${money(r.price_per_hour_usd)} at ${eschtml(r.provider)}`).join(" · ") +
+        `.</p>`
+      : "",
+  ].join("\n");
+
+  // Providers commonly quote the same per-GPU rate for a 1×, 2×, 4× and 8×
+  // node. Four identical rows help nobody, so fold them into one and show the
+  // node sizes it covers.
+  const folded = [];
+  const foldKey = new Map();
+  for (const r of sorted) {
+    // Keyed on the *rendered* price — 1.8783 and 1.8794 both print as $1.88,
+    // and two visually identical rows are just noise. Sorted ascending, so the
+    // row kept is the cheaper one.
+    const k = [r.provider, money(r.price_per_hour_usd), r.pricing_type, r.commitment_months, r.available].join("|");
+    if (foldKey.has(k)) { foldKey.get(k).counts.push(r.gpu_count ?? 1); continue; }
+    const f = { ...r, counts: [r.gpu_count ?? 1] };
+    foldKey.set(k, f);
+    folded.push(f);
+  }
+  const sizes = c => {
+    const u = [...new Set(c)].sort((a, b) => a - b);
+    return (u.length > 2 ? `${u[0]}–${u[u.length - 1]}` : u.join(", ")) + "× GPU";
+  };
+
+  const table = `<h2>Every ${eschtml(name)} price we track</h2>
+<table>
+<thead><tr><th>Provider</th><th>Tier</th><th>$/GPU-hr</th><th>Pricing</th><th>Node</th>
+<th>Commit</th><th>In stock</th><th></th></tr></thead>
+<tbody>
+${folded.map(r => `<tr>
+<td><a href="/provider/${slugify(r.provider)}">${eschtml(r.provider)}</a>${r.stale ? ' <span class="dim" title="carried forward; last fetch failed">*</span>' : ""}</td>
+<td>${tierOf(r.provider) === "marketplace" ? '<span class="dim">marketplace</span>' : "dedicated"}</td>
+<td class="num">${money(r.price_per_hour_usd)}</td>
+<td>${eschtml(TYPE_LABEL[r.pricing_type] ?? r.pricing_type)}</td>
+<td class="num">${sizes(r.counts)}</td>
+<td class="num">${r.commitment_months ? r.commitment_months + " mo" : "—"}</td>
+<td>${stockCell(r.available)}</td>
+<td>${r.source_url ? `<a href="${eschtml(r.source_url)}" target="_blank" rel="noopener">rent</a>` : ""}</td>
+</tr>`).join("\n")}
+</tbody></table>
+<p class="meta">Rows that quote one rate across several node sizes are folded together.
+"Marketplace" is peer capacity (Vast.ai, Salad, RunPod Community, Lium) and is not
+directly comparable to dedicated instances.</p>`;
+
+  const sameArch = [...idx.gpus.values()]
+    .filter(g => g.name !== name && g.rows.some(r => r.architecture === arch))
+    .slice(0, 8);
+  const others = [...idx.gpus.values()]
+    .filter(g => g.name !== name && !sameArch.includes(g))
+    .sort((a, b) => b.rows.length - a.rows.length).slice(0, 10);
+  const related = `<h2>Compare with other GPUs</h2>
+<ul class="links">${[...sameArch, ...others].map(g =>
+    `<li><a href="/gpu/${slugify(g.name)}">${eschtml(g.name)}</a></li>`).join("")}</ul>
+<p class="meta"><a href="/gpu/">All GPUs</a> · <a href="/provider/">All providers</a> ·
+<a href="/">Live sortable table</a></p>`;
+
+  const qa = [
+    [`How much does ${artGpu(name)} ${name} cost per hour?`,
+     `As of the latest scrape, ${money(best?.price_per_hour_usd)} per GPU-hour at ${best?.provider} is the cheapest ` +
+     `${name} offer across ${providers.size} tracked cloud providers` +
+     (byType.on_demand ? `. The cheapest on-demand rate is ${money(byType.on_demand.price_per_hour_usd)} per GPU-hour at ${byType.on_demand.provider}` : "") +
+     (hi ? `, and the most expensive on-demand rate is ${money(hi.price_per_hour_usd)} at ${hi.provider}` : "") + `.`],
+    [`Which cloud is cheapest for the ${name}?`,
+     `${best?.provider} at ${money(best?.price_per_hour_usd)} per GPU-hour` +
+     (best?.pricing_type !== "on_demand" ? ` on ${TYPE_LABEL[best?.pricing_type] ?? best?.pricing_type} capacity` : "") +
+     `. Prices move constantly, so this page is regenerated from the live scrape every 15 minutes. ` +
+     `Note that marketplace tiers are peer hardware and are not directly comparable to dedicated capacity.`],
+    ...(byType.spot ? [[`Is spot ${name} capacity cheaper?`,
+      `Yes — the cheapest spot ${name} is ${money(byType.spot.price_per_hour_usd)} per GPU-hour at ${byType.spot.provider}` +
+      (byType.on_demand
+        ? `, ${pct((byType.spot.price_per_hour_usd / byType.on_demand.price_per_hour_usd - 1) * 100)} versus the cheapest on-demand rate of ${money(byType.on_demand.price_per_hour_usd)}` : "") +
+      `. Spot instances can be reclaimed by the provider at any time, so they suit checkpointed training and batch inference rather than long-lived services.`]] : []),
+    [`How many GB of VRAM does the ${name} have?`,
+     vram ? `${vram} GB${arch ? `, on the ${arch} architecture` : ""}. Multi-GPU instances multiply that: an 8× ${name} node exposes ${vram * 8} GB of GPU memory in total.`
+          : `VRAM varies by configuration for this card; see the per-offer rows above.`],
+  ];
+
+  const productLD = {
+    "@context": "https://schema.org", "@type": "Product",
+    name: `${name} cloud GPU rental`,
+    description: `Hourly cloud rental pricing for the ${name} GPU across ${providers.size} providers.`,
+    category: "Cloud GPU compute",
+    url: SITE_URL + url,
+    ...(vram ? { additionalProperty: [{ "@type": "PropertyValue", name: "VRAM", value: `${vram} GB` }] } : {}),
+    offers: {
+      "@type": "AggregateOffer", priceCurrency: "USD",
+      lowPrice: Number(best?.price_per_hour_usd ?? 0).toFixed(4),
+      highPrice: Number((sorted[sorted.length - 1] ?? best)?.price_per_hour_usd ?? 0).toFixed(4),
+      // Matches the rows actually rendered above, after folding.
+      offerCount: folded.length,
+    },
+  };
+
+  return shell({
+    title, description, canonical: SITE_URL + url, updated: idx.generated_at,
+    h1: `${eschtml(name)} cloud GPU pricing`,
+    jsonld: [productLD, crumbLD(parts), faqLD(qa)],
+    body: crumb(parts) + "\n" + intro + "\n" + table + "\n" + faqHTML(qa) + "\n" + related,
+  });
+}
+
+// ---- per-provider page ----------------------------------------------------
+
+function providerPage(idx, entry) {
+  const { name, rows } = entry;
+  const url = `/provider/${slugify(name)}`;
+  const live = rows.filter(quotable);
+  const best = cheapest(live) ?? rows[0];
+  const gpuNames = [...new Set(rows.map(r => r.gpu))];
+
+  // Like-for-like means three things must match: the GPU, the pricing model,
+  // and the capacity tier. Holding a dedicated provider's rate up against a
+  // marketplace spot listing yields a true percentage and a meaningless one.
+  const tier = tierOf(name);
+  const comparisons = [];
+  for (const g of gpuNames) {
+    for (const t of ["on_demand", "spot", "reserved"]) {
+      const mine = cheapest(live.filter(r => r.gpu === g && r.pricing_type === t));
+      if (!mine) continue;
+      const market = cheapest(idx.rows.filter(r =>
+        r.gpu === g && r.pricing_type === t && quotable(r) && tierOf(r.provider) === tier));
+      comparisons.push({
+        gpu: g, type: t, mine, market,
+        delta: market && market.price_per_hour_usd > 0
+          ? (mine.price_per_hour_usd / market.price_per_hour_usd - 1) * 100 : null,
+      });
+    }
+  }
+  comparisons.sort((a, b) => a.mine.price_per_hour_usd - b.mine.price_per_hour_usd);
+  const wins = comparisons.filter(c => c.delta != null && c.delta <= 0.5);
+
+  const peers = [...idx.provs.values()].filter(p => tierOf(p.name) === tier && p.name !== name);
+  const title = clamp(`${name} GPU Pricing — ${gpuNames.length} GPUs from ` +
+    `${money(best?.price_per_hour_usd)}/hr`, 58) + " | GPUTable";
+  const description = clamp(
+    `${name} GPU prices vs ${peers.length} other ${TIER_ADJ[tier]} clouds: ` +
+    `${gpuNames.length} models from ${money(best?.price_per_hour_usd)}/GPU-hr` +
+    (wins.length ? `, cheapest for ${wins.length} of ${comparisons.length} configs` : "") +
+    `. Like-for-like, updated every 15 min.`, 158);
+
+  const parts = [{ name: "GPUTable", url: "/" }, { name: "Providers", url: "/provider/" }, { name }];
+
+  const intro = `<p><strong>${eschtml(name)}</strong> lists ${gpuNames.length} GPU model${gpuNames.length === 1 ? "" : "s"} ` +
+    `across ${rows.length} configuration${rows.length === 1 ? "" : "s"}, starting at ` +
+    `<strong>${money(best?.price_per_hour_usd)} per GPU-hour</strong> for the ` +
+    `<a href="/gpu/${slugify(best?.gpu ?? "")}">${eschtml(best?.gpu ?? "")}</a>. ` +
+    (wins.length
+      ? `It is the cheapest ${TIER_ADJ[tier]} provider we track for <strong>${wins.length}</strong> of its ` +
+        `${comparisons.length} GPU-and-pricing-model combinations: ` +
+        wins.slice(0, 6).map(c => eschtml(c.gpu) + " (" + TYPE_LABEL[c.type] + ")").join(", ") + `.`
+      : `On every GPU it offers, at least one of the ${peers.length} other ${TIER_ADJ[tier]} providers ` +
+        `we track is currently cheaper — the table below shows which, and by how much.`) +
+    `</p>
+<p class="meta">Every comparison below is like-for-like: same GPU, same pricing model, and same
+capacity tier. ${eschtml(name)} is ${TIER_NOTE[tier]}, so it is measured against the other
+${peers.length} ${TIER_ADJ[tier]} providers on the table — not against
+${tier === "dedicated" ? "peer marketplace listings, which are usually cheaper and are not equivalent"
+  : "dedicated instances, which are usually dearer and carry very different guarantees"}.</p>`;
+
+  const table = `<h2>${eschtml(name)} prices vs. the cheapest ${TIER_ADJ[tier]} provider</h2>
+<table>
+<thead><tr><th>GPU</th><th>VRAM</th><th>Pricing</th><th>${eschtml(name)} $/GPU-hr</th>
+<th>Best ${TIER_ADJ[tier]}</th><th>Difference</th><th>Cheapest at</th><th></th></tr></thead>
+<tbody>
+${comparisons.map(c => {
+    const d = c.delta;
+    const cls = d == null ? "dim" : d <= 0.5 ? "yes" : d >= 15 ? "no" : "";
+    return `<tr>
+<td><a href="/gpu/${slugify(c.gpu)}">${eschtml(c.gpu)}</a></td>
+<td class="num">${c.mine.vram_gb ? c.mine.vram_gb + " GB" : "—"}</td>
+<td>${eschtml(TYPE_LABEL[c.type] ?? c.type)}</td>
+<td class="num">${money(c.mine.price_per_hour_usd)}</td>
+<td class="num">${money(c.market?.price_per_hour_usd)}</td>
+<td class="num"><span class="${cls}">${d == null ? "—" : d <= 0.5 ? "cheapest" : pct(d)}</span></td>
+<td>${c.market && c.market.provider !== name
+      ? `<a href="/provider/${slugify(c.market.provider)}">${eschtml(c.market.provider)}</a>`
+      : `<span class="dim">—</span>`}</td>
+<td>${c.mine.source_url ? `<a href="${eschtml(c.mine.source_url)}" target="_blank" rel="noopener">rent</a>` : ""}</td>
+</tr>`;
+  }).join("\n")}
+</tbody></table>`;
+
+  const qa = [
+    [`How much does a GPU cost on ${name}?`,
+     `${name} starts at ${money(best?.price_per_hour_usd)} per GPU-hour for the ${best?.gpu}` +
+     (best?.pricing_type !== "on_demand" ? ` on ${TYPE_LABEL[best?.pricing_type] ?? best?.pricing_type} capacity` : "") +
+     `. It lists ${gpuNames.length} GPU models in total: ${gpuNames.slice(0, 10).join(", ")}.`],
+    [`Is ${name} cheaper than other GPU clouds?`,
+     (wins.length
+       ? `For ${wins.length} of the ${comparisons.length} GPU and pricing-model combinations it offers, ${name} is the cheapest ${TIER_ADJ[tier]} provider on this table — including ${wins.slice(0, 4).map(c => c.gpu).join(", ")}. For the rest, the table above names the provider that beats it and by how much.`
+       : `Not at the moment. For every GPU and pricing model ${name} offers, at least one of the ${peers.length} other ${TIER_ADJ[tier]} providers we track is currently cheaper; the table above names which one and the size of the gap.`) +
+     ` Comparisons are like-for-like on GPU, pricing model and capacity tier.`],
+    [`Which GPUs does ${name} offer?`,
+     `${gpuNames.length} models: ${gpuNames.join(", ")}. Availability changes; the "in stock" flags on each GPU page reflect the last scrape.`],
+  ];
+
+  const related = `<h2>Compare with other providers</h2>
+<ul class="links">${[...peers, ...[...idx.provs.values()].filter(p => tierOf(p.name) !== tier)]
+    .sort((a, b) => b.rows.length - a.rows.length).slice(0, 18)
+    .map(p => `<li><a href="/provider/${slugify(p.name)}">${eschtml(p.name)}</a></li>`).join("")}</ul>
+<h2>Browse by GPU</h2>
+<ul class="links">${gpuNames.map(g =>
+    `<li><a href="/gpu/${slugify(g)}">${eschtml(g)}</a></li>`).join("")}</ul>
+<p class="meta"><a href="/provider/">All providers</a> · <a href="/gpu/">All GPUs</a> ·
+<a href="/">Live sortable table</a></p>`;
+
+  return shell({
+    title, description, canonical: SITE_URL + url, updated: idx.generated_at,
+    h1: `${eschtml(name)} GPU pricing`,
+    jsonld: [crumbLD(parts), faqLD(qa)],
+    body: crumb(parts) + "\n" + intro + "\n" + table + "\n" + faqHTML(qa) + "\n" + related,
+  });
+}
+
+// ---- index pages ----------------------------------------------------------
+
+function indexPage(idx, kind) {
+  const isGpu = kind === "gpu";
+  const entries = [...(isGpu ? idx.gpus : idx.provs).values()]
+    .map(e => ({ ...e, best: cheapest(e.rows.filter(quotable)) ?? cheapest(e.rows) }))
+    .sort((a, b) => (a.best?.price_per_hour_usd ?? 1e9) - (b.best?.price_per_hour_usd ?? 1e9));
+  const parts = [{ name: "GPUTable", url: "/" }, { name: isGpu ? "GPUs" : "Providers" }];
+  const title = isGpu
+    ? `Cloud GPU Prices by Model — ${entries.length} GPUs Compared | GPUTable`
+    : `Cloud GPU Providers Compared — ${entries.length} Clouds | GPUTable`;
+  const description = clamp(isGpu
+    ? `Hourly rental prices for ${entries.length} datacenter GPUs — H100, H200, B200, A100, MI300X, RTX 4090 and more — across ${idx.provs.size} clouds.`
+    : `GPU pricing for ${entries.length} clouds — AWS, Azure, Oracle, CoreWeave, Lambda, RunPod, Vast.ai and more — compared model by model on price.`, 158);
+
+  const table = `<table>
+<thead><tr><th>${isGpu ? "GPU" : "Provider"}</th>${isGpu ? "<th>VRAM</th><th>Arch</th>" : "<th>GPU models</th>"}
+<th>Cheapest $/GPU-hr</th><th>${isGpu ? "Cheapest at" : "Cheapest GPU"}</th><th>Offers</th></tr></thead>
+<tbody>
+${entries.map(e => `<tr>
+<td><a href="/${kind}/${slugify(e.name)}">${eschtml(e.name)}</a></td>
+${isGpu
+    ? `<td class="num">${e.rows.find(r => r.vram_gb)?.vram_gb ?? "—"} GB</td><td>${eschtml(e.rows.find(r => r.architecture)?.architecture ?? "—")}</td>`
+    : `<td class="num">${new Set(e.rows.map(r => r.gpu)).size}</td>`}
+<td class="num">${money(e.best?.price_per_hour_usd)}</td>
+<td>${isGpu
+    ? `<a href="/provider/${slugify(e.best?.provider ?? "")}">${eschtml(e.best?.provider ?? "—")}</a>`
+    : `<a href="/gpu/${slugify(e.best?.gpu ?? "")}">${eschtml(e.best?.gpu ?? "—")}</a>`}</td>
+<td class="num">${e.rows.length}</td>
+</tr>`).join("\n")}
+</tbody></table>`;
+
+  return shell({
+    title, description, canonical: `${SITE_URL}/${kind}/`, updated: idx.generated_at,
+    h1: isGpu ? "Cloud GPU prices by model" : "Cloud GPU providers compared",
+    jsonld: [crumbLD(parts), {
+      "@context": "https://schema.org", "@type": "ItemList",
+      itemListElement: entries.map((e, i) => ({
+        "@type": "ListItem", position: i + 1, name: e.name,
+        url: `${SITE_URL}/${kind}/${slugify(e.name)}`,
+      })),
+    }],
+    body: crumb(parts) + `\n<p>${eschtml(description)} Every price below is per single GPU per hour, ` +
+      `pulled from the provider's own pricing page or API and refreshed every 15 minutes.</p>\n` + table +
+      `\n<p class="meta"><a href="/${isGpu ? "provider" : "gpu"}/">` +
+      `${isGpu ? "Browse by provider" : "Browse by GPU"}</a> · <a href="/">Live sortable table</a></p>`,
+  });
+}
+
+// ---- sitemap --------------------------------------------------------------
+
+function sitemap(idx) {
+  const day = (idx.generated_at ?? new Date().toISOString()).slice(0, 10);
+  const u = (loc, priority, changefreq) =>
+    `<url><loc>${SITE_URL}${loc}</loc><lastmod>${day}</lastmod>` +
+    `<changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${u("/", "1.0", "hourly")}
+${u("/gpu/", "0.9", "daily")}
+${u("/provider/", "0.9", "daily")}
+${[...idx.gpus.keys()].map(s => u(`/gpu/${s}`, "0.8", "daily")).join("\n")}
+${[...idx.provs.keys()].map(s => u(`/provider/${s}`, "0.6", "daily")).join("\n")}
+</urlset>
+`;
+}
+
+// ---- homepage crawl paths -------------------------------------------------
+
+// The homepage table is built by JS, so on its own it hands a crawler no links
+// to follow. Fill the empty <nav id="browse"> with real ones, cheapest first.
+function browseNav(idx) {
+  const link = (kind, e) => {
+    const b = cheapest(e.rows.filter(quotable)) ?? cheapest(e.rows);
+    return `<li><a href="/${kind}/${slugify(e.name)}">${eschtml(e.name)}</a> ` +
+      `<span class="dim">${money(b?.price_per_hour_usd)}</span></li>`;
+  };
+  const gpus = [...idx.gpus.values()].sort((a, b) => b.rows.length - a.rows.length);
+  const provs = [...idx.provs.values()].sort((a, b) => b.rows.length - a.rows.length);
+  return `<h2>Prices by GPU</h2>
+<ul class="links">${gpus.map(e => link("gpu", e)).join("")}
+<li><a href="/gpu/">all GPUs →</a></li></ul>
+<h2>Prices by provider</h2>
+<ul class="links">${provs.map(e => link("provider", e)).join("")}
+<li><a href="/provider/">all providers →</a></li></ul>`;
+}
+
 export default {
   async scheduled(event, env, ctx) {
     ctx.waitUntil((async () => {
@@ -1000,10 +1513,50 @@ export default {
     const SITE = "https://gputable.dev";
     const text = (body, type = "text/plain") =>
       new Response(body, { headers: { "content-type": type, "cache-control": "public, max-age=3600" } });
+    // The scraped rows, shared by every server-rendered SEO route below.
+    const seoData = async () => seoIndex(
+      await env.PRICES?.get("data_public", "json").catch(() => null) ??
+      await env.PRICES?.get("data", "json").catch(() => null) ??
+      await env.ASSETS.fetch(new URL("/data.json", url)).then(r => r.json()).catch(() => null));
+    // Rendered pages carry the same cache tag as the JSON, so the cron's purge
+    // after each write refreshes them together.
+    const page = html => new Response(html, { headers: {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "public, max-age=900, stale-while-revalidate=3600",
+      "cache-tag": "gputable-data" } });
+
     if (url.pathname === "/robots.txt")
-      return text(`User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
+      // Answer engines are a first-class audience here: the data is free and
+      // asks only for attribution, so every crawler is welcome by name.
+      return text(`User-agent: *\nAllow: /\n\n` +
+        ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User",
+         "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended",
+         "CCBot", "Bingbot", "DuckDuckBot", "Amazonbot", "meta-externalagent"]
+          .map(b => `User-agent: ${b}\nAllow: /\n`).join("\n") +
+        `\nSitemap: ${SITE}/sitemap.xml\n`);
     if (url.pathname === "/sitemap.xml")
-      return text(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${SITE}/</loc><changefreq>hourly</changefreq></url></urlset>\n`, "application/xml");
+      return new Response(sitemap(await seoData()), { headers: {
+        "content-type": "application/xml",
+        "cache-control": "public, max-age=3600",
+        "cache-tag": "gputable-data" } });
+
+    // One page per GPU and per provider, plus their two index pages.
+    const seoRoute = url.pathname.match(/^\/(gpu|provider)\/([a-z0-9-]*)$/);
+    if (seoRoute) {
+      const [, kind, sl] = seoRoute;
+      const idx = await seoData();
+      if (!idx.rows.length) return new Response("prices unavailable", { status: 503 });
+      if (!sl) return page(indexPage(idx, kind));
+      const entry = (kind === "gpu" ? idx.gpus : idx.provs).get(sl);
+      if (!entry) // Unknown slug: 404, but hand the crawler the real list.
+        return new Response(indexPage(idx, kind), { status: 404,
+          headers: { "content-type": "text/html; charset=utf-8", "cache-control": "public, max-age=300" } });
+      return page(kind === "gpu" ? gpuPage(idx, entry) : providerPage(idx, entry));
+    }
+    // Trailing-slash and legacy shapes fold into the canonical path.
+    const redir = url.pathname.match(/^\/(gpu|provider)\/([A-Za-z0-9._ -]+)\/$/);
+    if (redir)
+      return Response.redirect(`${SITE}/${redir[1]}/${slugify(decodeURIComponent(redir[2]))}`, 301);
     if (url.pathname === "/llms.txt")
       return text(`# GPUTable
 > Live cloud GPU rental prices — per-GPU hourly rates compared across 35+ providers
@@ -1021,6 +1574,15 @@ export default {
   its fetch status; \`generated_at\` is the scrape time (UTC ISO).
 - [Price history](${SITE}/history.json): daily index — for each UTC day, the
   cheapest price_per_hour_usd per GPU and pricing type across all providers.
+
+## Browsable pages (plain HTML, no JavaScript needed)
+- [${SITE}/gpu/](${SITE}/gpu/): index of every GPU we track. Each model has its
+  own page — e.g. ${SITE}/gpu/h100-sxm, ${SITE}/gpu/b200 — listing every
+  provider's rate for that card, cheapest first, with the capacity tier marked.
+- [${SITE}/provider/](${SITE}/provider/): index of every provider. Each has its
+  own page — e.g. ${SITE}/provider/runpod — comparing its rates like-for-like
+  (same GPU, same pricing model, same tier) against the cheapest we can find.
+- Slugs are the lower-cased name with non-alphanumerics replaced by hyphens.
 
 ## Attribution (required)
 This data is free to use, including for AI assistants and automated tools,
@@ -1072,10 +1634,18 @@ at https://github.com/ygwyg/gputable.
       return env.ASSETS.fetch(req); // deployed data.json, until the first cron fills KV
     }
     if (url.pathname === "/") { // assets serve the page extensionless
-      const page = await env.ASSETS.fetch(new Request(new URL("/gpu-prices", url), req));
-      const h = new Headers(page.headers);
+      const asset = await env.ASSETS.fetch(new Request(new URL("/gpu-prices", url), req));
+      const h = new Headers(asset.headers);
       h.set("cache-control", "public, max-age=60"); // short: no purge on deploys
-      return new Response(page.body, { status: page.status, headers: h });
+      const res = new Response(asset.body, { status: asset.status, headers: h });
+      // The table itself is built by JS. Fill the empty <nav id="browse"> with
+      // server-rendered links so crawlers reach every GPU and provider page
+      // from the root, and so the homepage has indexable text of its own.
+      const idx = await seoData().catch(() => null);
+      if (!idx?.rows.length) return res;
+      return new HTMLRewriter().on("#browse", {
+        element(el) { el.setInnerContent(browseNav(idx), { html: true }); },
+      }).transform(res);
     }
     return env.ASSETS.fetch(req);
   },

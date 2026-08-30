@@ -45,6 +45,16 @@
 
   #controls { margin: 6px 0; }
   #controls > * { margin-right: 10px; vertical-align: middle; }
+  #ftoggle { display: none; }
+  /* Mobile: search stays, everything else folds into a sheet behind one
+     button. Same widgets, just stacked. */
+  @media (max-width: 700px) {
+    #ftoggle { display: inline-block; }
+    .adv { display: none; }
+    #controls.open .adv { display: block; margin: 6px 0 0; }
+    #controls.open { background: #fafafa; border: 1px solid #ddd; padding: 6px; }
+    input[type=text] { width: 55%; }
+  }
   label { white-space: nowrap; }
   input[type=text], input[type=number], select {
     font: inherit; padding: 1px 3px; border: 1px solid #999; border-radius: 0; background: #fff;
@@ -101,15 +111,16 @@ Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.
 <nav id="browse" aria-label="Browse prices by GPU and provider"></nav>
 
 <div id="controls">
-  <input type="text" id="q" placeholder="filter (a100, &lt;$2, &gt;=80g, &gt;=hopper)">
-  <select id="gpu"><option value="">all GPUs</option></select>
-  <select id="provider"><option value="">all providers</option></select>
-  <select id="type"><option value="">all pricing</option></select>
-  <label>min VRAM <input type="number" id="vram" min="0" step="8" placeholder="GB"></label>
-  <label><input type="checkbox" id="stock"> in stock</label>
-  <label><input type="checkbox" id="single"> single GPU</label>
-  <label>est <input type="number" id="calcn" min="1" value="1"> GPU × <input type="number" id="calch" min="1" value="730"> h</label>
-  <button id="reset">Reset</button>
+  <input type="text" id="q" placeholder="filter (a100, &lt;$2, &gt;=80g, &gt;=hopper, amd)">
+  <button id="ftoggle" aria-expanded="false">filters</button>
+  <span class="adv"><select id="gpu"><option value="">all GPUs</option></select></span>
+  <span class="adv"><select id="provider"><option value="">all providers</option></select></span>
+  <span class="adv"><select id="type"><option value="">all pricing</option></select></span>
+  <label class="adv">min VRAM <input type="number" id="vram" min="0" step="8" placeholder="GB"></label>
+  <label class="adv"><input type="checkbox" id="stock"> in stock</label>
+  <label class="adv"><input type="checkbox" id="single"> single GPU</label>
+  <label class="adv">est <input type="number" id="calcn" min="1" value="1"> GPU × <input type="number" id="calch" min="1" value="730"> h</label>
+  <button id="reset" class="adv">Reset</button>
   <span id="count"></span>
 </div>
 
@@ -330,7 +341,9 @@ function parseQuery(q) {
     if ((m = t.match(/^(>=|<=|>|<)\$?(\d+(?:\.\d+)?)(g|gb)?$/))) {
       const op = m[1], n = +m[2], isVram = !!m[3];
       preds.push(r => cmp(op, isVram ? (r.vram_gb ?? 0) : r.price_per_hour_usd, n));
-    } else if ((m = t.match(/^(>=|<=|>|<)([a-z0-9 ]+)$/))) {
+    } else if (t === "amd") preds.push(r => /^CDNA/.test(r.architecture ?? ""));
+    else if (t === "nvidia") preds.push(r => !/^CDNA/.test(r.architecture ?? ""));
+    else if ((m = t.match(/^(>=|<=|>|<)([a-z0-9 ]+)$/))) {
       const name = m[2].replace(/^rtx ?/, "");
       const rank = ARCH_RANK[m[2][0].toUpperCase() + m[2].slice(1)] ?? ARCH_RANK[m[2].toUpperCase()] ??
         CARD_RANK[name] ?? CARD_RANK[name.slice(0, 2)];
@@ -385,6 +398,8 @@ function render() {
   }).join("") + "</tr>").join("");
 
   $("count").textContent = rows.length + " / " + state.rows.length + " rows";
+  const active = [gpu, prov, type, vram, stockOnly, singleOnly].filter(Boolean).length;
+  $("ftoggle").textContent = "filters" + (active ? " (" + active + ")" : "");
   syncURL();
 }
 
@@ -419,6 +434,10 @@ $("head").addEventListener("click", e => {
 });
 ["q","gpu","provider","type","vram","stock","single","calcn","calch"]
   .forEach(id => $(id).addEventListener("input", render));
+$("ftoggle").addEventListener("click", () => {
+  const open = $("controls").classList.toggle("open");
+  $("ftoggle").setAttribute("aria-expanded", open);
+});
 $("reset").addEventListener("click", () => {
   ["q","vram","gpu","provider","type"].forEach(id => $(id).value = "");
   ["gpu","provider","type"].forEach(id => delete $(id).dataset.want);

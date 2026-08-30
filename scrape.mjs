@@ -1477,14 +1477,16 @@ function browseNav(idx) {
     return `<li><a href="/${kind}/${slugify(e.name)}">${eschtml(e.name)}</a> ` +
       `<span class="dim">${money(b?.price_per_hour_usd)}</span></li>`;
   };
+  // Top dozen of each; the /gpu/ and /provider/ hub pages link the rest, so
+  // every page stays two clicks from the root without walling the homepage.
   const gpus = [...idx.gpus.values()].sort((a, b) => b.rows.length - a.rows.length);
   const provs = [...idx.provs.values()].sort((a, b) => b.rows.length - a.rows.length);
   return `<h2>Prices by GPU</h2>
-<ul class="links">${gpus.map(e => link("gpu", e)).join("")}
-<li><a href="/gpu/">all GPUs →</a></li></ul>
+<ul class="links">${gpus.slice(0, 12).map(e => link("gpu", e)).join("")}
+<li><a href="/gpu/">all ${gpus.length} GPUs →</a></li></ul>
 <h2>Prices by provider</h2>
-<ul class="links">${provs.map(e => link("provider", e)).join("")}
-<li><a href="/provider/">all providers →</a></li></ul>`;
+<ul class="links">${provs.slice(0, 12).map(e => link("provider", e)).join("")}
+<li><a href="/provider/">all ${provs.length} providers →</a></li></ul>`;
 }
 
 export default {

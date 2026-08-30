@@ -62,11 +62,19 @@
   td.num { text-align: right; font-variant-numeric: tabular-nums; }
   .yes { color: #060; } .no { color: #b00; } .dim { color: #888; }
   footer { margin-top: 10px; color: #555; font-size: 11px; }
+  /* Price-tape ticker: overflow hidden, so it can never widen the page. */
   #browse:empty { display: none; }
-  #browse { margin-top: 14px; border-top: 1px solid #ddd; padding-top: 4px; }
-  #browse h2 { font-size: 12px; margin: 6px 0 2px; }
-  #browse ul.links { padding: 0; margin: 0; list-style: none; font-size: 11px; }
-  #browse ul.links li { display: inline; margin-right: 9px; white-space: nowrap; }
+  #browse { margin: 5px 0 2px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;
+    overflow: hidden; white-space: nowrap; font-size: 11px; line-height: 1.9; }
+  #browse .copy { display: inline-block; padding-right: 56px;
+    animation: tape 120s linear infinite; }
+  #browse:hover .copy, #browse:focus-within .copy { animation-play-state: paused; }
+  @keyframes tape { to { transform: translateX(-100%); } }
+  @media (prefers-reduced-motion: reduce) {
+    #browse .copy { animation: none; }
+    #browse { overflow-x: auto; }
+    #browse .copy[aria-hidden] { display: none; }
+  }
   :focus-visible { outline: 2px solid #00c; outline-offset: 1px; }
 </style>
 </head>
@@ -77,6 +85,11 @@
 JavaScript, but every GPU and every provider also has a plain HTML page:
 <a href="/gpu/">browse by GPU</a> · <a href="/provider/">browse by provider</a>.
 Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.json</a></p></noscript>
+
+<!-- Filled server-side by the Worker (HTMLRewriter): a scrolling price tape
+     with one link per GPU and per provider. Empty (and hidden) if the data
+     is unavailable. -->
+<nav id="browse" aria-label="Browse prices by GPU and provider"></nav>
 
 <div id="controls">
   <input type="text" id="q" placeholder="filter">
@@ -95,12 +108,8 @@ Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.
   <tbody id="body"></tbody>
 </table>
 
-<!-- Filled server-side by the Worker (HTMLRewriter) with one link per GPU and
-     per provider — the crawlable paths into the server-rendered pages. Stays
-     empty if the data is unavailable; the table above is unaffected. -->
-<nav id="browse"></nav>
-
 <footer>
+  Browse: <a href="/gpu/">prices by GPU</a> · <a href="/provider/">prices by provider</a>.
   Per-GPU hourly rates. Excludes CPU, storage, egress, region, and minimum commitments.
   Spot rates can be reclaimed at any time; community/marketplace tiers (Vast, Salad) are not
   comparable to dedicated capacity. Confirm on the provider's page before renting.

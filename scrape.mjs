@@ -1474,19 +1474,25 @@ ${[...idx.provs.keys()].map(s => u(`/provider/${s}`, "0.6", "daily")).join("\n")
 function browseNav(idx) {
   const link = (kind, e) => {
     const b = cheapest(e.rows.filter(quotable)) ?? cheapest(e.rows);
-    return `<li><a href="/${kind}/${slugify(e.name)}">${eschtml(e.name)}</a> ` +
-      `<span class="dim">${money(b?.price_per_hour_usd)}</span></li>`;
+    return `<a href="/${kind}/${slugify(e.name)}">${eschtml(e.name)}</a> ` +
+      `<span class="dim">${money(b?.price_per_hour_usd)}</span>`;
   };
-  // Top dozen of each; the /gpu/ and /provider/ hub pages link the rest, so
-  // every page stays two clicks from the root without walling the homepage.
+  // A stock-tape: every GPU and provider fits because length costs nothing,
+  // and overflow:hidden means it can never widen the page. The footer carries
+  // static hub links as the non-animated path.
   const gpus = [...idx.gpus.values()].sort((a, b) => b.rows.length - a.rows.length);
   const provs = [...idx.provs.values()].sort((a, b) => b.rows.length - a.rows.length);
-  return `<h2>Prices by GPU</h2>
-<ul class="links">${gpus.slice(0, 12).map(e => link("gpu", e)).join("")}
-<li><a href="/gpu/">all ${gpus.length} GPUs →</a></li></ul>
-<h2>Prices by provider</h2>
-<ul class="links">${provs.slice(0, 12).map(e => link("provider", e)).join("")}
-<li><a href="/provider/">all ${provs.length} providers →</a></li></ul>`;
+  const sep = ` <span class="dim">·</span> `;
+  const items = [
+    ...gpus.map(e => link("gpu", e)),
+    `<a href="/gpu/">all ${gpus.length} GPUs →</a>`,
+    ...provs.map(e => link("provider", e)),
+    `<a href="/provider/">all ${provs.length} providers →</a>`,
+  ].join(sep) + sep.trimEnd();
+  // Two identical copies make the loop seamless; the duplicate is hidden from
+  // assistive tech and taken out of the tab order.
+  return `<span class="copy">${items}</span>` +
+    `<span class="copy" aria-hidden="true">${items.replace(/<a /g, '<a tabindex="-1" ')}</span>`;
 }
 
 export default {

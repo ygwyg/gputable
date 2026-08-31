@@ -52,11 +52,11 @@ to update when a GPU or provider comes or goes — and `/sitemap.xml` enumerates
 Free JSON, no key, CORS enabled — attribution required (link gputable.dev,
 keep `source_url` params intact):
 
-- [`/data.json`](https://gputable.dev/data.json) — current prices, per single GPU per hour, updated every 15 min
+- [`/data.json`](https://gputable.dev/data.json) — current prices, per single GPU per hour, updated every 5-15 min
 - [`/history.json`](https://gputable.dev/history.json) — daily cheapest per GPU and pricing type
 - [`/llms.txt`](https://gputable.dev/llms.txt) — field documentation and terms
 
 Real-time keyed API (`/v1/data`, `/v1/history`) serves every scrape including
-the 5-minute marketplace ticks — open an issue for a key.
+demand-triggered re-scrapes (under ~2 min under active polling) — self-serve keys at [`/key`](https://gputable.dev/key).
 
 Providers that can't be included (bot-walls, key-gated APIs, no public prices) are documented at the top of `scrape.mjs`.

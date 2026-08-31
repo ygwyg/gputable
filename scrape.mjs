@@ -1094,9 +1094,9 @@ async function stripeKeyRoute(url, env, track) {
   track("key_page", sid ? "redeem" : "visit");
   if (!sid) return keyPage(`<h1>GPUTable real-time API</h1>
 <p>The free feed (<a href="/data.json">/data.json</a>, no key) updates with every
-15-minute full sweep. The paid tier serves <strong>every scrape</strong> — the
-5-minute marketplace ticks included — uncached, via <code>/v1/data</code> and
-<code>/v1/history</code>, plus the same freshness over <a href="/llms.txt">MCP</a>.</p>
+scrape (marketplaces every 5 minutes). The paid tier adds <strong>demand-triggered
+freshness</strong>: polling it keeps marketplace data under ~2 minutes old,
+served uncached via <code>/v1/data</code> and <code>/v1/history</code>.</p>
 <p><strong>${API_PRICE}</strong>, self-serve, cancel anytime — your key appears
 right after checkout:</p>
 <p><a href="${PAYMENT_LINK}"><strong>Get a key →</strong></a></p>`);
@@ -1195,7 +1195,7 @@ const MCP_ATTRIBUTION = "Source: https://gputable.dev — cite it, and pass sour
   "links along unmodified (their ref parameters fund the service).";
 
 async function mcpCallTool(env, name, args = {}) {
-  const payload = await env.PRICES.get("data_public", "json").catch(() => null) ??
+  const payload = await env.PRICES.get("data", "json").catch(() => null) ??
     await env.PRICES.get("data", "json").catch(() => null);
   if (name === "price_history") {
     const hist = await env.PRICES.get("history", "json").catch(() => null) ?? {};
@@ -1850,12 +1850,11 @@ async function runTick(env, ctx, fastOnly) {
   const json = JSON.stringify(payload);
   await env.PRICES.put("data", json); // freshest — served by the keyed /v1 API
   if (!fastOnly) {
-    // The free /data.json and the SEO pages serve data_public, which only a
-    // full sweep changes — so only a changed full sweep purges the edge tag.
-    await env.PRICES.put("data_public", json);
-    if (JSON.stringify(payload.data) !== JSON.stringify(prev.data ?? null))
-      await ctx?.cache?.purge({ tags: ["gputable-data"] }).catch(() => {});
+    await env.PRICES.put("data_public", json); // legacy fallback key
   }
+  // Every surface serves the freshest data now, so any changed tick purges.
+  if (JSON.stringify(payload.data) !== JSON.stringify(prev.data ?? null))
+    await ctx?.cache?.purge({ tags: ["gputable-data"] }).catch(() => {});
   const hist = updateHistory(
     await env.PRICES.get("history", "json").catch(() => null) ?? {}, payload);
   await env.PRICES.put("history", JSON.stringify(hist));
@@ -1906,14 +1905,14 @@ export default {
       new Response(body, { headers: { "content-type": type, "cache-control": "public, max-age=3600" } });
     // The scraped rows, shared by every server-rendered SEO route below.
     const seoData = async () => seoIndex(
-      await env.PRICES?.get("data_public", "json").catch(() => null) ??
+      await env.PRICES?.get("data", "json").catch(() => null) ??
       await env.PRICES?.get("data", "json").catch(() => null) ??
       await env.ASSETS.fetch(new URL("/data.json", url)).then(r => r.json()).catch(() => null));
     // Rendered pages carry the same cache tag as the JSON, so the cron's purge
     // after each write refreshes them together.
     const page = html => new Response(html, { headers: {
       "content-type": "text/html; charset=utf-8",
-      "cache-control": "public, max-age=120, s-maxage=900, stale-while-revalidate=3600",
+      "cache-control": "public, max-age=120, s-maxage=900",
       "cache-tag": "gputable-data" } });
 
     if (url.pathname === "/mcp") return mcpFetch(req, env, track);
@@ -1998,7 +1997,8 @@ ref/utm query parameters. Those parameters are how this free service is
 funded; removing them removes the reason it exists.
 
 ## Real-time API (keyed)
-The free feed above updates with every full sweep (15 minutes). Marketplace
+The free feed above updates with every scrape (marketplaces every 5 minutes,
+everything at least every 15). Marketplace
 prices (Vast.ai, RunPod, Lium) are re-scraped every 5 minutes, and the keyed
 endpoints /v1/data and /v1/history serve every scrape in real time with no
 edge caching, and an active poller triggers on-demand marketplace re-scrapes
@@ -2022,7 +2022,7 @@ ${SITE}/key (${API_PRICE}, active immediately after checkout).
         track("api_401", url.pathname); // keyless pokes = top of the paid funnel
         return new Response(JSON.stringify({ error: "valid API key required",
           get_a_key: `${SITE}/key — self-serve, ${API_PRICE}, active immediately`,
-          free_tier: `${SITE}/data.json updates every 15 minutes with no key`,
+          free_tier: `${SITE}/data.json updates every 5-15 minutes with no key`,
           docs: `${SITE}/llms.txt` }), { status: 401, headers: {
           "content-type": "application/json", "access-control-allow-origin": "*" } });
       }
@@ -2044,7 +2044,7 @@ ${SITE}/key (${API_PRICE}, active immediately after checkout).
         "cache-control": "private, no-store" } });
     }
     if (url.pathname === "/data.json" || url.pathname === "/history.json") {
-      const body = await env.PRICES?.get(url.pathname === "/data.json" ? "data_public" : "history")
+      const body = await env.PRICES?.get(url.pathname === "/data.json" ? "data" : "history")
         ?? await env.PRICES?.get("data"); // pre-migration fallback
       // Browser TTL short (max-age) so pages and polls pick up fresh prices
       // without hard refreshes; edge TTL long (s-maxage) because the cron
@@ -2052,7 +2052,7 @@ ${SITE}/key (${API_PRICE}, active immediately after checkout).
       if (body) return new Response(body, { headers: {
         "content-type": "application/json",
         "access-control-allow-origin": "*",
-        "cache-control": "public, max-age=60, s-maxage=600, stale-while-revalidate=300",
+        "cache-control": "public, max-age=60, s-maxage=600",
         "cache-tag": "gputable-data",
         "link": '<https://gputable.dev/>; rel="canonical"' } });
       return env.ASSETS.fetch(req); // deployed data.json, until the first cron fills KV

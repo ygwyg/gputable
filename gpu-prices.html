@@ -517,8 +517,8 @@ let lastLoad = 0;
 function loadLive() {
   lastLoad = Date.now();
   return Promise.all([
-    fetch("./data.json").then(r => r.ok ? r.json() : null).catch(() => null),
-    fetch("./history.json").then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch("./data.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch("./history.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null),
   ]).then(([j, h]) => {
     if (show(j, h, "live"))
       try { localStorage.setItem("gputable-cache", JSON.stringify({ j: j, h: h })); } catch (e) {}

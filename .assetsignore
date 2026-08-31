@@ -12,3 +12,5 @@ wrangler.example.jsonc
 test
 .github
 x-posts-architecture.md
+agents.md
+cloudflare-starter-checklist.md

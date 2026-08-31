@@ -4,3 +4,5 @@ __pycache__/
 .DS_Store
 wrangler.toml
 x-posts-architecture.md
+agents.md
+cloudflare-starter-checklist.md

@@ -486,10 +486,18 @@ function show(j, h, tag) {
   if (h) HIST = histDeltas(h);
   const rows = j && (j.data || j);
   if (!Array.isArray(rows) || !rows.length) return false;
-  const when = (j.generated_at || "").slice(0, 16).replace("T", " ");
+  // Scrape time in the viewer's own timezone \u2014 raw UTC reads as "wrong" to
+  // anyone west of Greenwich.
+  let when = (j.generated_at || "").slice(0, 16).replace("T", " ") + " UTC";
+  try {
+    when = "updated " + new Date(j.generated_at).toLocaleString([], {
+      month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  } catch (e) {}
   const stale = [...new Set(rows.filter(r => r.stale).map(r => r.provider))];
   setRows(rows, tag + " \u00b7 " + rows.length + " rows \u00b7 " + when +
           (stale.length ? " \u00b7 * stale: " + stale.join(", ") : ""), false);
+  $("src").title = "full sweep scraped at " + j.generated_at +
+    " \u2014 marketplaces re-checked every 5 min, all sources every 15";
   return true;
 }
 

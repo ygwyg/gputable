@@ -1070,10 +1070,7 @@ export function updateHistory(hist, payload) {
 // subscription dies. PAYMENT_LINK is the public checkout URL.
 // --------------------------------------------------------------------------
 
-// NOTE: currently the TEST-mode link (account not yet activated for live
-// payments). When Stripe live mode is enabled: recreate product/price/link
-// with the live key, swap this URL, and update the STRIPE_* secrets.
-const PAYMENT_LINK = "https://buy.stripe.com/test_aFa5kEgFp7tZ6fD7rk97G00";
+const PAYMENT_LINK = "https://buy.stripe.com/aFa5kEgFp7tZ6fD7rk97G00"; // live
 const API_PRICE = "$19/mo";
 
 async function hmacHex(secret, data) {

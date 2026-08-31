@@ -141,8 +141,9 @@ const pageText = h => h
 // provider's referral program, drop the full referral URL in here and it
 // replaces the plain link for that provider.
 const REFERRALS = {
-  // "Vast.ai": "https://cloud.vast.ai/?ref_id=YOUR_ID",
-  // "Runpod":  "https://runpod.io?ref=YOUR_ID",
+  "Vast.ai": "https://cloud.vast.ai/?ref_id=675432",
+  "Runpod": "https://runpod.io?ref=kdye06s9",
+  "Runpod Community": "https://runpod.io?ref=kdye06s9",
 };
 function outLink(url, provider) {
   if (REFERRALS[provider]) return REFERRALS[provider];

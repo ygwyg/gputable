@@ -1838,50 +1838,55 @@ function browseNav(idx) {
     `<span class="copy" aria-hidden="true">${items.replace(/<a /g, '<a tabindex="-1" ')}</span>`;
 }
 
+// One tick of the pipeline. Called by the cron on schedule, and by /v1 as a
+// demand-driven background refresh (fastOnly) when a paid caller finds the
+// data older than the freshness floor — active paid polling keeps the
+// marketplaces near-continuously fresh, at zero cost when idle.
+async function runTick(env, ctx, fastOnly) {
+  const prev = await env.PRICES.get("data", "json").catch(() => null) ?? {};
+  const payload = await scrape(prev, fastOnly ? FAST_TIER : null, env);
+  if (!payload) return;
+  const json = JSON.stringify(payload);
+  await env.PRICES.put("data", json); // freshest — served by the keyed /v1 API
+  if (!fastOnly) {
+    // The free /data.json and the SEO pages serve data_public, which only a
+    // full sweep changes — so only a changed full sweep purges the edge tag.
+    await env.PRICES.put("data_public", json);
+    if (JSON.stringify(payload.data) !== JSON.stringify(prev.data ?? null))
+      await ctx?.cache?.purge({ tags: ["gputable-data"] }).catch(() => {});
+  }
+  const hist = updateHistory(
+    await env.PRICES.get("history", "json").catch(() => null) ?? {}, payload);
+  await env.PRICES.put("history", JSON.stringify(hist));
+  await alertOnRot(env, payload);
+  // Once a day, re-screenshot the homepage as the og:image so link previews
+  // show current prices, not launch day forever.
+  try {
+    const ts = +(await env.PRICES.get("og_ts") ?? 0);
+    if (!fastOnly && RENDER_CREDS && Date.now() - ts > 86400e3) {
+      const shot = await fetch(
+        `https://api.cloudflare.com/client/v4/accounts/${RENDER_CREDS.accountId}/browser-rendering/screenshot`,
+        { method: "POST",
+          headers: { Authorization: `Bearer ${RENDER_CREDS.token}`,
+                     "Content-Type": "application/json" },
+          body: JSON.stringify({ url: "https://gputable.dev/",
+            viewport: { width: 1200, height: 630 },
+            gotoOptions: { waitUntil: "load", timeout: 45000 },
+            waitForTimeout: 5000, screenshotOptions: { type: "png" } }) });
+      if (shot.ok) {
+        await env.PRICES.put("og", await shot.arrayBuffer());
+        await env.PRICES.put("og_ts", String(Date.now()));
+      }
+    }
+  } catch { /* og refresh is cosmetic; never fail the scrape over it */ }
+}
+
 export default {
   async scheduled(event, env, ctx) {
-    ctx.waitUntil((async () => {
-      const fastOnly = new Date(event.scheduledTime).getUTCMinutes() % 15 !== 0;
-      const prev = await env.PRICES.get("data", "json").catch(() => null) ?? {};
-      const payload = await scrape(prev, fastOnly ? FAST_TIER : null, env);
-      if (payload) {
-        const json = JSON.stringify(payload);
-        await env.PRICES.put("data", json); // freshest — served by the keyed /v1 API
-        // The free /data.json tracks the quarter-hour full sweeps; the 5-minute
-        // marketplace ticks are the paid tier's edge.
-        if (!fastOnly) await env.PRICES.put("data_public", json);
-        const hist = updateHistory(
-          await env.PRICES.get("history", "json").catch(() => null) ?? {}, payload);
-        await env.PRICES.put("history", JSON.stringify(hist));
-        // Purge the edge cache only when prices actually moved — a no-change
-        // tick that evicts every warm entry buys nothing and costs hit rate.
-        if (JSON.stringify(payload.data) !== JSON.stringify(prev.data ?? null))
-          await ctx.cache?.purge({ tags: ["gputable-data"] }).catch(() => {});
-        await alertOnRot(env, payload);
-        // Once a day, re-screenshot the homepage as the og:image so link
-        // previews show current prices, not launch day forever.
-        try {
-          const ts = +(await env.PRICES.get("og_ts") ?? 0);
-          if (!fastOnly && RENDER_CREDS && Date.now() - ts > 86400e3) {
-            const shot = await fetch(
-              `https://api.cloudflare.com/client/v4/accounts/${RENDER_CREDS.accountId}/browser-rendering/screenshot`,
-              { method: "POST",
-                headers: { Authorization: `Bearer ${RENDER_CREDS.token}`,
-                           "Content-Type": "application/json" },
-                body: JSON.stringify({ url: "https://gputable.dev/",
-                  viewport: { width: 1200, height: 630 },
-                  gotoOptions: { waitUntil: "load", timeout: 45000 },
-                  waitForTimeout: 5000, screenshotOptions: { type: "png" } }) });
-            if (shot.ok) {
-              await env.PRICES.put("og", await shot.arrayBuffer());
-              await env.PRICES.put("og_ts", String(Date.now()));
-            }
-          }
-        } catch { /* og refresh is cosmetic; never fail the scrape over it */ }
-      }
-    })());
+    const fastOnly = new Date(event.scheduledTime).getUTCMinutes() % 15 !== 0;
+    ctx.waitUntil(runTick(env, ctx, fastOnly));
   },
-  async fetch(req, env) {
+  async fetch(req, env, ctx) {
     const url = new URL(req.url);
     const SITE = "https://gputable.dev";
     // Cookie-less usage events → Workers Analytics Engine. Server-side counts
@@ -1995,7 +2000,8 @@ funded; removing them removes the reason it exists.
 The free feed above updates with every full sweep (15 minutes). Marketplace
 prices (Vast.ai, RunPod, Lium) are re-scraped every 5 minutes, and the keyed
 endpoints /v1/data and /v1/history serve every scrape in real time with no
-edge caching (Authorization: Bearer <key> or ?key=). Keys are self-serve at
+edge caching, and an active poller triggers on-demand marketplace re-scrapes
+(fresh to within ~90 seconds) (Authorization: Bearer <key> or ?key=). Keys are self-serve at
 ${SITE}/key (${API_PRICE}, active immediately after checkout).
 
 ## Notes
@@ -2019,6 +2025,16 @@ ${SITE}/key (${API_PRICE}, active immediately after checkout).
           "content-type": "application/json", "access-control-allow-origin": "*" } });
       track("api_v1", url.pathname);
       const body = await env.PRICES.get(url.pathname === "/v1/data" ? "data" : "history");
+      // Demand-driven freshness: a paid read older than 90s kicks a background
+      // marketplace re-scrape, so an active poller stays near-continuously
+      // fresh. Costs nothing when nobody is calling.
+      if (url.pathname === "/v1/data" && body && ctx) {
+        const m = body.slice(0, 200).match(/"generated_at":"([^"]+)"/);
+        if (m && Date.now() - Date.parse(m[1]) > 90e3) {
+          track("api_refresh", "demand");
+          ctx.waitUntil(runTick(env, ctx, true).catch(() => {}));
+        }
+      }
       return new Response(body ?? "{}", { headers: {
         "content-type": "application/json",
         "access-control-allow-origin": "*",

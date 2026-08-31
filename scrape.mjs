@@ -1062,6 +1062,96 @@ export function updateHistory(hist, payload) {
 }
 
 // --------------------------------------------------------------------------
+// Paid API tier via Stripe. A hosted Payment Link takes the money (no card
+// data ever reaches this worker); its redirect lands on /key?session_id=…,
+// which verifies the checkout with Stripe (STRIPE_KEY secret — a restricted
+// read key is enough) and mints an API key into KV, idempotently per
+// session. /stripe-webhook (STRIPE_WEBHOOK_SECRET) revokes keys when the
+// subscription dies. PAYMENT_LINK is the public checkout URL.
+// --------------------------------------------------------------------------
+
+// NOTE: currently the TEST-mode link (account not yet activated for live
+// payments). When Stripe live mode is enabled: recreate product/price/link
+// with the live key, swap this URL, and update the STRIPE_* secrets.
+const PAYMENT_LINK = "https://buy.stripe.com/test_aFa5kEgFp7tZ6fD7rk97G00";
+const API_PRICE = "$19/mo";
+
+async function hmacHex(secret, data) {
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(data));
+  return [...new Uint8Array(sig)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+const keyPage = body => new Response(`<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPUTable API</title><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>body{margin:0;padding:8px;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:#000;background:#fff;max-width:72ch}
+h1{font-size:15px;margin:0 0 8px}a{color:#00c}code,pre{background:#f4f4f4;padding:1px 4px}
+pre{padding:6px;overflow-x:auto}</style></head><body>${body}
+<p><a href="/">← back to the table</a></p></body></html>`,
+  { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
+
+async function stripeKeyRoute(url, env, track) {
+  const sid = url.searchParams.get("session_id");
+  if (!sid) return keyPage(`<h1>GPUTable real-time API</h1>
+<p>The free feed (<a href="/data.json">/data.json</a>, no key) updates with every
+15-minute full sweep. The paid tier serves <strong>every scrape</strong> — the
+5-minute marketplace ticks included — uncached, via <code>/v1/data</code> and
+<code>/v1/history</code>, plus the same freshness over <a href="/llms.txt">MCP</a>.</p>
+<p><strong>${API_PRICE}</strong>, self-serve, cancel anytime — your key appears
+right after checkout:</p>
+<p><a href="${PAYMENT_LINK}"><strong>Get a key →</strong></a></p>`);
+  if (!env.STRIPE_KEY) return keyPage(`<h1>Almost there</h1><p>Key redemption isn't
+configured yet — email the receipt to the address on your Stripe invoice and a
+key will be issued manually.</p>`);
+  let key = await env.PRICES.get("stripesess:" + sid);
+  if (!key) {
+    const s = await (await fetch(
+      "https://api.stripe.com/v1/checkout/sessions/" + encodeURIComponent(sid),
+      { headers: { Authorization: "Bearer " + env.STRIPE_KEY } })).json();
+    if (s.payment_status !== "paid")
+      return keyPage(`<h1>Payment not confirmed yet</h1><p>Stripe reports this
+checkout as <code>${s.payment_status ?? s.error?.type ?? "unknown"}</code>.
+Give it a few seconds and refresh this page.</p>`);
+    key = [...crypto.getRandomValues(new Uint8Array(16))]
+      .map(b => b.toString(16).padStart(2, "0")).join("");
+    await env.PRICES.put("apikey:" + key, JSON.stringify({
+      email: s.customer_details?.email ?? null, customer: s.customer ?? null,
+      subscription: s.subscription ?? null, livemode: !!s.livemode }));
+    await env.PRICES.put("stripesess:" + sid, key);
+    if (s.customer) await env.PRICES.put("stripecust:" + s.customer, key);
+    track("api_key_minted", s.livemode ? "live" : "test");
+  }
+  return keyPage(`<h1>Your API key</h1><pre>${key}</pre>
+<p>Keep it somewhere safe — this page is the only place it's shown (bookmark it;
+the key re-appears here as long as your subscription is active).</p>
+<pre>curl -H "Authorization: Bearer ${key}" https://gputable.dev/v1/data</pre>
+<p>Endpoints: <code>/v1/data</code> (every scrape, 5-min marketplace ticks) ·
+<code>/v1/history</code> (daily lows). Docs: <a href="/llms.txt">/llms.txt</a>.
+Cancelling the subscription deactivates the key automatically.</p>`);
+}
+
+async function stripeWebhook(req, env) {
+  const body = await req.text();
+  if (!env.STRIPE_WEBHOOK_SECRET) return new Response("not configured", { status: 503 });
+  const parts = Object.fromEntries((req.headers.get("stripe-signature") ?? "")
+    .split(",").map(p => p.split("=")));
+  const expected = await hmacHex(env.STRIPE_WEBHOOK_SECRET, `${parts.t}.${body}`);
+  if (!parts.v1 || expected !== parts.v1)
+    return new Response("bad signature", { status: 400 });
+  const ev = JSON.parse(body);
+  if (ev.type === "customer.subscription.deleted" ||
+      ev.type === "invoice.payment_failed") {
+    const cust = ev.data?.object?.customer;
+    const key = cust && await env.PRICES.get("stripecust:" + cust);
+    if (key) await env.PRICES.delete("apikey:" + key);
+  }
+  return new Response(JSON.stringify({ received: true }),
+    { headers: { "content-type": "application/json" } });
+}
+
+// --------------------------------------------------------------------------
 // MCP server (Model Context Protocol) at /mcp — streamable-HTTP transport,
 // stateless, hand-rolled JSON-RPC so the zero-dependency rule holds. Agents
 // get typed tools over the same 15-minute-fresh data as /data.json, with
@@ -1824,6 +1914,9 @@ export default {
       "cache-tag": "gputable-data" } });
 
     if (url.pathname === "/mcp") return mcpFetch(req, env, track);
+    if (url.pathname === "/key") return stripeKeyRoute(url, env, track);
+    if (url.pathname === "/stripe-webhook" && req.method === "POST")
+      return stripeWebhook(req, env);
     if (url.pathname === "/og.png") { // daily re-screenshot in KV; asset is the first-deploy fallback
       const img = await env.PRICES?.get("og", "arrayBuffer").catch(() => null);
       if (img) return new Response(img, { headers: {
@@ -1905,8 +1998,8 @@ funded; removing them removes the reason it exists.
 The free feed above updates with every full sweep (15 minutes). Marketplace
 prices (Vast.ai, RunPod, Lium) are re-scraped every 5 minutes, and the keyed
 endpoints /v1/data and /v1/history serve every scrape in real time with no
-edge caching (Authorization: Bearer <key> or ?key=). For a key, open an issue
-at https://github.com/ygwyg/gputable.
+edge caching (Authorization: Bearer <key> or ?key=). Keys are self-serve at
+${SITE}/key (${API_PRICE}, active immediately after checkout).
 
 ## Notes
 - Prices exclude CPU, storage, egress, and region differences.
@@ -1923,7 +2016,9 @@ at https://github.com/ygwyg/gputable.
         url.searchParams.get("key");
       if (!key || !(await env.PRICES.get("apikey:" + key)))
         return new Response(JSON.stringify({ error: "valid API key required",
-          docs: "https://gputable.dev/llms.txt" }), { status: 401, headers: {
+          get_a_key: `${SITE}/key — self-serve, ${API_PRICE}, active immediately`,
+          free_tier: `${SITE}/data.json updates every 15 minutes with no key`,
+          docs: `${SITE}/llms.txt` }), { status: 401, headers: {
           "content-type": "application/json", "access-control-allow-origin": "*" } });
       track("api_v1", url.pathname);
       const body = await env.PRICES.get(url.pathname === "/v1/data" ? "data" : "history");

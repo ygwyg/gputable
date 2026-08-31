@@ -437,16 +437,39 @@ function syncURL() {
   history.replaceState(null, "", qs ? "?" + qs : location.pathname);
 }
 
+// Cookie-less usage beacons — event name and a short detail string, nothing
+// identifying. Powers the "what do people actually use" question.
+function track(e, d) {
+  try { navigator.sendBeacon("/t", JSON.stringify({ e: e, d: String(d ?? "").slice(0, 60) })); }
+  catch (err) {}
+}
+track("pageview", document.referrer ? new URL(document.referrer).hostname : "direct");
+$("body").addEventListener("click", e => {
+  const a = e.target.closest("a");
+  const tr = a && a.closest("tr");
+  if (tr && a.textContent === "rent")
+    track("rent_click", tr.cells[0].textContent + "|" + tr.cells[4].textContent);
+});
+let trackTimer;
+const trackFilter = id => {
+  clearTimeout(trackTimer);
+  trackTimer = setTimeout(() => {
+    const el = $(id);
+    track("filter", id + "=" + (el.type === "checkbox" ? el.checked : el.value));
+  }, 1200);
+};
+
 $("head").addEventListener("click", e => {
   const th = e.target.closest("th");
   if (!th) return;
   const k = th.dataset.k;
   if (k === state.sortKey) state.sortAsc = !state.sortAsc;
   else { state.sortKey = k; state.sortAsc = true; }
+  track("sort", k + (state.sortAsc ? " asc" : " desc"));
   render();
 });
 ["q","gpu","provider","type","vram","stock","single","calcn","calch"]
-  .forEach(id => $(id).addEventListener("input", render));
+  .forEach(id => $(id).addEventListener("input", () => { render(); trackFilter(id); }));
 $("ftoggle").addEventListener("click", () => {
   const open = $("controls").classList.toggle("open");
   $("ftoggle").setAttribute("aria-expanded", open);

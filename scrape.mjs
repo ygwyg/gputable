@@ -1147,7 +1147,7 @@ async function mcpCallTool(env, name, args = {}) {
     rows: rows.slice(0, limit), attribution: MCP_ATTRIBUTION };
 }
 
-async function mcpFetch(req, env) {
+async function mcpFetch(req, env, track = () => {}) {
   const cors = {
     "access-control-allow-origin": "*",
     "access-control-allow-methods": "POST, OPTIONS",
@@ -1174,6 +1174,7 @@ async function mcpFetch(req, env) {
     else if (msg.method === "ping") result = {};
     else if (msg.method === "tools/list") result = { tools: MCP_TOOLS };
     else if (msg.method === "tools/call") {
+      track("mcp", msg.params?.name ?? "");
       if (!MCP_TOOLS.some(t => t.name === msg.params?.name))
         throw Object.assign(new Error(`unknown tool: ${msg.params?.name}`), { code: -32602 });
       const out = await mcpCallTool(env, msg.params.name, msg.params.arguments ?? {});
@@ -1796,6 +1797,18 @@ export default {
   async fetch(req, env) {
     const url = new URL(req.url);
     const SITE = "https://gputable.dev";
+    // Cookie-less usage events → Workers Analytics Engine. Server-side counts
+    // for cached GETs only see cache misses; the client beacon (/t) and the
+    // POST/no-store endpoints (/mcp, /v1) are exact.
+    const track = (event, detail) => { try {
+      env.TRACK?.writeDataPoint({ blobs: [event, String(detail ?? "").slice(0, 96),
+        req.cf?.country ?? ""], doubles: [1], indexes: [event] });
+    } catch { /* analytics must never break serving */ } };
+    if (url.pathname === "/t" && req.method === "POST") {
+      const b = await req.json().catch(() => null);
+      if (b && ["pageview", "rent_click", "filter", "sort"].includes(b.e)) track(b.e, b.d);
+      return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*" } });
+    }
     const text = (body, type = "text/plain") =>
       new Response(body, { headers: { "content-type": type, "cache-control": "public, max-age=3600" } });
     // The scraped rows, shared by every server-rendered SEO route below.
@@ -1810,7 +1823,7 @@ export default {
       "cache-control": "public, max-age=120, s-maxage=900, stale-while-revalidate=3600",
       "cache-tag": "gputable-data" } });
 
-    if (url.pathname === "/mcp") return mcpFetch(req, env);
+    if (url.pathname === "/mcp") return mcpFetch(req, env, track);
     if (url.pathname === "/og.png") { // daily re-screenshot in KV; asset is the first-deploy fallback
       const img = await env.PRICES?.get("og", "arrayBuffer").catch(() => null);
       if (img) return new Response(img, { headers: {
@@ -1912,6 +1925,7 @@ at https://github.com/ygwyg/gputable.
         return new Response(JSON.stringify({ error: "valid API key required",
           docs: "https://gputable.dev/llms.txt" }), { status: 401, headers: {
           "content-type": "application/json", "access-control-allow-origin": "*" } });
+      track("api_v1", url.pathname);
       const body = await env.PRICES.get(url.pathname === "/v1/data" ? "data" : "history");
       return new Response(body ?? "{}", { headers: {
         "content-type": "application/json",

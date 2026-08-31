@@ -14,6 +14,10 @@
   // the live marketplaces (Vast, RunPod, Lium).
   "triggers": { "crons": ["*/5 * * * *"] },
 
+  "analytics_engine_datasets": [
+    { "binding": "TRACK", "dataset": "gputable_events" } // cookie-less usage events
+  ],
+
   "kv_namespaces": [
     { "binding": "PRICES", "id": "YOUR_KV_NAMESPACE_ID" } // wrangler kv namespace create PRICES
   ],

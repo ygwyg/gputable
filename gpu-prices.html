@@ -119,7 +119,7 @@ Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.
   <label class="adv">min VRAM <input type="number" id="vram" min="0" step="8" placeholder="GB"></label>
   <label class="adv"><input type="checkbox" id="stock"> in stock</label>
   <label class="adv"><input type="checkbox" id="single"> single GPU</label>
-  <label class="adv">est <input type="number" id="calcn" min="1" value="1"> GPU × <input type="number" id="calch" min="1" value="730"> h</label>
+  <label class="adv" title="Feeds the estimate column: $/GPU-hr × GPUs × hours. Defaults to 730 h ≈ one month.">est <input type="number" id="calcn" min="1" value="1"> GPU × <input type="number" id="calch" min="1" value="730"> h</label>
   <button id="reset" class="adv">Reset</button>
   <span id="count"></span>
 </div>
@@ -255,25 +255,30 @@ const SEED = [
 ];
 
 const COLS = [
-  { key: "gpu",                label: "GPU" },
-  { key: "vram_gb",            label: "VRAM", num: 1, fmt: v => v == null ? "" : v + "G" },
-  { key: "bw",                 label: "GB/s", num: 1, fmt: v => v == null ? "" : v },
-  { key: "architecture",       label: "Arch" },
-  { key: "provider",           label: "Provider", raw: 1, fmt: (v, r) => r.stale
+  { key: "gpu",                label: "GPU", title: "GPU model — provider naming normalized to one canonical name" },
+  { key: "vram_gb",            label: "VRAM", num: 1, title: "Memory per GPU", fmt: v => v == null ? "" : v + "G" },
+  { key: "bw",                 label: "GB/s", num: 1, title: "Memory bandwidth per GPU, vendor datasheet", fmt: v => v == null ? "" : v },
+  { key: "architecture",       label: "Arch", title: "Architecture generation — filter by tier with e.g. >=hopper" },
+  { key: "provider",           label: "Provider", raw: 1,
+      title: "Where this offer is rentable; * = carried forward after a failed scrape",
+      fmt: (v, r) => r.stale
       ? '<span class="dim" title="carried from a previous run; last fetch failed">' + esc(v) + " *</span>"
       : esc(v) },
-  { key: "gpu_count",          label: "N", num: 1 },
-  { key: "price_per_hour_usd", label: "$/GPU-hr", num: 1, fmt: v => v == null ? "" : "$" + (+v).toFixed(2) },
-  { key: "per_pflop",          label: "$/PFLOP-hr", num: 1, fmt: v => v == null ? "" : v.toFixed(2) },
-  { key: "delta7",             label: "Δ7d", num: 1, fmt: v => v == null
+  { key: "gpu_count",          label: "N", num: 1, title: "GPUs in the instance this price came from — the rate is still per single GPU" },
+  { key: "price_per_hour_usd", label: "$/GPU-hr", num: 1, title: "USD per single GPU per hour", fmt: v => v == null ? "" : "$" + (+v).toFixed(2) },
+  { key: "per_pflop",          label: "$/PFLOP-hr", num: 1, title: "Price per petaFLOP-hour of dense FP16 compute (datasheet peak; Blackwell numbers approximate)", fmt: v => v == null ? "" : v.toFixed(2) },
+  { key: "delta7",             label: "Δ7d", num: 1,
+      title: "Cheapest price for this GPU + pricing type vs ~7 days ago",
+      fmt: v => v == null
       ? '<span class="dim">—</span>'
       : '<span class="' + (v < -0.5 ? "yes" : v > 0.5 ? "no" : "dim") + '">' +
         (v > 0 ? "+" : "") + v.toFixed(0) + "%</span>" },
-  { key: "est",                label: "Est. $", num: 1, fmt: v => v == null ? ""
+  // label + title are rewritten each render from the "est N GPU × M h" inputs
+  { key: "est",                label: "$/mo est.", num: 1, title: "", fmt: v => v == null ? ""
       : "$" + (v >= 100 ? Math.round(v).toLocaleString() : v.toFixed(2)) },
-  { key: "pricing_type",       label: "Type" },
-  { key: "commitment_months",  label: "Commit", num: 1, fmt: v => v == null ? "\u2014" : v + "mo" },
-  { key: "available",          label: "Stock", raw: 1, fmt: v =>
+  { key: "pricing_type",       label: "Type", title: "on_demand = pay-as-you-go \u00b7 spot = can be reclaimed by the provider \u00b7 reserved = needs a commitment" },
+  { key: "commitment_months",  label: "Commit", num: 1, title: "Minimum commitment in months", fmt: v => v == null ? "\u2014" : v + "mo" },
+  { key: "available",          label: "Stock", raw: 1, title: "In stock at the last scrape, where the provider reports it", fmt: v =>
       v === true  ? '<span class="yes">yes</span>' :
       v === false ? '<span class="no">no</span>'   : '<span class="dim">\u2014</span>' },
   { key: "source_url",         label: "", raw: 1, fmt: u => u ? '<a href="'+esc(u)+'" target="_blank" rel="noopener">rent</a>' : "" },
@@ -362,6 +367,13 @@ function render() {
   const stockOnly = $("stock").checked, singleOnly = $("single").checked;
   const calcN = Math.max(1, +$("calcn").value || 1), calcH = Math.max(1, +$("calch").value || 1);
 
+  // The estimate column names itself after the inputs so it needs no manual.
+  const estCol = COLS.find(c => c.key === "est");
+  estCol.label = (calcN === 1 && calcH === 730) ? "$/mo est." : calcN + "×" + calcH + "h $";
+  estCol.title = "$/GPU-hr × " + calcN + " GPU" + (calcN > 1 ? "s" : "") + " × " + calcH +
+    " hours — change the numbers in the “est” inputs above" +
+    (calcN === 1 && calcH === 730 ? " (730 h ≈ one month)" : "");
+
   const rows = state.rows.filter(r =>
     (!gpu  || r.gpu === gpu) &&
     (!prov || r.provider === prov) &&
@@ -387,7 +399,8 @@ function render() {
 
   $("head").innerHTML = COLS.map(c => {
     const on = c.key === state.sortKey;
-    return '<th data-k="' + c.key + '"' + (on ? ' class="sorted"' : "") + ">" + esc(c.label) +
+    return '<th data-k="' + c.key + '"' + (on ? ' class="sorted"' : "") +
+           (c.title ? ' title="' + esc(c.title) + '"' : "") + ">" + esc(c.label) +
            (on ? ' <span class="arrow">' + (state.sortAsc ? "\u25b2" : "\u25bc") + "</span>" : "") + "</th>";
   }).join("");
 

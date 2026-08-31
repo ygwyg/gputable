@@ -1091,6 +1091,7 @@ pre{padding:6px;overflow-x:auto}</style></head><body>${body}
 
 async function stripeKeyRoute(url, env, track) {
   const sid = url.searchParams.get("session_id");
+  track("key_page", sid ? "redeem" : "visit");
   if (!sid) return keyPage(`<h1>GPUTable real-time API</h1>
 <p>The free feed (<a href="/data.json">/data.json</a>, no key) updates with every
 15-minute full sweep. The paid tier serves <strong>every scrape</strong> — the
@@ -2017,12 +2018,14 @@ ${SITE}/key (${API_PRICE}, active immediately after checkout).
     if (url.pathname === "/v1/data" || url.pathname === "/v1/history") {
       const key = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "") ??
         url.searchParams.get("key");
-      if (!key || !(await env.PRICES.get("apikey:" + key)))
+      if (!key || !(await env.PRICES.get("apikey:" + key))) {
+        track("api_401", url.pathname); // keyless pokes = top of the paid funnel
         return new Response(JSON.stringify({ error: "valid API key required",
           get_a_key: `${SITE}/key — self-serve, ${API_PRICE}, active immediately`,
           free_tier: `${SITE}/data.json updates every 15 minutes with no key`,
           docs: `${SITE}/llms.txt` }), { status: 401, headers: {
           "content-type": "application/json", "access-control-allow-origin": "*" } });
+      }
       track("api_v1", url.pathname);
       const body = await env.PRICES.get(url.pathname === "/v1/data" ? "data" : "history");
       // Demand-driven freshness: a paid read older than 90s kicks a background

@@ -355,15 +355,27 @@ async function azure() {
     ["H100", "H200", "B200", "A100", "MI300", "GB200"]
       .map(g => `contains(armSkuName,'${g}')`).join(" or ") + ")";
   let url = "https://prices.azure.com/api/retail/prices?$filter=" + encodeURIComponent(filter);
-  const best = new Map();
+  const prices = new Map(); // SKU|type -> all regional prices
   for (let page = 0; url && page < 25; page++) {
     const d = await getJSON(url);
     for (const it of d.Items ?? []) {
       if (it.productName?.includes("Windows") || it.meterName?.includes("Low Priority")) continue;
+      if (/^usgov|^usdod|^china/.test(it.armRegionName ?? "")) continue; // not publicly purchasable
+      if (!(it.retailPrice > 0)) continue;
       const k = `${it.armSkuName}|${it.meterName?.includes("Spot") ? "spot" : "on_demand"}`;
-      if (!best.has(k) || it.retailPrice < best.get(k)) best.set(k, it.retailPrice);
+      (prices.get(k) ?? prices.set(k, []).get(k)).push(it.retailPrice);
     }
     url = d.NextPageLink;
+  }
+  // Cheapest *plausible* region: Azure's feed carries placeholder rows (e.g.
+  // ukwest listing an H100 VM at $0.01), so reject anything under 20% of that
+  // SKU's median price before taking the minimum.
+  const best = new Map();
+  for (const [k, list] of prices) {
+    const sorted = [...list].sort((a, b) => a - b);
+    const median = sorted[Math.floor(sorted.length / 2)];
+    const sane = sorted.filter(p => p >= median * 0.2);
+    if (sane.length) best.set(k, sane[0]);
   }
   return [...best].map(([k, price]) => {
     const [sku, ptype] = k.split("|");

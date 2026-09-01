@@ -2044,6 +2044,12 @@ ${SITE}/key (${API_PRICE}, active immediately after checkout).
         "cache-control": "private, no-store" } });
     }
     if (url.pathname === "/data.json" || url.pathname === "/history.json") {
+      // Coarse consumer visibility for the free feed. Edge cache hits never
+      // reach the worker, so this is a lower bound — but scripts and agents
+      // (curl, python-requests, Go-http-client...) show up by UA family.
+      const ua = req.headers.get("user-agent") ?? "none";
+      track("api_free", url.pathname + "|" +
+        (/mozilla/i.test(ua) ? "browser" : ua.split(/[\/ ]/)[0].slice(0, 24)));
       const body = await env.PRICES?.get(url.pathname === "/data.json" ? "data" : "history")
         ?? await env.PRICES?.get("data"); // pre-migration fallback
       // Browser TTL short (max-age) so pages and polls pick up fresh prices

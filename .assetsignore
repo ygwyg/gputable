@@ -14,3 +14,5 @@ test
 x-posts-architecture.md
 agents.md
 cloudflare-starter-checklist.md
+stats.mjs
+stats.html

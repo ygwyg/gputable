@@ -710,8 +710,9 @@ async function voltagepark() {
 // the live pod list: "4 X NVIDIA RTX A6000 DinD ... $1.68 /HOUR" (pod total).
 async function lium() {
   const t = pageText(await fetchRetry("https://lium.io/", { ua: UA_BROWSER }));
-  const rows = [...t.matchAll(/(\d+)\s*X\s*NVIDIA\s+([\w ]+?)\s+DinD[^$]{0,140}?\$([\d.]+)\s*\/\s*HOUR/gi)]
-    .map(m => row(m[2], "Lium.io", parseFloat(m[3]) / +m[1],
+  // Pod rows: "2 X NVIDIA L40 $0.66 /HOUR $0.33 /GPU" — per-GPU price given.
+  const rows = [...t.matchAll(/(\d+)\s*X\s*NVIDIA\s+([\w ]+?)\s+\$([\d.]+)\s*\/\s*HOUR\s+\$([\d.]+)\s*\/\s*GPU/gi)]
+    .map(m => row(m[2], "Lium.io", m[4],
       { count: +m[1], avail: true, url: "https://lium.io/" }));
   if (!rows.some(Boolean)) throw new Error("parsed zero rows (layout changed?)");
   return rows;
@@ -1095,11 +1096,70 @@ async function hmacHex(secret, data) {
 const keyPage = body => new Response(`<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GPUTable API</title><link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<style>body{margin:0;padding:8px;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:#000;background:#fff;max-width:72ch}
-h1{font-size:15px;margin:0 0 8px}a{color:#00c}code,pre{background:#f4f4f4;padding:1px 4px}
-pre{padding:6px;overflow-x:auto}</style></head><body>${body}
+<style>body{margin:0;padding:8px;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:#000;background:#fff;max-width:100ch}
+h1{font-size:15px;margin:0 0 8px}h2{font-size:13px;margin:14px 0 3px}a{color:#00c}code,pre{background:#f4f4f4;padding:1px 4px}
+pre{padding:6px;overflow-x:auto}
+table{border-collapse:collapse;margin:2px 0}th,td{border:1px solid #ddd;padding:1px 6px;text-align:left;font-size:12px}
+th{background:#eee}td.n{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#060}.bad{color:#b00}.dim{color:#888}</style></head><body>${body}
 <p><a href="/">← back to the table</a></p></body></html>`,
   { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
+
+// /stats?key=<any valid API key> — the owner's daily-metrics dashboard.
+// Provider health comes from KV; usage metrics come from Workers Analytics
+// Engine via the SQL API, which needs the ANALYTICS_TOKEN secret (an API
+// token with Account Analytics: Read). Without it, the page still renders
+// health and explains the one missing step.
+async function statsPage(url, env) {
+  const key = url.searchParams.get("key");
+  if (!key || !(await env.PRICES.get("apikey:" + key)))
+    return keyPage(`<h1>Stats</h1><p>Owner dashboard. Append <code>?key=&lt;a valid API key&gt;</code>.</p>`);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const sql = async q => {
+    if (!env.ANALYTICS_TOKEN || !env.CF_ACCOUNT_ID) return null;
+    const r = await fetch(
+      `https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/analytics_engine/sql`,
+      { method: "POST", headers: { Authorization: `Bearer ${env.ANALYTICS_TOKEN}` }, body: q })
+      .catch(() => null);
+    return r?.ok ? (await r.json()).data ?? [] : null;
+  };
+  const tbl = (title, rows, cols) => !rows ? "" : `<h2>${esc(title)}</h2><table><tr>${
+    cols.map(c => `<th>${esc(c)}</th>`).join("")}</tr>${
+    rows.map(r => `<tr>${cols.map(c => {
+      const v = r[c];
+      return `<td${/^n$|count/.test(c) ? ' class="n"' : ""}>${esc(v)}</td>`;
+    }).join("")}</tr>`).join("")}</table>`;
+
+  const [daily, refs, countries, clicks, apiFree, funnel, filters] = await Promise.all([
+    sql("SELECT toStartOfInterval(timestamp, INTERVAL '1' DAY) AS day, blob1 AS event, SUM(_sample_interval) AS n FROM gputable_events WHERE blob1 IN ('pageview','rent_click') AND timestamp > NOW() - INTERVAL '14' DAY GROUP BY day, event ORDER BY day DESC, event"),
+    sql("SELECT blob2 AS referrer, SUM(_sample_interval) AS n FROM gputable_events WHERE blob1='pageview' AND timestamp > NOW() - INTERVAL '7' DAY GROUP BY referrer ORDER BY n DESC LIMIT 12"),
+    sql("SELECT blob3 AS country, SUM(_sample_interval) AS n FROM gputable_events WHERE blob1='pageview' AND timestamp > NOW() - INTERVAL '7' DAY GROUP BY country ORDER BY n DESC LIMIT 10"),
+    sql("SELECT blob2 AS gpu_provider, SUM(_sample_interval) AS n FROM gputable_events WHERE blob1='rent_click' AND timestamp > NOW() - INTERVAL '7' DAY GROUP BY gpu_provider ORDER BY n DESC LIMIT 15"),
+    sql("SELECT blob2 AS consumer, SUM(_sample_interval) AS n FROM gputable_events WHERE blob1='api_free' AND timestamp > NOW() - INTERVAL '7' DAY GROUP BY consumer ORDER BY n DESC LIMIT 15"),
+    sql("SELECT blob1 AS event, blob2 AS detail, SUM(_sample_interval) AS n FROM gputable_events WHERE blob1 IN ('mcp','api_v1','api_401','key_page','api_key_minted','api_refresh') AND timestamp > NOW() - INTERVAL '7' DAY GROUP BY event, detail ORDER BY n DESC LIMIT 15"),
+    sql("SELECT blob2 AS filter, SUM(_sample_interval) AS n FROM gputable_events WHERE blob1 IN ('filter','sort') AND timestamp > NOW() - INTERVAL '7' DAY GROUP BY filter ORDER BY n DESC LIMIT 12"),
+  ]);
+
+  const data = await env.PRICES.get("data", "json").catch(() => null);
+  const health = Object.entries(data?.providers ?? {}).map(([k, v]) =>
+    `<tr><td>${esc(k)}</td><td class="${v.ok ? "ok" : "bad"}">${v.ok ? "ok" : "FAILED"}</td>` +
+    `<td>${esc((v.fetched_at ?? "").slice(0, 16))}</td><td class="dim">${esc(String(v.error ?? "").slice(0, 70))}</td></tr>`).join("");
+
+  return keyPage(`<h1>GPUTable stats</h1>
+<p class="dim">Data: ${esc(data?.generated_at ?? "?")} · ${data?.data?.length ?? "?"} rows · refresh this page any time.</p>
+${daily === null ? `<p><strong>Usage metrics need one setup step:</strong> create an API token
+with <em>Account Analytics: Read</em>, then <code>npx wrangler secret put ANALYTICS_TOKEN</code>.
+Provider health below works regardless.</p>` : ""}
+${tbl("Daily pageviews & rent clicks (14d)", daily, ["day", "event", "n"])}
+${tbl("Referrers (7d)", refs, ["referrer", "n"])}
+${tbl("Countries (7d)", countries, ["country", "n"])}
+${tbl("Rent clicks by GPU|provider (7d)", clicks, ["gpu_provider", "n"])}
+${tbl("Free API consumers by UA (7d)", apiFree, ["consumer", "n"])}
+${tbl("API & paid funnel (7d)", funnel, ["event", "detail", "n"])}
+${tbl("Filters & sorts used (7d)", filters, ["filter", "n"])}
+<h2>Provider health (live)</h2><table><tr><th>provider</th><th>status</th><th>last good</th><th>error</th></tr>${health}</table>`);
+}
 
 async function stripeKeyRoute(url, env, track) {
   const sid = url.searchParams.get("session_id");
@@ -1929,6 +1989,7 @@ export default {
 
     if (url.pathname === "/mcp") return mcpFetch(req, env, track);
     if (url.pathname === "/key") return stripeKeyRoute(url, env, track);
+    if (url.pathname === "/stats") return statsPage(url, env);
     if (url.pathname === "/stripe-webhook" && req.method === "POST")
       return stripeWebhook(req, env);
     if (url.pathname === "/og.png") { // daily re-screenshot in KV; asset is the first-deploy fallback

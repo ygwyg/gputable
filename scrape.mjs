@@ -835,6 +835,22 @@ async function gcp() {
   return rows;
 }
 
+// Akash, the decentralized compute marketplace, publishes an official
+// aggregate price feed: USD min/avg/max per GPU model with live availability
+// and the interface (SXM4/PCIe) for disambiguation. We list the cheapest
+// current bid. Settlement is in AKT under the hood, but the feed itself is
+// USD-denominated; marketplace tier, same caveats as Vast/Salad.
+async function akash() {
+  const d = await getJSON("https://console-api.akash.network/v1/gpu-prices");
+  const rows = (d.models ?? []).map(m => row(
+    `${m.vendor ?? ""} ${m.model ?? ""} ${m.interface ?? ""}`, "Akash", m.price?.min, {
+      vram: +(String(m.ram ?? "").match(/(\d+)/)?.[1] ?? 0) || null,
+      avail: (m.availability?.available ?? 0) > 0,
+      url: "https://console.akash.network/" }));
+  if (!rows.some(Boolean)) throw new Error("no models parsed (API changed?)");
+  return rows;
+}
+
 // Prime Intellect (needs the PRIME_API_KEY secret; read-only). A marketplace
 // that resells capacity from Lambda, Nebius, Massed Compute and even Vultr —
 // prices are what you'd actually pay booking through PI, quoted per GPU-hour.
@@ -971,6 +987,7 @@ export const PROVIDERS = {
   // catalog is an 8MB pull whose list prices move rarely.
   gcp:       { names: ["Google Cloud"], fn: gcp, render: true },
   primeintellect: { names: ["Prime Intellect"], fn: primeintellect },
+  akash:     { names: ["Akash"], fn: akash },
 };
 
 const RENDER_TTL_MS = 6 * 3600e3; // rendered pages are re-fetched at most this often
@@ -1361,7 +1378,7 @@ const TYPE_LABEL = { on_demand: "on-demand", spot: "spot", reserved: "reserved" 
 // page footer has always said so, so the comparisons on these pages have to
 // honour it. Quoting a provider's dedicated rate against a Vast.ai spot
 // listing produces a true number and a worthless one.
-const MARKETPLACE = new Set(["Vast.ai", "Salad Cloud", "Runpod Community", "Lium.io"]);
+const MARKETPLACE = new Set(["Vast.ai", "Salad Cloud", "Runpod Community", "Lium.io", "Akash"]);
 const tierOf = p => MARKETPLACE.has(p) ? "marketplace" : "dedicated";
 const TIER_NOTE = {            // noun phrase: "...is peer/marketplace capacity"
   marketplace: "peer/marketplace capacity",

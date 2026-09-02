@@ -835,6 +835,22 @@ async function gcp() {
   return rows;
 }
 
+// Octa (octa.space; API on api.octa.computer) — a token-based peer compute
+// network. Their /network feed lists per-model USD average prices and live
+// unit counts, matching what their own homepage renders ("From $0.12 per
+// hour"). Prices run below datacenter economics because node operators earn
+// token emissions; strictly marketplace tier.
+async function octa() {
+  const d = await getJSON("https://api.octa.computer/network", { ua: UA_BROWSER });
+  const rows = Object.entries(d.marketplace?.gpus ?? {}).map(([name, g]) =>
+    row(name, "Octa", g.avg_price, {
+      vram: +(name.match(/(\d+)\s*GB/)?.[1] ?? 0) || null, // "A100-SXM4-40GB" must not pass as the 80GB card
+      avail: (g.count ?? 0) > 0,
+      url: "https://octa.space/" }));
+  if (!rows.some(Boolean)) throw new Error("no marketplace GPUs parsed (API changed?)");
+  return rows;
+}
+
 // Akash, the decentralized compute marketplace, publishes an official
 // aggregate price feed: USD min/avg/max per GPU model with live availability
 // and the interface (SXM4/PCIe) for disambiguation. We list the cheapest
@@ -988,6 +1004,7 @@ export const PROVIDERS = {
   gcp:       { names: ["Google Cloud"], fn: gcp, render: true },
   primeintellect: { names: ["Prime Intellect"], fn: primeintellect },
   akash:     { names: ["Akash"], fn: akash },
+  octa:      { names: ["Octa"], fn: octa },
 };
 
 const RENDER_TTL_MS = 6 * 3600e3; // rendered pages are re-fetched at most this often
@@ -1378,7 +1395,7 @@ const TYPE_LABEL = { on_demand: "on-demand", spot: "spot", reserved: "reserved" 
 // page footer has always said so, so the comparisons on these pages have to
 // honour it. Quoting a provider's dedicated rate against a Vast.ai spot
 // listing produces a true number and a worthless one.
-const MARKETPLACE = new Set(["Vast.ai", "Salad Cloud", "Runpod Community", "Lium.io", "Akash"]);
+const MARKETPLACE = new Set(["Vast.ai", "Salad Cloud", "Runpod Community", "Lium.io", "Akash", "Octa"]);
 const tierOf = p => MARKETPLACE.has(p) ? "marketplace" : "dedicated";
 const TIER_NOTE = {            // noun phrase: "...is peer/marketplace capacity"
   marketplace: "peer/marketplace capacity",
@@ -1530,7 +1547,10 @@ function gpuPage(idx, entry) {
   const spread = (byType.on_demand && hi && byType.on_demand.price_per_hour_usd > 0)
     ? hi.price_per_hour_usd / byType.on_demand.price_per_hour_usd : null;
 
-  const title = clamp(`${name} GPU Price — from ${money(best?.price_per_hour_usd)}/hr ` +
+  // Title quotes the cheapest *dedicated* rate — a token-subsidized $0.12
+  // marketplace H100 is true but reads as clickbait in a search result.
+  const bestDed = live.find(r => tierOf(r.provider) === "dedicated") ?? best;
+  const title = clamp(`${name} GPU Price — from ${money(bestDed?.price_per_hour_usd)}/hr ` +
     `across ${providers.size} clouds`, 58) + " | GPUTable";
   const description = clamp(
     `${name} cloud prices from ${providers.size} providers: cheapest ` +

@@ -134,7 +134,8 @@ Raw data: <a href="/data.json">data.json</a> · <a href="/history.json">history.
   Per-GPU hourly rates. Excludes CPU, storage, egress, region, and minimum commitments.
   Spot rates can be reclaimed at any time; community/marketplace tiers (Vast, Salad) are not
   comparable to dedicated capacity. Confirm on the provider's page before renting.
-  Δ7d compares today's cheapest rate for a GPU + pricing type against ~7 days ago.
+  Δ7d compares each listing's rate against its own rate ~7 days ago ("—" = no
+  history yet for that listing).
   Marketplace prices refresh every 5 minutes; every source at least every 15.
   Free JSON feed, no key required — use it from any script or app:
   <a href="/data.json">data.json</a> (current prices) ·
@@ -268,7 +269,7 @@ const COLS = [
   { key: "price_per_hour_usd", label: "$/GPU-hr", num: 1, title: "USD per single GPU per hour", fmt: v => v == null ? "" : "$" + (+v).toFixed(2) },
   { key: "per_pflop",          label: "$/PFLOP-hr", num: 1, title: "Price per petaFLOP-hour of dense FP16 compute (datasheet peak; Blackwell numbers approximate)", fmt: v => v == null ? "" : v.toFixed(2) },
   { key: "delta7",             label: "Δ7d", num: 1,
-      title: "Cheapest price for this GPU + pricing type vs ~7 days ago",
+      title: "This listing's price vs its own price ~7 days ago; — = no history for this listing yet",
       fmt: v => v == null
       ? '<span class="dim">—</span>'
       : '<span class="' + (v < -0.5 ? "yes" : v > 0.5 ? "no" : "dim") + '">' +
@@ -288,8 +289,11 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">"
 const $ = id => document.getElementById(id);
 const state = { rows: [], sortKey: "price_per_hour_usd", sortAsc: true };
 
-// Δ7d: today's cheapest rate per (GPU, pricing type) vs ~7 days ago, from
-// history.json. Null until at least two days of history exist.
+// Δ7d from history.json. Preferred: per-listing — this row's own price vs
+// ~7 days ago, from the per-day "_rows" maps ("gpu|provider|type" → day min).
+// Until a ≥7-day-old day carries _rows, fall back to the old per-GPU floor
+// delta (cheapest across providers), which is the same value for every row
+// of a GPU. Null until at least two days of history exist.
 let HIST = null;
 function histDeltas(h) {
   const days = Object.keys(h).sort();
@@ -299,12 +303,22 @@ function histDeltas(h) {
   let base = days[0];
   for (const d of days) if (d <= cutoff) base = d;
   if (base === latest) base = days[0];
-  const out = {};
-  for (const gpu in h[latest])
+  const out = { rows: null, floor: {} };
+  for (const gpu in h[latest]) {
+    if (gpu === "_rows") continue;
     for (const pt in h[latest][gpu]) {
       const b = h[base] && h[base][gpu] && h[base][gpu][pt];
-      if (b) (out[gpu] = out[gpu] || {})[pt] = (h[latest][gpu][pt] - b) / b * 100;
+      if (b) (out.floor[gpu] = out.floor[gpu] || {})[pt] = (h[latest][gpu][pt] - b) / b * 100;
     }
+  }
+  // Per-listing deltas only once a day old enough to span the full window has
+  // _rows — a shorter window would silently mislabel the column.
+  const rbase = h[base] && h[base]._rows && base !== latest ? h[base]._rows : null;
+  const rnow = h[latest] && h[latest]._rows;
+  if (rbase && rnow) {
+    out.rows = {};
+    for (const k in rnow) if (rbase[k]) out.rows[k] = (rnow[k] - rbase[k]) / rbase[k] * 100;
+  }
   return out;
 }
 
@@ -314,7 +328,12 @@ function setRows(rows, label, isSeed) {
     return Object.assign({}, r, {
       per_pflop: (t && r.price_per_hour_usd) ? r.price_per_hour_usd / (t / 1000) : null,
       bw: BW[r.gpu] ?? null,
-      delta7: (HIST && HIST[r.gpu] && HIST[r.gpu][r.pricing_type]) ?? null,
+      // Per-listing delta when available; "—" for listings with no history a
+      // week back (new provider/listing) rather than the misleading floor
+      // value. Floor deltas only serve the transition window.
+      delta7: !HIST ? null
+        : HIST.rows ? HIST.rows[r.gpu + "|" + r.provider + "|" + r.pricing_type] ?? null
+        : (HIST.floor[r.gpu] && HIST.floor[r.gpu][r.pricing_type]) ?? null,
     });
   });
   const s = $("src");

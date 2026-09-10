@@ -1095,18 +1095,29 @@ export async function scrape(prev = {}, only = null, env = {}) {
 // $/GPU-hr per GPU and pricing type across all providers — the day keeps its
 // minimum. ~400 days retained. This is what the aggregators' trend charts
 // are built on.
+//
+// Each day also carries "_rows": that day's minimum per (GPU, provider,
+// pricing type), keyed "gpu|provider|type". The site's Δ7d column compares a
+// listing against ITS OWN price a week ago — per-GPU floor deltas mostly
+// measured which provider owned the floor, not price movement. _rows is only
+// kept for the trailing 10 days (all Δ7d needs) so history.json stays small.
 export function updateHistory(hist, payload) {
   const day = payload.generated_at.slice(0, 10);
   const entry = hist[day] ?? {};
+  const rows = entry._rows ?? (entry._rows = {});
   for (const r of payload.data) {
     if (r.stale) continue;
     const g = entry[r.gpu] ?? (entry[r.gpu] = {});
     if (g[r.pricing_type] == null || r.price_per_hour_usd < g[r.pricing_type])
       g[r.pricing_type] = r.price_per_hour_usd;
+    const k = `${r.gpu}|${r.provider}|${r.pricing_type}`;
+    if (rows[k] == null || r.price_per_hour_usd < rows[k]) rows[k] = r.price_per_hour_usd;
   }
   hist[day] = entry;
   const days = Object.keys(hist).sort();
   for (const d of days.slice(0, Math.max(0, days.length - 400))) delete hist[d];
+  for (const d of days.slice(0, Math.max(0, days.length - 10)))
+    if (hist[d]) delete hist[d]._rows;
   return hist;
 }
 
@@ -1254,10 +1265,11 @@ async function mcpCallTool(env, name, args = {}) {
     const days = Object.keys(hist).sort().slice(-(Math.min(args.days ?? 30, 400)));
     const out = {};
     for (const d of days) {
-      out[d] = args.gpu
-        ? Object.fromEntries(Object.entries(hist[d]).filter(([g]) =>
-            g.toLowerCase().includes(String(args.gpu).toLowerCase())))
-        : hist[d];
+      // "_rows" is the per-provider bulk blob for the site's Δ7d column —
+      // omitted here so MCP responses stay small.
+      out[d] = Object.fromEntries(Object.entries(hist[d]).filter(([g]) =>
+        g !== "_rows" &&
+        (!args.gpu || g.toLowerCase().includes(String(args.gpu).toLowerCase()))));
     }
     return { history: out, attribution: MCP_ATTRIBUTION };
   }
@@ -2029,6 +2041,8 @@ export default {
   its fetch status; \`generated_at\` is the scrape time (UTC ISO).
 - [Price history](${SITE}/history.json): daily index — for each UTC day, the
   cheapest price_per_hour_usd per GPU and pricing type across all providers.
+  Recent days also carry "_rows": that day's cheapest rate per individual
+  listing, keyed "gpu|provider|pricing_type" (trailing ~10 days only).
 
 ## Browsable pages (plain HTML, no JavaScript needed)
 - [${SITE}/gpu/](${SITE}/gpu/): index of every GPU we track. Each model has its

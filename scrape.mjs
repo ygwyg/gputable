@@ -305,19 +305,6 @@ async function crusoe() {
   return rows;
 }
 
-// Salad's pricing table: "RTX 5090 32GB 8GB 4 vCPUs $0.250 $182.50" = GPU,
-// VRAM, system RAM, vCPUs, $/hr (lowest priority), $/mo. All Salad capacity is
-// interruptible community hardware — the page footer's caveat applies.
-async function salad() {
-  const t = pageText(await fetchRetry("https://salad.com/pricing", { ua: UA_BROWSER }));
-  const rows = [...t.matchAll(
-    /\b((?:RTX|GTX)\s[\w ]*?)\s+(\d{1,3})GB\s+\d+\s*GB\s+\d+\s+vCPUs\s+\$([\d.]+)/g,
-  )].map(m => row(m[1], "Salad Cloud", m[3],
-    { vram: +m[2], avail: true, url: "https://salad.com/pricing" }));
-  if (!rows.length) throw new Error("parsed zero rows (layout changed?)");
-  return rows;
-}
-
 // Verda (formerly DataCrunch) has a public instance-types JSON. Prices are per
 // instance; gpu.description reads like "2x GB300 SXM6 288GB" (VRAM per GPU).
 async function verda() {
@@ -956,10 +943,25 @@ export const renderParsers = {
         m[4] ? row(m[1], "Novita", m[4], { vram: +m[2], ptype: "spot", url: "https://novita.ai/gpus" }) : null,
       ]);
   },
+  // Salad's 2026-09 redesign fills the price table client-side (the static
+  // HTML just says "Loading…"). Rendered rows read "RTX 5090 32 GB $0.500
+  // $0.417 $0.333 $0.250 $182.50" = GPU, VRAM, High/Medium/Low/Lowest tier
+  // $/GPU-hr, then $/mo. We quote Lowest — the interruptible batch tier that
+  // matches both their "from $0.04" headline and our pre-redesign history.
+  // "RTX 5090 Laptop" must not collapse into the desktop 5090 (its 24GB is
+  // exactly 25% under canon, which the VRAM guard lets through).
+  salad(t) {
+    return [...t.matchAll(
+      /\b((?:RTX|GTX)\s[\w ]*?)\s+(\d{1,3})\s*GB\s+\$([\d.]+)\s+\$([\d.]+)\s+\$([\d.]+)\s+\$([\d.]+)\s+\$[\d,.]+/g,
+    )].filter(m => !/laptop|mobile/i.test(m[1]))
+      .map(m => row(m[1], "Salad Cloud", m[6],
+        { vram: +m[2], avail: true, url: "https://salad.com/pricing" }));
+  },
 };
 
 const replicate = async () => renderParsers.replicate(await renderPage("https://replicate.com/pricing"));
 const novita = async () => renderParsers.novita(await renderPage("https://novita.ai/gpus"));
+const salad = async () => renderParsers.salad(await renderPage("https://salad.com/pricing"));
 
 export const PROVIDERS = {
   vast:      { names: ["Vast.ai"], fn: vast },
@@ -968,7 +970,7 @@ export const PROVIDERS = {
   coreweave: { names: ["CoreWeave"], fn: coreweave },
   nebius:    { names: ["Nebius"], fn: nebius },
   crusoe:    { names: ["Crusoe"], fn: crusoe },
-  salad:     { names: ["Salad Cloud"], fn: salad },
+  salad:     { names: ["Salad Cloud"], fn: salad, render: true },
   verda:     { names: ["Verda"], fn: verda },
   azure:     { names: ["Azure"], fn: azure },
   aws:       { names: ["AWS"], fn: aws },

@@ -1506,7 +1506,7 @@ ${body}
   Confirm on the provider's page before renting.
   <br>Free JSON feed: <a href="/data.json">data.json</a> ·
   <a href="/history.json">history.json</a> · <a href="/llms.txt">llms.txt</a> ·
-  <a href="/">full live table</a>
+  <a href="/trends">price trends</a> · <a href="/">full live table</a>
 </footer>
 </body>
 </html>
@@ -1860,6 +1860,215 @@ ${isGpu
   });
 }
 
+// ---- price-trends page ----------------------------------------------------
+
+// /trends: the daily history rendered as plain inline SVG — no JS, no chart
+// library, loads instantly. The long series come from the per-GPU floors
+// (cheapest listed rate across providers, up to 400 days); the by-provider
+// section reads the per-listing _rows maps and grows richer as their 10-day
+// window fills.
+
+// Sparkline: green when the last value is below the first (prices fell),
+// red when above — on a price tracker, down is the good direction.
+function sparkSVG(vals, label, w = 130, h = 22) {
+  const nn = vals.filter(v => v != null);
+  if (nn.length < 2) return '<span class="dim">—</span>';
+  const min = Math.min(...nn), max = Math.max(...nn), span = (max - min) || 1;
+  const pts = [];
+  vals.forEach((v, i) => { if (v != null)
+    pts.push(`${(i / (vals.length - 1) * (w - 2) + 1).toFixed(1)},` +
+             `${(h - 2 - (v - min) / span * (h - 4)).toFixed(1)}`); });
+  const chg = nn[nn.length - 1] - nn[0];
+  const color = chg < 0 ? "#060" : chg > 0 ? "#b00" : "#888";
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img"` +
+    ` aria-label="${eschtml(label)}" style="vertical-align:middle">` +
+    `<polyline fill="none" stroke="${color}" stroke-width="1.2" points="${pts.join(" ")}"/></svg>`;
+}
+
+// Multi-series line chart with a minimal frame: y min/max labels, first/last
+// day on x, one polyline per series.
+function chartSVG(series, days, w = 720, h = 170) {
+  const all = series.flatMap(s => s.vals).filter(v => v != null);
+  if (all.length < 2) return "";
+  const min = Math.min(...all), max = Math.max(...all), span = (max - min) || 1;
+  const L = 44, R = 8, T = 8, B = 18; // margins: left holds the y labels
+  const X = i => L + i / (days.length - 1) * (w - L - R);
+  const Y = v => T + (1 - (v - min) / span) * (h - T - B);
+  const lines = series.map(s => {
+    const pts = [];
+    s.vals.forEach((v, i) => { if (v != null) pts.push(`${X(i).toFixed(1)},${Y(v).toFixed(1)}`); });
+    return pts.length > 1
+      ? `<polyline fill="none" stroke="${s.color}" stroke-width="1.5" points="${pts.join(" ")}"/>` : "";
+  }).join("");
+  const fmt = v => v.toFixed(span < 5 ? 1 : 0);
+  return `<svg width="100%" height="${h}" viewBox="0 0 ${w} ${h}" role="img"
+ aria-label="${eschtml(series.map(s => s.label).join(", "))}" style="max-width:${w}px;font:10px sans-serif">
+<line x1="${L}" y1="${Y(min)}" x2="${w - R}" y2="${Y(min)}" stroke="#ddd"/>
+<line x1="${L}" y1="${Y(max)}" x2="${w - R}" y2="${Y(max)}" stroke="#eee"/>
+<text x="${L - 4}" y="${Y(max) + 3}" text-anchor="end" fill="#888">${fmt(max)}</text>
+<text x="${L - 4}" y="${Y(min) + 3}" text-anchor="end" fill="#888">${fmt(min)}</text>
+<text x="${L}" y="${h - 4}" fill="#888">${eschtml(days[0])}</text>
+<text x="${w - R}" y="${h - 4}" text-anchor="end" fill="#888">${eschtml(days[days.length - 1])}</text>
+${lines}</svg>`;
+}
+
+export function trendsPage(idx, hist) { // exported for offline testing
+  const url = "/trends";
+  const allDays = Object.keys(hist).sort();
+  const days = allDays.slice(-90);
+  const latest = days[days.length - 1];
+  const median = a => { const s = [...a].sort((x, y) => x - y); return s[Math.floor(s.length / 2)]; };
+  // Base day for Δ over a window: the newest day at least `n` days older than
+  // the latest, mirroring the homepage's Δ7d.
+  const baseDay = n => {
+    const cut = new Date(Date.parse(latest) - n * 864e5).toISOString().slice(0, 10);
+    let b = null;
+    for (const d of days) if (d <= cut) b = d;
+    return b;
+  };
+  const b7 = baseDay(7), b30 = baseDay(30);
+  const delta = (gpu, pt, base) => {
+    const now = hist[latest]?.[gpu]?.[pt], then = base && hist[base]?.[gpu]?.[pt];
+    return now > 0 && then > 0 ? (now - then) / then * 100 : null;
+  };
+  const dcell = v => v == null ? '<td class="num dim">—</td>'
+    : `<td class="num ${v < -0.5 ? "yes" : v > 0.5 ? "no" : "dim"}">${pct(v)}</td>`;
+
+  // GPUs with history, biggest iron first (today's floor, descending).
+  const gpus = Object.keys(hist[latest] ?? {}).filter(g => g !== "_rows")
+    .map(g => ({ name: g, now: hist[latest][g].on_demand ?? null,
+                 vals: days.map(d => hist[d]?.[g]?.on_demand ?? null),
+                 d7: delta(g, "on_demand", b7), d30: delta(g, "on_demand", b30) }))
+    .filter(g => g.vals.filter(v => v != null).length >= 2)
+    .sort((a, b) => (b.now ?? 0) - (a.now ?? 0));
+
+  // Global index: each GPU's floor normalized to 100 at its first day in the
+  // window, averaged per day — so a $0.03 3060 and a $4 B200 count equally.
+  const indexOf = pt => days.map(d => {
+    const v = [];
+    for (const g of Object.keys(hist[latest] ?? {})) {
+      if (g === "_rows") continue;
+      const first = days.map(x => hist[x]?.[g]?.[pt]).find(x => x > 0);
+      const cur = hist[d]?.[g]?.[pt];
+      if (first > 0 && cur > 0) v.push(cur / first * 100);
+    }
+    return v.length ? v.reduce((s, x) => s + x, 0) / v.length : null;
+  });
+  const odIndex = indexOf("on_demand"), spIndex = indexOf("spot");
+  const avg7 = gpus.filter(g => g.d7 != null);
+  const mean7 = avg7.length ? avg7.reduce((s, g) => s + g.d7, 0) / avg7.length : null;
+  const med7 = avg7.length ? median(avg7.map(g => g.d7)) : null;
+  const flat7 = avg7.filter(g => Math.abs(g.d7) <= 2).length;
+  const sorted7 = [...avg7].sort((a, b) => a.d7 - b.d7);
+  const faller = sorted7[0], riser = sorted7[sorted7.length - 1];
+
+  // By provider, from the per-listing _rows maps: each provider's listings
+  // against their own week-ago prices — churn-proof, unlike floor deltas.
+  const rowDays = days.filter(d => hist[d]?._rows);
+  const rLatest = rowDays[rowDays.length - 1];
+  let rBase = null;
+  if (rowDays.length >= 2) {
+    const cut = new Date(Date.parse(rLatest) - 7 * 864e5).toISOString().slice(0, 10);
+    for (const d of rowDays) if (d <= cut) rBase = d;
+    rBase = rBase ?? rowDays[0];
+  }
+  const provs = new Map();
+  for (const [k, v] of Object.entries(hist[rLatest]?._rows ?? {})) {
+    const [, prov, pt] = k.split("|");
+    const p = provs.get(prov) ?? { n: 0, prices: [], deltas: [],
+      vals: rowDays.map(d => {
+        const day = [];
+        for (const [kk, vv] of Object.entries(hist[d]._rows))
+          if (kk.split("|")[1] === prov) day.push(vv);
+        return day.length ? median(day) : null;
+      }) };
+    p.n++; p.prices.push(v);
+    const then = rBase && hist[rBase]._rows?.[k];
+    if (then > 0 && pt) p.deltas.push((v - then) / then * 100);
+    provs.set(prov, p);
+  }
+  const provRows = [...provs.entries()]
+    .map(([name, p]) => ({ name, ...p,
+      avgD: p.deltas.length ? p.deltas.reduce((s, x) => s + x, 0) / p.deltas.length : null }))
+    .sort((a, b) => b.n - a.n);
+
+  const nProv = idx.provs.size, nGpu = gpus.length;
+  const windowDays = Math.round((Date.parse(latest) - Date.parse(days[0])) / 864e5) || 1;
+  const title = clamp(`Cloud GPU Price Trends — ${nGpu} GPUs, ${nProv} Clouds | GPUTable`, 62);
+  const description = clamp(`Daily GPU rental price history: ${nGpu} GPU models tracked across ` +
+    `${nProv} clouds.` + (mean7 != null ? ` 7-day average change ${pct(mean7)}, median ${pct(med7)}.` : "") +
+    ` Charts for every model, updated daily.`, 158);
+  const parts = [{ name: "GPUTable", url: "/" }, { name: "Price trends" }];
+
+  const qa = [];
+  if (mean7 != null) qa.push(
+    ["Are cloud GPU prices going up or down?",
+     `Over the past 7 days the cheapest listed rate changed by ${pct(mean7)} on average across ` +
+     `${avg7.length} GPU models (median ${pct(med7)}; ${flat7} models moved less than 2%). ` +
+     `Most movement comes from marketplace listings appearing and disappearing rather than ` +
+     `clouds repricing.`],
+    ["Which GPU price dropped the most this week?",
+     `${faller.name}: its cheapest listed rate moved ${pct(faller.d7)} over 7 days, to ` +
+     `${money(faller.now)}/hr. The biggest riser was ${riser.name} at ${pct(riser.d7)}.`]);
+  qa.push(["Where does this history come from?",
+     `Every 5–15 minutes GPUTable scrapes each provider's own pricing page or API; the daily ` +
+     `low per GPU is kept in a public JSON file at gputable.dev/history.json.`]);
+
+  const chart = chartSVG([
+    { label: "on-demand index", color: "#00c", vals: odIndex },
+    { label: "spot index", color: "#b00", vals: spIndex },
+  ], days);
+
+  const gpuTable = `<table>
+<thead><tr><th>GPU</th><th>Cheapest now</th><th>Δ7d</th><th>Δ30d</th><th>${windowDays}-day trend</th></tr></thead>
+<tbody>
+${gpus.map(g => `<tr>
+<td><a href="/gpu/${slugify(g.name)}">${eschtml(g.name)}</a></td>
+<td class="num">${money(g.now)}</td>
+${dcell(g.d7)}${dcell(g.d30)}
+<td>${sparkSVG(g.vals, `${g.name} daily low, ${windowDays} days`)}</td>
+</tr>`).join("\n")}
+</tbody></table>`;
+
+  const provTable = rBase ? `<table>
+<thead><tr><th>Provider</th><th>Listings</th><th>Median $/GPU-hr</th><th>Avg Δ7d (own listings)</th><th>Trend</th></tr></thead>
+<tbody>
+${provRows.map(p => `<tr>
+<td><a href="/provider/${slugify(p.name)}">${eschtml(p.name)}</a></td>
+<td class="num">${p.n}</td>
+<td class="num">${money(median(p.prices))}</td>
+${p.deltas.length ? dcell(p.avgD) : '<td class="num dim">—</td>'}
+<td>${sparkSVG(p.vals, `${p.name} median listing price`)}</td>
+</tr>`).join("\n")}
+</tbody></table>` :
+    `<p class="dim">Provider trends compare each listing against its own earlier price, from
+per-listing history that began ${eschtml(rLatest ?? "today")} — this table fills in as days accrue.</p>`;
+
+  const body = crumb(parts) + `
+<p>Daily price history for ${nGpu} GPU models across ${nProv} clouds. The chart tracks the
+cheapest listed on-demand and spot rate per GPU, each model indexed to 100 at the window start
+and averaged — so a $0.03 consumer card and a $4 B200 count equally. Per-GPU floors mostly
+measure marketplace churn (a cheap host appearing or leaving), which is why the by-provider
+table below compares listings against their own history instead.</p>
+${chart}
+<p class="meta">Index of cheapest listed rates, ${eschtml(days[0])} → ${eschtml(latest)} = 100 at start.
+${mean7 != null ? `7-day average change ${pct(mean7)} · median ${pct(med7)} · ${flat7}/${avg7.length} models flat.` : ""}</p>
+<h2>By GPU — cheapest listed rate</h2>
+${gpuTable}
+<h2>By provider — each listing vs its own history</h2>
+${provTable}
+${faqHTML(qa)}
+<p class="meta"><a href="/gpu/">Browse by GPU</a> · <a href="/provider/">Browse by provider</a> ·
+<a href="/history.json">Raw daily history (JSON)</a> · <a href="/">Live sortable table</a></p>`;
+
+  return shell({
+    title, description, canonical: SITE_URL + url, updated: idx.generated_at,
+    h1: "Cloud GPU price trends",
+    jsonld: [crumbLD(parts), faqLD(qa)],
+    body,
+  });
+}
+
 // ---- sitemap --------------------------------------------------------------
 
 function sitemap(idx) {
@@ -1870,6 +2079,7 @@ function sitemap(idx) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${u("/", "1.0", "hourly")}
+${u("/trends", "0.9", "daily")}
 ${u("/gpu/", "0.9", "daily")}
 ${u("/provider/", "0.9", "daily")}
 ${[...idx.gpus.keys()].map(s => u(`/gpu/${s}`, "0.8", "daily")).join("\n")}
@@ -1899,6 +2109,7 @@ function browseNav(idx) {
     `<a href="/gpu/">all ${gpus.length} GPUs →</a>`,
     ...provs.map(e => link("provider", e)),
     `<a href="/provider/">all ${provs.length} providers →</a>`,
+    `<a href="/trends">price trends →</a>`,
   ].join(sep) + sep.trimEnd();
   // Two identical copies make the loop seamless; the duplicate is hidden from
   // assistive tech and taken out of the tab order.
@@ -2007,6 +2218,15 @@ export default {
         "cache-control": "public, max-age=3600",
         "cache-tag": "gputable-data" } });
 
+    if (url.pathname === "/trends" || url.pathname === "/trends/") {
+      if (url.pathname === "/trends/") return Response.redirect(`${SITE}/trends`, 301);
+      const idx = await seoData();
+      const hist = await env.PRICES?.get("history", "json").catch(() => null) ?? {};
+      if (!idx.rows.length || Object.keys(hist).length < 2)
+        return new Response("price history still accruing — try tomorrow", { status: 503 });
+      return page(trendsPage(idx, hist));
+    }
+
     // One page per GPU and per provider, plus their two index pages.
     const seoRoute = url.pathname.match(/^\/(gpu|provider)\/([a-z0-9-]*)$/);
     if (seoRoute) {
@@ -2045,6 +2265,9 @@ export default {
   listing, keyed "gpu|provider|pricing_type" (trailing ~10 days only).
 
 ## Browsable pages (plain HTML, no JavaScript needed)
+- [${SITE}/trends](${SITE}/trends): price trends — a daily index chart of the
+  cheapest listed rates, per-GPU trend sparklines with 7- and 30-day deltas,
+  and per-provider price movement.
 - [${SITE}/gpu/](${SITE}/gpu/): index of every GPU we track. Each model has its
   own page — e.g. ${SITE}/gpu/h100-sxm, ${SITE}/gpu/b200 — listing every
   provider's rate for that card, cheapest first, with the capacity tier marked.

@@ -838,6 +838,20 @@ async function octa() {
   return rows;
 }
 
+// CloudGPU publishes a keyless JSON feed of on-demand offers:
+// https://cloudgpu.app/gpu-prices.json. usd_per_hour is the per-GPU rate
+// (it matches the per-card figure on the pricing page; current offers are
+// one GPU each), so gpu_count is the offer size and does not scale the price.
+// Names canon() does not recognize are dropped, same as the other feeds.
+async function cloudgpu() {
+  const d = await getJSON("https://cloudgpu.app/gpu-prices.json");
+  const rows = (d.gpus ?? []).map(g => row(g.gpu, "CloudGPU", g.usd_per_hour, {
+    count: g.gpu_count || 1, vram: g.vram_gb || null, avail: g.in_stock ?? null,
+    url: "https://cloudgpu.app/pricing" }));
+  if (!rows.some(Boolean)) throw new Error("no GPUs parsed (feed changed?)");
+  return rows;
+}
+
 // Akash, the decentralized compute marketplace, publishes an official
 // aggregate price feed: USD min/avg/max per GPU model with live availability
 // and the interface (SXM4/PCIe) for disambiguation. We list the cheapest
@@ -1007,6 +1021,7 @@ export const PROVIDERS = {
   primeintellect: { names: ["Prime Intellect"], fn: primeintellect },
   akash:     { names: ["Akash"], fn: akash },
   octa:      { names: ["Octa"], fn: octa },
+  cloudgpu:  { names: ["CloudGPU"], fn: cloudgpu },
 };
 
 const RENDER_TTL_MS = 6 * 3600e3; // rendered pages are re-fetched at most this often

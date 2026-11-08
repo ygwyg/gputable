@@ -854,6 +854,27 @@ async function akash() {
   return rows;
 }
 
+// Runcrate (runcrate.ai), an AI cloud, publishes its live GPU prices as public
+// JSON, no key: one entry per GPU type with the lowest current on-demand
+// $/GPU-hr (min_price_hr) and the number of purchasable options right now.
+// Out-of-stock types keep a stale price in the feed, so available_options < 1
+// is dropped. The feed does not say SXM vs PCIe or which A100 form factor, so
+// only GPU types that map to exactly one canon() row are taken: H100 and the
+// A100s (canon splits SXM/PCIe) and H200 NVL (canon folds it into H200) are
+// skipped on purpose, as are V100 (two memory sizes) and the rest.
+const RUNCRATE_TYPES = new Set(["B300", "B200", "H200", "L40S", "L40", "RTX5090", "RTX4090",
+  "RTX6000Ada", "RTXPro6000", "A6000", "A40", "L4", "A10", "RTX3090"]);
+async function runcrate() {
+  const d = await getJSON("https://www.runcrate.ai/api/gpu-pricing");
+  const rows = (d.gpus ?? []).filter(g => RUNCRATE_TYPES.has(g.gpu_type)).map(g =>
+    (g.available_options ?? 0) > 0 ? row(g.name, "Runcrate", g.min_price_hr, {
+      vram: +(String(g.vram ?? "").match(/(\d+)/)?.[1] ?? 0) || null,
+      avail: true,
+      url: "https://www.runcrate.ai/pricing?utm_medium=directory&utm_campaign=gpu_pricing" }) : null);
+  if (!rows.some(Boolean)) throw new Error("no GPUs parsed (feed changed?)");
+  return rows;
+}
+
 // Prime Intellect (needs the PRIME_API_KEY secret; read-only). A marketplace
 // that resells capacity from Lambda, Nebius, Massed Compute and even Vultr —
 // prices are what you'd actually pay booking through PI, quoted per GPU-hour.
@@ -1007,6 +1028,7 @@ export const PROVIDERS = {
   primeintellect: { names: ["Prime Intellect"], fn: primeintellect },
   akash:     { names: ["Akash"], fn: akash },
   octa:      { names: ["Octa"], fn: octa },
+  runcrate:  { names: ["Runcrate"], fn: runcrate },
 };
 
 const RENDER_TTL_MS = 6 * 3600e3; // rendered pages are re-fetched at most this often
